@@ -1,0 +1,23 @@
+{
+  "projectname": "RainJoy1993",
+  "description": "项目配置文件。",
+  "appid": "wx8d1d9b1abb35ca02",
+  "compileType": "miniprogram",
+  "libVersion": "2.6.0",
+  "setting": {
+    "urlCheck": false,
+    "es6": false,
+    "postcss": true,
+    "minified": true,
+    "newFeature": true,
+    "nodeModules": true,
+    "autoAudits": true,
+    "uglifyFileName": true
+  },
+  "scripts": {
+    "beforeCompile": "",
+    "beforePreview": "",
+    "beforeUpload": ""
+  },
+  "condition": {}
+}
