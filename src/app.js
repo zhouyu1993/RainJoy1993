@@ -1,14 +1,19 @@
 import queryString from 'query-string'
 
-import { App } from './lib/ald/ald-stat'
+import { appId, version } from './utils/constants'
+
+import { WXDATA } from './utils/api'
+import request from './utils/request'
 
 import xmpush from './lib/xmpush'
-
-import { appId, version } from './utils/constants'
 
 console.log('xmpush', xmpush)
 
 xmpush.xmpushReportSubmit('123456')
+
+// import { App } from '../../lib/ald/ald-stat'
+let App = require('./lib/ald/ald-stat').App
+App = require('./lib/xiaoshentui/pushsdk.js').pushSdk(App, 'App').App
 
 App({
   globalData: {
@@ -89,6 +94,23 @@ App({
     } catch (e) {
       console.log(e)
     }
+
+    wx.login({
+      success: ({ code }) => {
+        request({
+          url: `${WXDATA}/api/wx/code2Session?app_key=abcdef&code=${code}`,
+          showLoading: false,
+          fail: () => {},
+          isSuccess: () => true,
+          success: res => {
+            console.log('debug', res)
+
+            // oSfYh0aXrNuSzCq7RbWq-oh_zNTg
+            wx.xst.setOpenId(res.openid)
+          },
+        })
+      },
+    })
   },
   onHide () {
     console.log('App.onHide')

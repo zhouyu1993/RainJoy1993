@@ -4,6 +4,8 @@ const debug = conf.debug
 
 debug && console.log(conf)
 
+const WXDATA = 'http://dev.zhouyu.com:6789'
+
 function request (option) {
   const {
     url,
@@ -216,6 +218,24 @@ const xmpushReportSubmit = async (formId) => {
   }
 
   debug && console.log(JSON.stringify(data))
+}
+
+const xmpushSendMessage = async (formId, code) => {
+  try {
+    const res = await request({
+      url: `${WXDATA}/api/wx/sendTemplateMessage?app_key=abcdef&code=${code}`,
+      data: {
+        form_id: formId
+      },
+      method: 'POST',
+      fail: () => {},
+      isSuccess: () => true,
+    })
+
+    debug && console.log(res)
+  } catch (e) {
+    debug && console.log(e)
+  }
 }
 
 export {

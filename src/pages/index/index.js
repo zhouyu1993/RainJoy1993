@@ -2,7 +2,9 @@ import { getHotKey } from '../../utils/actions'
 import { CYQQ } from '../../utils/api'
 import request from '../../utils/request'
 
-import { Page } from '../../lib/ald/ald-stat'
+// import { Page } from '../../lib/ald/ald-stat'
+let Page = require('../../lib/ald/ald-stat').Page
+Page = require('../../lib/xiaoshentui/pushsdk.js').pushSdk(Page).Page
 
 Page({
   data: {

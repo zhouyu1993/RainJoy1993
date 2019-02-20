@@ -2,7 +2,9 @@ import md5 from 'crypto-js/md5'
 import { Base64 } from 'js-base64'
 import queryString, { parse, stringify, } from 'query-string'
 
-import { Page } from '../../lib/ald/ald-stat'
+// import { Page } from '../../lib/ald/ald-stat'
+let Page = require('../../lib/ald/ald-stat').Page
+Page = require('../../lib/xiaoshentui/pushsdk.js').pushSdk(Page).Page
 
 const app = getApp()
 

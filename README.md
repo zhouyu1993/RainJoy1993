@@ -54,6 +54,8 @@ wx8d1d9b1abb35ca02
 # request 合法域名
 
 https://log.aldwx.com # 阿拉丁
+https://plog.xiaoshentui.com # 阿拉丁小神推
+https://openapi.xiaoshentui.com # 阿拉丁小神推
 
 # socket合法域名
 
@@ -66,6 +68,10 @@ https://log.aldwx.com # 阿拉丁
 # 阿拉丁 app_key
 
 40ef4b814911dc0f6d48f5c49b70aa42
+
+# 阿拉丁小神推 app_key
+
+360065b5abadcaca47ca254f8f5d3f8a
 ```
 
 # Pages

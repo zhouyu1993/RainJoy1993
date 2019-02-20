@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/tool/index",
     "pages/a/index",
-    "pages/b/index"
+    "pages/b/index",
+    "pages/ence_push/ence_push"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ff397e",
@@ -47,7 +48,12 @@
   "requiredBackgroundModes": [
     "audio"
   ],
-  "plugins": {},
+  "plugins": {
+    "tencentvideo": {
+      "version": "1.2.4",
+      "provider": "wxa75efa648b60994b"
+    }
+  },
   "preloadRule": {},
   "resizable": true,
   "navigateToMiniProgramAppIdList": [],
