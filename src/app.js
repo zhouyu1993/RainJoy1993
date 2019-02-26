@@ -9,7 +9,7 @@ import xmpush from './lib/xmpush'
 
 console.log('xmpush', xmpush)
 
-xmpush.xmpushReportSubmit('123456')
+xmpush.xmpushRegisterPush()
 
 // import { App } from '../../lib/ald/ald-stat'
 let App = require('./lib/ald/ald-stat').App
