@@ -1,6 +1,9 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/jitaSinger/index",
+    "pages/jitaSong/index",
+    "pages/search/index",
     "pages/tool/index",
     "pages/a/index",
     "pages/b/index",
@@ -26,11 +29,15 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "音乐库"
+        "text": "吉他"
+      },
+      {
+        "pagePath": "pages/search/index",
+        "text": "搜索"
       },
       {
         "pagePath": "pages/tool/index",
-        "text": "小工具"
+        "text": "工具"
       }
     ],
     "position": "top"
@@ -48,12 +55,7 @@
   "requiredBackgroundModes": [
     "audio"
   ],
-  "plugins": {
-    "tencentvideo": {
-      "version": "1.2.4",
-      "provider": "wxa75efa648b60994b"
-    }
-  },
+  "plugins": {},
   "preloadRule": {},
   "resizable": true,
   "navigateToMiniProgramAppIdList": [],

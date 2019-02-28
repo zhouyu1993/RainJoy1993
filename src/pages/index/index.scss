@@ -5,25 +5,63 @@
   background-color: #fff;
 }
 
-.hotkeys {
-  padding: 20rpx;
+.module-title {
+  height: 100rpx;
+  margin-top: 20rpx;
+  font-size: 36rpx;
+  line-height: 100rpx;
+  text-align: center;
+  background-color: #fff;
+}
 
-  .tip {
-    margin-bottom: 10rpx;
+.slide {
+  height: 400rpx;
+  margin-top: 20rpx;
+  background-color: #fff;
+
+  .slide-image {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.singer {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #fff;
+
+  .singer-item {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10rpx;
   }
 
-  .hotkey {
-    display: inline-block;
-    padding: 20rpx;
-    margin-right: 20rpx;
-    margin-bottom: 20rpx;
-    font-size: 24rpx;
-    border: 1px solid #bbb;
-    border-radius: 20rpx;
+  .singer-image {
+    width: 160rpx;
+    height: 160rpx;
+    border-radius: 50%;
+  }
 
-    &.first-child {
-      color: #ff397e;
-      border: 1px solid #ff397e;
-    }
+  .singer-name {
+    margin: 10rpx 0;
+  }
+}
+
+.song {
+  padding: 20rpx;
+  background-color: #fff;
+
+  .song-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 32rpx;
+    line-height: 70rpx;
+    border-top: 1rpx solid #ddd;
   }
 }

@@ -1,9 +1,29 @@
-<component-wrap>
+<component-wrap disabled>
   <view class="container">
-    <view class="hotkeys">
-      <view class="tip">热门搜索</view>
-      <text wx:for="{{hotkeys}}" wx:key="{{key}}" data-keyword="{{item.k}}" class="hotkey {{index == 0 ? 'first-child' : ''}}">{{item.k}}</text>
+    <swiper autoplay class="slide">
+      <block wx:for="{{jitaHome.slide}}" wx:key="{{index}}">
+        <swiper-item>
+          <image src="{{item}}" class="slide-image" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="module-title">热门歌手</view>
+    <view class="singer">
+      <block wx:for="{{jitaHome.singer}}" wx:key="{{index}}">
+        <view class="singer-item">
+          <image src="{{item.face}}" class="singer-image" data-id="{{item.id}}" bindtap="jitaSinger" />
+          <text class="singer-name">{{item.name}}</text>
+        </view>
+      </block>
     </view>
-    <component-icon-playing />
+    <view class="module-title">热门歌谱</view>
+    <view class="song">
+      <block wx:for="{{jitaHome.hot_pz}}" wx:key="{{index}}">
+        <view class="song-item" data-id="{{item.id}}" bindtap="jitaSong">
+          <text class="singer-name">{{item.name}}</text>
+          <text class="singer-click">{{item.click}}</text>
+        </view>
+      </block>
+    </view>
   </view>
 </component-wrap>

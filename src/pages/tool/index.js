@@ -42,6 +42,7 @@ Page({
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo
           wx.getUserInfo({
+            withCredentials: true,
             lang: this.data.systemInfo.language || 'en',
             success: res => {
               const { userInfo, } = res

@@ -1,4 +1,4 @@
-import { getJitaHome } from '../../utils/actions'
+import { getJitaSong } from '../../utils/actions'
 
 import navigateTo from '../../utils/navigateTo'
 
@@ -8,18 +8,31 @@ Page = require('../../lib/xiaoshentui/pushsdk.js').pushSdk(Page).Page
 
 Page({
   data: {
-    jitaHome: {},
+    id: '',
+    jitaSong: {},
   },
   onLoad (options) {
     console.log(`Page.onLoad`, options)
+
+    const { id, } = options
+
+    this.setData({
+      id,
+    })
   },
   onShow () {
     this.getData()
   },
   onShareAppMessage (options) {
+    let title = '吉他'
+
+    if (this.data.jitaSong.title && this.data.jitaSong.singer) {
+      title = `${this.data.jitaSong.title}-${this.data.jitaSong.singer}`
+    }
+
     return {
-      title: '吉他',
-      path: '/pages/index/index',
+      title,
+      path: `/pages/jitaSong/index?id=${this.data.id}`,
       success: res => {
         wx.showToast({
           title: '分享成功',
@@ -35,34 +48,26 @@ Page({
     }
   },
   async getData () {
-    const res = await getJitaHome()
+    const id = this.data.id
+    if (!id) return
 
-    const data = res.data || {}
+    const res = await getJitaSong(id)
 
-    data.singer.unshift({
-      face: 'http://pu.jitami.96sn.com/singer/20150205165852_7345.jpg',
-      id: 10,
-      name: '林俊杰',
-    })
-
-    data.singer.unshift({
-      face: 'http://pu.jitami.96sn.com/singer/20150302100911_6698.jpg',
-      id: 118,
-      name: '曾轶可',
-    })
+    const jitaSong = res.data || {}
 
     this.setData({
-      jitaHome: data,
+      jitaSong,
     })
+
+    if (jitaSong.title && jitaSong.singer) {
+      wx.setNavigationBarTitle({
+        title: `${jitaSong.title}-${jitaSong.singer}`
+      })
+    }
   },
   jitaSinger (event) {
     const { id } = event.currentTarget.dataset
 
     navigateTo(`/pages/jitaSinger/index?id=${id}`)
-  },
-  jitaSong (event) {
-    const { id } = event.currentTarget.dataset
-
-    navigateTo(`/pages/jitaSong/index?id=${id}`)
   },
 })

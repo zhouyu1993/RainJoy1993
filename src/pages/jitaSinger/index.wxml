@@ -1,0 +1,15 @@
+<component-wrap disabled>
+  <view class="container">
+    <view class="singer-image" wx:if="{{jitaSinger.singer_face}}">
+      <image src="{{jitaSinger.singer_face}}" />
+    </view>
+    <view class="song">
+      <block wx:for="{{jitaSinger.list}}" wx:key="{{index}}">
+        <view class="song-item" data-id="{{item.id}}" bindtap="jitaSong">
+          <text class="singer-name">{{item.name}}</text>
+          <text class="singer-click">{{item.click}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+</component-wrap>

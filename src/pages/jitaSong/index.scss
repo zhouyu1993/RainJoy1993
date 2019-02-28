@@ -1,0 +1,23 @@
+@import '../../assets/scss/mixin';
+
+.container {
+  height: 100%;
+  background-color: #fff;
+}
+
+.song-pulist {
+  padding: 10rpx;
+  background-color: #fff;
+
+  .song-puimage {
+    width: 100%;
+  }
+}
+
+.song-singer {
+  margin-top: 20px;
+  font-size: 30rpx;
+  line-height: 50rpx;
+  text-align: center;
+  background-color: #fff;
+}

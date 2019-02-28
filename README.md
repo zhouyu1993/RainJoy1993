@@ -2,6 +2,79 @@
 
 A wx-miniprogram project
 
+## API
+
+* 排行榜
+*
+
+---
+
+song_id: 214160684
+
+song_mid: 003rwlte1mgeSh
+
+https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric.fcg?nobase64=1&musicid=214160684&songtype=0
+
+singer_id: 19633
+
+singer_mid 001Z043U01BqsW
+
+https://y.gtimg.cn/music/photo_new/T001R68x68M000001Z043U01BqsW.jpg?max_age=2592000
+
+album_id: 4091728
+
+album_mid: 000OojoN2517uS
+
+https://y.gtimg.cn/music/photo_new/T002R300x300M000000OojoN2517uS.jpg?max_age=2592000
+
+---
+
+https://c.y.qq.com/v8/fcg-bin/fcg_myqq_topList.fcg?format=json
+
+https://c.y.qq.com/v8/fcg-bin/fcg_first_yqq.fcg?page=other&format=json
+
+---
+
+https://gitlab.com/zhouyu1993/wx-miniprogram-config/raw/master/RainJoy1993/index.json
+
+https://gitlab.com/zhouyu1993/wx-miniprogram-config/raw/master/RainJoy1993/english-words.json
+
+---
+
+https://api.bzqll.com/music/tencent/search?key=579621905&s=秦时明月&limit=100&offset=0&type=song
+
+1. 音乐搜索: type=song
+2. 专辑搜索: type=album
+3. 歌单搜索: type=list (QQ音乐限制歌单每页最多查询50条)
+4. MV搜索: type=mv
+5. 用户搜索: type=user
+6. 歌词搜索: type=lrc
+
+https://api.bzqll.com/music/tencent/url?id=002GrJ771EmliH&key=579621905&br=320
+
+---
+
+https://jitami.96sn.com/api/home/index
+
+https://jitami.96sn.com/api/home/index/search?key=天空之城
+
+https://jitami.96sn.com/api/home/index/singer_detail?id=25
+
+https://jitami.96sn.com/api/home/index/pu?id=1326
+
+http://pu.jitami.96sn.com/singer/20150205155854_9468.png
+
+http://pu.jitami.96sn.com/20150205172013_8179.gif
+
+## 插件
+
+"plugins": {
+  "tencentvideo": {
+    "version": "1.2.5",
+    "provider": "wxa75efa648b60994b"
+  }
+}
+
 ## src 目录结构
 
 * actions 分页面管理接口请求，同 utils/actions.js
@@ -53,9 +126,16 @@ wx8d1d9b1abb35ca02
 
 # request 合法域名
 
-https://log.aldwx.com # 阿拉丁
-https://plog.xiaoshentui.com # 阿拉丁小神推
+https://api.bzqll.com
+https://apis.map.qq.com
+https://c.y.qq.com
+https://fanyi-api.baidu.com
+https://gitlab.com
+https://jitami.96sn.com
+https://log.aldwx.com # 阿拉丁统计
 https://openapi.xiaoshentui.com # 阿拉丁小神推
+https://plog.xiaoshentui.com # 阿拉丁小神推
+https://u.y.qq.com
 
 # socket合法域名
 
@@ -64,6 +144,10 @@ https://openapi.xiaoshentui.com # 阿拉丁小神推
 # downloadFile 合法域名
 
 # web-view(业务域名)-需运维在服务器根目录加文件
+
+# 关联的公众号
+
+wx7208a4af2628818b
 
 # 阿拉丁 app_key
 
@@ -199,3 +283,9 @@ iBeacon 设备、低功耗蓝牙、蓝牙等
 ---
 
 小程序在错误上报、统计、日志等，在逐步丰富能力
+
+---
+
+sendTemplateMessage
+
+sendUniformMessage
