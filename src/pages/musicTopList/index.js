@@ -26,7 +26,7 @@ Page({
   onShareAppMessage (options) {
     return {
       title: '排行榜',
-      path: '/pages/index/index',
+      path: `/pages/musicTopList/index?id=${this.data.id}`,
       success: res => {
         wx.showToast({
           title: '分享成功',

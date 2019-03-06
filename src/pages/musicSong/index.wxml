@@ -5,6 +5,9 @@
         你正在听{{singername}}的{{songname}}！
       </view>
       <view class="musicSpeacial">
+        仙女～节日快乐～永远18岁～
+      </view>
+      <view class="musicSpeacial">
         熄屏后再点亮屏幕，也许有惊喜！
       </view>
       <view class="musicTip">

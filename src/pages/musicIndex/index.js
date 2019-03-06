@@ -19,7 +19,7 @@ Page({
   onShareAppMessage (options) {
     return {
       title: '音乐',
-      path: '/pages/index/index',
+      path: '/pages/musicIndex/index',
       success: res => {
         wx.showToast({
           title: '分享成功',

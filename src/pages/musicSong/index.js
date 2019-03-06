@@ -31,11 +31,15 @@ Page({
     const backgroundAudioManager = wx.getBackgroundAudioManager()
 
     if (speacial) {
-      backgroundAudioManager.title = '告白气球'
-      backgroundAudioManager.epname = '我好宣你'
-      backgroundAudioManager.singer = '你好徐蜗牛'
-      backgroundAudioManager.coverImgUrl = `http://cmspic-10004025.image.myqcloud.com/0b23e778-b411-4f92-9bfe-0390e7e8609a`
-      backgroundAudioManager.src = `https://api.bzqll.com/music/tencent/url?id=003OUlho2HcRHC&key=579621905`
+      const src = `https://api.bzqll.com/music/tencent/url?id=003OUlho2HcRHC&key=579621905`
+
+      if (backgroundAudioManager.src !== src) {
+        backgroundAudioManager.title = '告白气球'
+        backgroundAudioManager.epname = '我好宣你'
+        backgroundAudioManager.singer = '徐蜗牛'
+        backgroundAudioManager.coverImgUrl = `http://cmspic-10004025.image.myqcloud.com/0b23e778-b411-4f92-9bfe-0390e7e8609a`
+        backgroundAudioManager.src = src
+      }
     } else {
       const src = `https://api.bzqll.com/music/tencent/url?id=${songmid}&key=579621905&br=320`
 
@@ -49,9 +53,18 @@ Page({
     }
   },
   onShareAppMessage (options) {
+    const { songmid, albummid, songname, albumname, singername, speacial, } = this.data
+
+    let path = ''
+    if (speacial) {
+      path = '/pages/musicSong/index?speacial=1'
+    } else if (songmid && albummid && songname && albumname && singername) {
+      path = `/pages/musicSong/index?songmid=${songmid}&albummid=${albummid}&songname=${songname}&albumname=${albumname}&singername=${singername}`
+    }
+
     return {
       title: '排行榜',
-      path: '/pages/index/index',
+      path,
       success: res => {
         wx.showToast({
           title: '分享成功',
