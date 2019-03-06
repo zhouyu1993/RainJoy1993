@@ -55,15 +55,18 @@ Page({
   onShareAppMessage (options) {
     const { songmid, albummid, songname, albumname, singername, speacial, } = this.data
 
-    let path = ''
+    let title = '听歌'
+    let path = '/pages/index/index'
     if (speacial) {
+      title = '告白气球'
       path = '/pages/musicSong/index?speacial=1'
     } else if (songmid && albummid && songname && albumname && singername) {
+      title = songname
       path = `/pages/musicSong/index?songmid=${songmid}&albummid=${albummid}&songname=${songname}&albumname=${albumname}&singername=${singername}`
     }
 
     return {
-      title: '排行榜',
+      title,
       path,
       success: res => {
         wx.showToast({
