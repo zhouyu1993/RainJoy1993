@@ -4,6 +4,9 @@
     "pages/jitaSinger/index",
     "pages/jitaSong/index",
     "pages/search/index",
+    "pages/musicIndex/index",
+    "pages/musicTopList/index",
+    "pages/musicSong/index",
     "pages/tool/index",
     "pages/a/index",
     "pages/b/index",
@@ -30,6 +33,10 @@
       {
         "pagePath": "pages/index/index",
         "text": "吉他"
+      },
+      {
+        "pagePath": "pages/musicIndex/index",
+        "text": "音乐"
       },
       {
         "pagePath": "pages/search/index",

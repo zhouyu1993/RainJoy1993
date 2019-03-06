@@ -4,9 +4,6 @@ A wx-miniprogram project
 
 ## API
 
-* 排行榜
-*
-
 ---
 
 song_id: 214160684
@@ -31,8 +28,6 @@ https://y.gtimg.cn/music/photo_new/T002R300x300M000000OojoN2517uS.jpg?max_age=25
 
 https://c.y.qq.com/v8/fcg-bin/fcg_myqq_topList.fcg?format=json
 
-https://c.y.qq.com/v8/fcg-bin/fcg_first_yqq.fcg?page=other&format=json
-
 ---
 
 https://gitlab.com/zhouyu1993/wx-miniprogram-config/raw/master/RainJoy1993/index.json
@@ -41,7 +36,7 @@ https://gitlab.com/zhouyu1993/wx-miniprogram-config/raw/master/RainJoy1993/engli
 
 ---
 
-https://api.bzqll.com/music/tencent/search?key=579621905&s=秦时明月&limit=100&offset=0&type=song
+https://api.bzqll.com/music/tencent/search?key=579621905&s=秦时明月&limit=10&offset=1&type=song
 
 1. 音乐搜索: type=song
 2. 专辑搜索: type=album

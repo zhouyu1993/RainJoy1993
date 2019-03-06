@@ -1,0 +1,11 @@
+{
+  "navigationBarBackgroundColor": "#ff397e",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "听歌",
+  "backgroundColor": "#eee",
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": false,
+  "onReachBottomDistance": 50,
+  "disableScroll": false,
+  "usingComponents": {}
+}

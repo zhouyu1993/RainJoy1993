@@ -58,3 +58,12 @@
     border-radius: 10rpx;
   }
 }
+
+input {
+  &.speacial {
+    padding-left: 20rpx;
+    margin: 20rpx;
+    background-color: #fff;
+    border: 1px solid #ddd;
+  }
+}

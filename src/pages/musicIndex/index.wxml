@@ -1,0 +1,19 @@
+<component-wrap disabled>
+  <view class="container">
+    <view class="musicHome">
+      <view class="topList">
+        <block wx:for="{{musicHome.topList}}" wx:key="{{index}}">
+          <view class="topList-item" hidden="{{item.id === 201}}" data-id="{{item.id}}" bindtap="musicTopList">
+            <image src="{{item.picUrl}}" class="topList-item-image" />
+            <view class="topList-item-rt">
+              <view class="topList-item-name">{{item.topTitle}}</view>
+              <view class="topList-item-songList">
+                <view wx:for="{{item.songList}}" wx:key="{{index}}">{{item.songname}}-{{item.singername}}</view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</component-wrap>

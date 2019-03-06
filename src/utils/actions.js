@@ -76,12 +76,44 @@ const searchJita = async (key) => {
   }
 }
 
+const getMusicHome = async () => {
+  try {
+    const res = await promiseRequest({
+      url: `${CYQQ}/v8/fcg-bin/fcg_myqq_topList.fcg?format=json`,
+      showLoading: true,
+      fail: () => {},
+      isSuccess: res => res.code === 0,
+    })
+
+    return res
+  } catch (e) {
+    throw e
+  }
+}
+
+const getMusicTopList = async (id) => {
+  try {
+    const res = await promiseRequest({
+      url: `${CYQQ}/v8/fcg-bin/fcg_v8_toplist_cp.fcg?topid=${id}&format=json`,
+      showLoading: true,
+      fail: () => {},
+      isSuccess: res => res.code === 0,
+    })
+
+    return res
+  } catch (e) {
+    throw e
+  }
+}
+
 export {
   getHotKey,
   getJitaHome,
   getJitaSinger,
   getJitaSong,
   searchJita,
+  getMusicHome,
+  getMusicTopList,
 }
 
 export default {
@@ -90,4 +122,6 @@ export default {
   getJitaSinger,
   getJitaSong,
   searchJita,
+  getMusicHome,
+  getMusicTopList,
 }

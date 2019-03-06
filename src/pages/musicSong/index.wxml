@@ -1,0 +1,15 @@
+<component-wrap disabled>
+  <view class="container">
+    <view class="musicSong">
+      <view class="musicState" wx:if="{{singername && songname}}">
+        你正在听{{singername}}的{{songname}}！
+      </view>
+      <view class="musicSpeacial">
+        熄屏后再点亮屏幕，也许有惊喜！
+      </view>
+      <view class="musicTip">
+        更多无聊功能持续开发中...
+      </view>
+    </view>
+  </view>
+</component-wrap>

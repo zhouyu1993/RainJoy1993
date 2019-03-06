@@ -1,0 +1,43 @@
+@import '../../assets/scss/mixin';
+
+.container {
+  height: 100%;
+  background-color: #fff;
+}
+
+.musicHome {
+  padding: 20rpx;
+
+  .topList {
+    background-color: #fff;
+
+    .topList-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20rpx;
+
+      .topList-item-image {
+        width: 200rpx;
+        height: 200rpx;
+      }
+
+      .topList-item-rt {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 500rpx;
+        height: 180rpx;
+
+        .topList-item-songList {
+          font-size: 26rpx;
+          color: #666;
+
+          view {
+            line-height: 40rpx;
+          }
+        }
+      }
+    }
+  }
+}

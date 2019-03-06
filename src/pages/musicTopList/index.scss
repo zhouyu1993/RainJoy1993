@@ -1,0 +1,78 @@
+@import '../../assets/scss/mixin';
+
+.container {
+  height: 100%;
+  background-color: #fff;
+}
+
+.topList {
+  background-color: #fff;
+
+  .topList-info {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 400rpx;
+
+    .topList-info-bg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 3;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, .5);
+      filter: blur(10px);
+    }
+
+    .topList-info-content {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+
+      image {
+        width: 250rpx;
+        height: 250rpx;
+      }
+
+      .topList-info-rt {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 200rpx;
+        margin-left: 20rpx;
+        color: #fff;
+      }
+    }
+  }
+
+  .topList-list {
+    padding: 20rpx;
+    margin-top: 50rpx;
+
+    .topList-list-head {
+      color: #666;
+    }
+
+    .topList-songlist {
+      .song-item {
+        @include border(bottom);
+        padding: 20rpx 0;
+
+        view {
+          margin-top: 10rpx;
+        }
+      }
+    }
+  }
+}
