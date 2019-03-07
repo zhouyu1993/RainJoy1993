@@ -51,6 +51,10 @@ Page({
         backgroundAudioManager.src = `https://api.bzqll.com/music/tencent/url?id=${songmid}&key=579621905&br=320`
       }
     }
+
+    if (backgroundAudioManager.paused) {
+      backgroundAudioManager.play()
+    }
   },
   onShareAppMessage (options) {
     const { songmid, albummid, songname, albumname, singername, speacial, } = this.data
