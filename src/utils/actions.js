@@ -1,4 +1,4 @@
-import { CYQQ, JITA } from './api'
+import { CYQQ, JITA, GITLAB } from './api'
 import promiseRequest from './promiseRequest'
 
 const getHotKey = async () => {
@@ -106,6 +106,20 @@ const getMusicTopList = async (id) => {
   }
 }
 
+const getRainJoy1993Config = async () => {
+  try {
+    const res = await promiseRequest({
+      url: `${GITLAB}/zhouyu1993/wx-miniprogram-config/raw/master/RainJoy1993/config.json`,
+      showLoading: false,
+      fail: () => {},
+      isSuccess: res => res.code === 0,
+    })
+
+    return res
+  } catch (e) {
+    throw e
+  }
+}
 export {
   getHotKey,
   getJitaHome,
@@ -114,6 +128,7 @@ export {
   searchJita,
   getMusicHome,
   getMusicTopList,
+  getRainJoy1993Config,
 }
 
 export default {
@@ -124,4 +139,5 @@ export default {
   searchJita,
   getMusicHome,
   getMusicTopList,
+  getRainJoy1993Config,
 }

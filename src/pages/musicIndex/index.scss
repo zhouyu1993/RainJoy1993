@@ -28,13 +28,13 @@
         justify-content: space-between;
         width: 500rpx;
         height: 180rpx;
+        font-size: 32rpx;
 
         .topList-item-songList {
-          font-size: 26rpx;
           color: #666;
 
           view {
-            line-height: 40rpx;
+            @include text(1, 40, 26);
           }
         }
       }

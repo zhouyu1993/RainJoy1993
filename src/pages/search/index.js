@@ -123,10 +123,14 @@ Page({
       },
     })
   },
-  toSearchMusic () {
-    wx.showToast({
-      title: 'hello',
-      icon: 'none',
-    })
+  toSearchMusic (event) {
+    const { keyword, } = event.currentTarget.dataset
+
+    if (keyword) {
+      wx.showToast({
+        title: keyword,
+        icon: 'none',
+      })
+    }
   },
 })

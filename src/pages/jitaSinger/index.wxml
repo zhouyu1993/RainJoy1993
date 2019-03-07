@@ -3,7 +3,7 @@
     <view class="singer-image" wx:if="{{jitaSinger.singer_face}}">
       <image src="{{jitaSinger.singer_face}}" />
     </view>
-    <view class="song">
+    <view class="song" wx:if="{{jitaSinger.list && jitaSinger.list.length}}">
       <block wx:for="{{jitaSinger.list}}" wx:key="{{index}}">
         <view class="song-item" data-id="{{item.id}}" bindtap="jitaSong">
           <text class="singer-name">{{item.name}}</text>

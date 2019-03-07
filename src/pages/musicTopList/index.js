@@ -1,4 +1,4 @@
-import { getMusicTopList } from '../../utils/actions'
+import { getMusicTopList, getRainJoy1993Config } from '../../utils/actions'
 
 import navigateTo from '../../utils/navigateTo'
 
@@ -51,9 +51,38 @@ Page({
       musicTopList: res,
     })
   },
-  musicSong (event) {
+  async getRainJoy1993Config () {
+    try {
+      const res = await getRainJoy1993Config()
+
+      return res.data.canplay
+    } catch (e) {
+      return false
+    }
+  },
+  async musicSong (event) {
     const { songmid, albummid, songname, albumname, singername, } = event.currentTarget.dataset
 
-    navigateTo(`/pages/musicSong/index?songmid=${songmid}&albummid=${albummid}&songname=${songname}&albumname=${albumname}&singername=${singername}`)
+    const canplay = await this.getRainJoy1993Config()
+
+    if (canplay) {
+      navigateTo(`/pages/musicSong/index?songmid=${songmid}&albummid=${albummid}&songname=${songname}&albumname=${albumname}&singername=${singername}`)
+    } else {
+      wx.showModal({
+        title: '歌曲介绍',
+        content: songname,
+        showCancel: false,
+      })
+    }
+  },
+  showInfo (event) {
+    const { text, } = event.currentTarget.dataset
+
+    if (text) {
+      wx.showToast({
+        title: text,
+        icon: 'none',
+      })
+    }
   },
 })

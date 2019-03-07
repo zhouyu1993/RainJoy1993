@@ -1,6 +1,6 @@
 <component-wrap disabled>
   <view class="container">
-    <view class="song-pulist">
+    <view class="song-pulist" wx:if="{{jitaSong.list && jitaSong.list.length}}">
       <block wx:for="{{jitaSong.list}}" wx:key="{{index}}">
         <image src="{{item}}" mode="widthFix" class="song-puimage" />
       </block>
