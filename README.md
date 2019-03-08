@@ -45,7 +45,7 @@ https://api.bzqll.com/music/tencent/search?key=579621905&s=秦时明月&limit=10
 5. 用户搜索: type=user
 6. 歌词搜索: type=lrc
 
-https://api.bzqll.com/music/tencent/url?id=002GrJ771EmliH&key=579621905&br=320
+https://api.bzqll.com/music/tencent/url?id=002GrJ771EmliH&key=579621905
 
 ---
 

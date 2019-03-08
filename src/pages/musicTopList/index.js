@@ -61,12 +61,12 @@ Page({
     }
   },
   async musicSong (event) {
-    const { songmid, albummid, songname, albumname, singername, } = event.currentTarget.dataset
+    const { songmid = '', songname = '未知歌曲', albumname = '未知专辑', singername = '未知歌手', } = event.currentTarget.dataset
 
     const canplay = await this.getRainJoy1993Config()
 
-    if (canplay) {
-      navigateTo(`/pages/musicSong/index?songmid=${songmid}&albummid=${albummid}&songname=${songname}&albumname=${albumname}&singername=${singername}`)
+    if (canplay && songmid) {
+      navigateTo(`/pages/musicSong/index?songmid=${songmid}&songname=${songname}&albumname=${albumname}&singername=${singername}`)
     } else {
       wx.showModal({
         title: '歌曲介绍',

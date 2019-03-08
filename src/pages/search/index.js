@@ -1,17 +1,22 @@
-import { getHotKey, searchJita } from '../../utils/actions'
-import { CYQQ } from '../../utils/api'
-import request from '../../utils/request'
+import { getHotKey, searchJita, searchSong, getRainJoy1993Config } from '../../utils/actions'
+// import { CYQQ } from '../../utils/api'
+// import request from '../../utils/request'
 import navigateTo from '../../utils/navigateTo'
 
 // import { Page } from '../../lib/ald/ald-stat'
 let Page = require('../../lib/ald/ald-stat').Page
 Page = require('../../lib/xiaoshentui/pushsdk.js').pushSdk(Page).Page
 
+const app = getApp()
+
 Page({
   data: {
     gepuValue: '',
     jitaData: {},
     hotkeys: [],
+    songValue: '',
+    page: 1,
+    songData: [],
   },
   onLoad (options) {
     console.log(`Page.onLoad`, options)
@@ -59,9 +64,19 @@ Page({
       this.setData({
         jitaData: data,
       })
+
+      app.aldstat.sendEvent('搜索歌谱', {
+        '关键词': value,
+      })
     } catch (e) {
       console.log(e)
     }
+  },
+  gepuSearchCancel () {
+    this.setData({
+      gepuValue: '',
+      jitaData: {},
+    })
   },
   jitaSinger (event) {
     const { id } = event.currentTarget.dataset
@@ -97,39 +112,154 @@ Page({
       console.log(e)
     }
   },
-  getHotKey () {
-    request({
-      url: `${CYQQ}/splcloud/fcgi-bin/gethotkey.fcg?gformat=json`,
-      showLoading: false,
-      fail: () => {},
-      isSuccess: res => res.code === 0,
-      success: res => {
-        const data = res.data || {}
-        const hotkeys = data.hotkey || []
-        const special_key = data.special_key || ''
+  // getHotKey () {
+  //   request({
+  //     url: `${CYQQ}/splcloud/fcgi-bin/gethotkey.fcg?gformat=json`,
+  //     showLoading: false,
+  //     fail: () => {},
+  //     isSuccess: res => res.code === 0,
+  //     success: res => {
+  //       const data = res.data || {}
+  //       const hotkeys = data.hotkey || []
+  //       const special_key = data.special_key || ''
+  //
+  //       if (special_key) {
+  //         hotkeys.unshift({
+  //           k: special_key,
+  //           n: 0,
+  //         })
+  //       }
+  //
+  //       if (hotkeys.length) {
+  //         this.setData({
+  //           hotkeys,
+  //         })
+  //       }
+  //     },
+  //   })
+  // },
+  songInput (event) {
+    const { value } = event.detail
 
-        if (special_key) {
-          hotkeys.unshift({
-            k: special_key,
-            n: 0,
-          })
-        }
-
-        if (hotkeys.length) {
-          this.setData({
-            hotkeys,
-          })
-        }
-      },
+    this.setData({
+      songValue: value,
     })
   },
-  toSearchMusic (event) {
-    const { keyword, } = event.currentTarget.dataset
+  async songSearch () {
+    const value = this.data.songValue
 
-    if (keyword) {
-      wx.showToast({
-        title: keyword,
-        icon: 'none',
+    if (!value) return
+
+    try {
+      const res = await searchSong(value, 1)
+
+      const data = res.data || []
+
+      if (data.length) {
+        this.setData({
+          songValue: value,
+          page: 1,
+          songData: data,
+        })
+      } else {
+        wx.showToast({
+          title: '无结果',
+          icon: 'none',
+        })
+      }
+
+      app.aldstat.sendEvent('搜索歌曲', {
+        '关键词': value,
+      })
+    } catch (e) {
+      console.log(e)
+    }
+  },
+  async keywordSongSearch (event) {
+    const { value, } = event.currentTarget.dataset
+
+    if (!value) return
+
+    try {
+      const res = await searchSong(value, 1)
+
+      const data = res.data || []
+
+      if (data.length) {
+        this.setData({
+          songValue: value,
+          page: 1,
+          songData: data,
+        })
+      } else {
+        wx.showToast({
+          title: '无结果',
+          icon: 'none',
+        })
+      }
+
+      app.aldstat.sendEvent('搜索歌曲', {
+        '关键词': value,
+      })
+    } catch (e) {
+      console.log(e)
+    }
+  },
+  async moreSongSearch (event) {
+    const value = this.data.songValue
+
+    if (!value) return
+
+    try {
+      const page = this.data.page + 1
+      const res = await searchSong(value, page)
+
+      const data = res.data || []
+
+      if (data.length) {
+        this.setData({
+          songValue: value,
+          page,
+          songData: this.data.songData.concat(data),
+        })
+      } else {
+        wx.showToast({
+          title: '没有了',
+          icon: 'none',
+        })
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  },
+  songSearchCancel () {
+    this.setData({
+      songValue: '',
+      page: 1,
+      songData: [],
+    })
+  },
+  async getRainJoy1993Config () {
+    try {
+      const res = await getRainJoy1993Config()
+
+      return res.data.canplay
+    } catch (e) {
+      return false
+    }
+  },
+  async musicSong (event) {
+    const { songmid = '', songname = '未知歌曲', albumname = '未知专辑', singername = '未知歌手', } = event.currentTarget.dataset
+
+    const canplay = await this.getRainJoy1993Config()
+
+    if (canplay && songmid) {
+      navigateTo(`/pages/musicSong/index?songmid=${songmid}&songname=${songname}&albumname=${albumname}&singername=${singername}`)
+    } else {
+      wx.showModal({
+        title: '歌曲介绍',
+        content: songname,
+        showCancel: false,
       })
     }
   },

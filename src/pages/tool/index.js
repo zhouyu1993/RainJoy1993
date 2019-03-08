@@ -186,6 +186,11 @@ Page({
 
     if (value === '我爱徐蜗牛') {
       navigateTo(`/pages/musicSong/index?speacial=1`)
+    } else {
+      wx.showToast({
+        title: '待开发功能～',
+        icon: 'none',
+      })
     }
   }
 })

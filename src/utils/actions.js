@@ -1,10 +1,10 @@
-import { CYQQ, JITA, GITLAB } from './api'
+import { CYQQ, JITA, GITLAB, BZQLL } from './api'
 import promiseRequest from './promiseRequest'
 
 const getHotKey = async () => {
   try {
     const res = await promiseRequest({
-      url: `${CYQQ}/splcloud/fcgi-bin/gethotkey.fcg?gformat=json`,
+      url: `${CYQQ}/splcloud/fcgi-bin/gethotkey.fcg?format=json`,
       showLoading: true,
       fail: () => {},
       isSuccess: res => res.code === 0,
@@ -120,6 +120,37 @@ const getRainJoy1993Config = async () => {
     throw e
   }
 }
+
+const searchSong = async (key, page = 1) => {
+  try {
+    const res = await promiseRequest({
+      url: `${BZQLL}/music/tencent/search?key=579621905&s=${key}&limit=10&offset=${page}&type=song`,
+      showLoading: true,
+      fail: () => {},
+      isSuccess: res => res.code === 200,
+    })
+
+    return res
+  } catch (e) {
+    throw e
+  }
+}
+
+const getSongIrc = async (mid) => {
+  try {
+    const res = await promiseRequest({
+      url: `${BZQLL}/music/tencent/lrc?id=${mid}&key=579621905`,
+      showLoading: true,
+      fail: () => {},
+      isSuccess: res => true,
+    })
+
+    return res
+  } catch (e) {
+    throw e
+  }
+}
+
 export {
   getHotKey,
   getJitaHome,
@@ -129,6 +160,8 @@ export {
   getMusicHome,
   getMusicTopList,
   getRainJoy1993Config,
+  searchSong,
+  getSongIrc,
 }
 
 export default {
@@ -140,4 +173,6 @@ export default {
   getMusicHome,
   getMusicTopList,
   getRainJoy1993Config,
+  searchSong,
+  getSongIrc,
 }

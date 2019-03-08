@@ -5,15 +5,17 @@ import { appId, version } from './utils/constants'
 // import { WXDATA } from './utils/api'
 // import request from './utils/request'
 
-import xmpush from './lib/xmpush'
-
-console.log('xmpush', xmpush)
-
+// import xmpush from './lib/xmpush'
+//
+// console.log('xmpush', xmpush)
 // xmpush.xmpushRegisterPush()
 
 // import { App } from '../../lib/ald/ald-stat'
 let App = require('./lib/ald/ald-stat').App
 App = require('./lib/xiaoshentui/pushsdk.js').pushSdk(App, 'App').App
+
+// 启动时间
+const startTime = Date.now()
 
 App({
   globalData: {
@@ -94,6 +96,11 @@ App({
     } catch (e) {
       console.log(e)
     }
+
+    // 记录小程序启动时长
+    this.aldstat.sendEvent('小程序的启动时长', {
+      time: Date.now() - startTime
+    })
 
     // wx.login({
     //   success: ({ code }) => {

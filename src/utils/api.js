@@ -6,11 +6,14 @@ const JITA = 'https://jitami.96sn.com'
 
 const GITLAB = 'https://gitlab.com'
 
+const BZQLL = 'https://api.bzqll.com'
+
 export {
   WXDATA,
   CYQQ,
   JITA,
   GITLAB,
+  BZQLL,
 }
 
 export default {
@@ -18,4 +21,5 @@ export default {
   CYQQ,
   JITA,
   GITLAB,
+  BZQLL,
 }
