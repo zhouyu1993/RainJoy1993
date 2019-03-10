@@ -39,6 +39,7 @@
       <button hover-class="none" lang="{{systemInfo.language || 'en'}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="getUserInfo">登录</button>
       <button hover-class="none" bindtap="chooseAddress" class="chooseAddress">选择地址</button>
       <button hover-class="none" bindtap="clearStorage" class="clearStorage">清理缓存</button>
+      <button hover-class="none" bindtap="voiceAssistant">3秒语音</button>
     </view>
     <component-mp-modal
       visible="{{modal.visible}}"

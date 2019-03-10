@@ -62,7 +62,12 @@
   "requiredBackgroundModes": [
     "audio"
   ],
-  "plugins": {},
+  "plugins": {
+    "WechatSI": {
+      "version": "0.2.2",
+      "provider": "wx069ba97219f66d99"
+    }
+  },
   "preloadRule": {},
   "resizable": true,
   "navigateToMiniProgramAppIdList": [],

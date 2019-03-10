@@ -2,6 +2,7 @@ import md5 from 'crypto-js/md5'
 import { Base64 } from 'js-base64'
 import queryString, { parse, stringify, } from 'query-string'
 
+import { langDetect } from '../../utils/actions'
 import navigateTo from '../../utils/navigateTo'
 
 // import { Page } from '../../lib/ald/ald-stat'
@@ -9,6 +10,9 @@ let Page = require('../../lib/ald/ald-stat').Page
 Page = require('../../lib/xiaoshentui/pushsdk.js').pushSdk(Page).Page
 
 const app = getApp()
+
+const plugin = requirePlugin('WechatSI')
+const manager = plugin.getRecordRecognitionManager()
 
 Page({
   data: {
@@ -38,6 +42,47 @@ Page({
       userInfo,
       address,
     })
+
+    manager.onStart = function (res) {
+      console.log('开始识别', res)
+
+      wx.showToast({
+        title: '请说话',
+        icon: 'none',
+      })
+    }
+
+    manager.onStop = async function (res) {
+      console.log('识别结果', res)
+
+      const value = res.result
+
+      if (!value) {
+        wx.showToast({
+          title: '你说啥',
+          icon: 'none',
+        })
+      } else {
+        try {
+          const res = await langDetect(value)
+
+          console.log(res)
+        } catch (e) {
+          console.log(e)
+        }
+      }
+    }
+
+    manager.onError = function (res) {
+      console.log('识别错误', res)
+
+      manager.stop()
+
+      wx.showToast({
+        title: '出错了',
+        icon: 'none',
+      })
+    }
   },
   onShow () {
     wx.getSetting({
@@ -192,5 +237,11 @@ Page({
         icon: 'none',
       })
     }
-  }
+  },
+  voiceAssistant () {
+    manager.start({
+      duration: 3000,
+      lang: 'zh_CN'
+    })
+  },
 })

@@ -1,4 +1,4 @@
-import { CYQQ, JITA, GITLAB, BZQLL } from './api'
+import { CYQQ, JITA, GITLAB, BZQLL, FANYI } from './api'
 import promiseRequest from './promiseRequest'
 
 const getHotKey = async () => {
@@ -151,6 +151,21 @@ const getSongIrc = async (mid) => {
   }
 }
 
+const langDetect = async (value) => {
+  const res = await promiseRequest({
+    url: `${FANYI}/langdetect`,
+    data: {
+      query: value,
+    },
+    method: 'POST',
+    showLoading: false,
+    fail: () => {},
+    isSuccess: res => res.error === 0,
+  })
+
+  return res
+}
+
 export {
   getHotKey,
   getJitaHome,
@@ -162,6 +177,7 @@ export {
   getRainJoy1993Config,
   searchSong,
   getSongIrc,
+  langDetect,
 }
 
 export default {
@@ -175,4 +191,5 @@ export default {
   getRainJoy1993Config,
   searchSong,
   getSongIrc,
+  langDetect,
 }

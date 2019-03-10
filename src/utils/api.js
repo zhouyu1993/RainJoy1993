@@ -8,12 +8,15 @@ const GITLAB = 'https://gitlab.com'
 
 const BZQLL = 'https://api.bzqll.com'
 
+const FANYI = 'https://fanyi.baidu.com'
+
 export {
   WXDATA,
   CYQQ,
   JITA,
   GITLAB,
   BZQLL,
+  FANYI,
 }
 
 export default {
@@ -22,4 +25,5 @@ export default {
   JITA,
   GITLAB,
   BZQLL,
+  FANYI,
 }
