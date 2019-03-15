@@ -33,7 +33,9 @@ function request (option) {
 
   if (typeof fail !== 'function' || typeof complete !== 'function' || typeof isSuccess !== 'function' || typeof isNoLogin !== 'function' || typeof noLogin !== 'function' || typeof error !== 'function') return debug && console.log('debug', '参数错误')
 
-  showLoading && wx.showLoading({ title: '加载中', })
+  showLoading && wx.showLoading({
+    title: '加载中',
+  })
 
   return new Promise((resolve, reject) => {
     wx.request({
@@ -43,7 +45,9 @@ function request (option) {
       method,
       dataType,
       responseType,
-      success: ({ data, }) => {
+      success: ({
+        data,
+      }) => {
         showLoading && wx.hideLoading()
 
         if (isSuccess(data) || data.code === 1001 || data.errno === 0) {
@@ -363,12 +367,14 @@ const xmpushSendMessage = async (formId, code) => {
 
 export {
   xmpushRegisterPush,
+  xmpushSendOpenId,
   xmpushReportSubmit,
   xmpushSendMessage,
 }
 
 export default {
   xmpushRegisterPush,
+  xmpushSendOpenId,
   xmpushReportSubmit,
   xmpushSendMessage,
 }

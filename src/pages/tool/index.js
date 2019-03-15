@@ -1,8 +1,9 @@
 import md5 from 'crypto-js/md5'
 import { Base64 } from 'js-base64'
 import queryString, { parse, stringify, } from 'query-string'
+// import pinyin from 'pinyin'
 
-import { langDetect } from '../../utils/actions'
+import { langDetect, searchSong } from '../../utils/actions'
 import navigateTo from '../../utils/navigateTo'
 
 // import { Page } from '../../lib/ald/ald-stat'
@@ -43,16 +44,20 @@ Page({
       address,
     })
 
-    manager.onStart = function (res) {
+    const backgroundAudioManager = wx.getBackgroundAudioManager()
+
+    backgroundAudioManager.title = '小宇同学'
+
+    manager.onStart = res => {
       console.log('开始识别', res)
 
       wx.showToast({
-        title: '请说话',
+        title: '3秒内请说话',
         icon: 'none',
       })
     }
 
-    manager.onStop = async function (res) {
+    manager.onStop = async res => {
       console.log('识别结果', res)
 
       const value = res.result
@@ -66,14 +71,68 @@ Page({
         try {
           const res = await langDetect(value)
 
-          console.log(res)
+          const lan = res.lan
+
+          console.log(lan)
+
+          let text = '你说啥'
+
+          if (lan === 'zh') {
+            // console.log(pinyin(value))
+
+            if (/小(宇|雨|羽|禹)同学/.test(value)) {
+              text = encodeURIComponent('主人我在你说')
+            } else if (/(早|中|晚)(上|午)好/.test(value)) {
+              if (this.getHour() === 0) {
+                text = encodeURIComponent('夜深了，别玩了，你要乖乖睡觉呦～')
+              } else if (this.getHour() === 1) {
+                text = encodeURIComponent('日上三竿，懒猪起床了吗？')
+              } else if (this.getHour() === 2) {
+                text = encodeURIComponent('现在是中午，要记得按时吃饭呀！')
+              } else if (this.getHour() === 3) {
+                text = encodeURIComponent('现在是下午，困了就来一杯奈雪吧！')
+              } else if (this.getHour() === 4) {
+                text = encodeURIComponent('晚上好，下班回家开车要小心。道路千万条，安全第一条，行车不规范，小宇两行泪。')
+              } else if (this.getHour() === 5) {
+                text = encodeURIComponent('快点洗澡吹头发，我先睡为敬～')
+              }
+            } else {
+              try {
+                const res = await searchSong(value, 1)
+
+                const data = res.data || []
+
+                if (data.length) {
+                  const song = data[0]
+                  const songmid = song.id
+                  const songname = song.name
+                  const albumname = '未知专辑'
+                  const singername = song.singer
+
+                  navigateTo(`/pages/musicSong/index?songmid=${songmid}&songname=${songname}&albumname=${albumname}&singername=${singername}`)
+
+                  return
+                }
+              } catch (e) {
+                console.log(e)
+              }
+            }
+
+            backgroundAudioManager.src = `https://fanyi.baidu.com/gettts?lan=zh&text=${text}&spd=5&source=web`
+          } else if (lan === 'en') {
+            text = encodeURIComponent('英语听不懂呢，我正在努力学习中～')
+
+            backgroundAudioManager.src = `https://fanyi.baidu.com/gettts?lan=zh&text=${text}&spd=5&source=web`
+          } else {
+            backgroundAudioManager.src = `https://fanyi.baidu.com/gettts?lan=zh&text=${text}&spd=5&source=web`
+          }
         } catch (e) {
           console.log(e)
         }
       }
     }
 
-    manager.onError = function (res) {
+    manager.onError = res => {
       console.log('识别错误', res)
 
       manager.stop()
@@ -244,4 +303,22 @@ Page({
       lang: 'zh_CN'
     })
   },
+  getHour () {
+    const time = new Date()
+    const hour = time.getHours()
+
+    if (hour >= 0 & hour < 6) {
+      return 0
+    } else if (hour >= 6 & hour < 11) {
+      return 1
+    } else if (hour >= 11 & hour < 14) {
+      return 2
+    } else if (hour >= 14 & hour < 18) {
+      return 3
+    } else if (hour >= 18 & hour < 22) {
+      return 4
+    } else if (hour >= 22 & hour < 24) {
+      return 5
+    }
+  }
 })

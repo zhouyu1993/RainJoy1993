@@ -4,7 +4,6 @@
 /dist/
 
 # development
-/src/lib
 /src/npm
 /src/projects
 

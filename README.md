@@ -125,11 +125,12 @@ https://api.bzqll.com
 https://apis.map.qq.com
 https://c.y.qq.com
 https://fanyi-api.baidu.com
+https://fanyi.baidu.com
 https://gitlab.com
 https://jitami.96sn.com
-https://log.aldwx.com # 阿拉丁统计
-https://openapi.xiaoshentui.com # 阿拉丁小神推
-https://plog.xiaoshentui.com # 阿拉丁小神推
+https://log.aldwx.com
+https://openapi.xiaoshentui.com
+https://plog.xiaoshentui.com
 https://u.y.qq.com
 
 # socket合法域名

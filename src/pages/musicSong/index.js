@@ -1,4 +1,5 @@
 import { getSongIrc } from '../../utils/actions'
+import decodeChar from '../../utils/decodeChar'
 
 // import { Page } from '../../lib/ald/ald-stat'
 let Page = require('../../lib/ald/ald-stat').Page
@@ -10,6 +11,8 @@ Page({
     songname: '',
     albumname: '',
     singername: '',
+    coverImgUrl: '',
+    songSrc: '',
     speacial: 0,
     songIrc: '',
   },
@@ -24,38 +27,57 @@ Page({
         songname: '告白气球',
         albumname: '我好宣你',
         singername: '徐蜗牛',
+        coverImgUrl: 'https://api.bzqll.com/music/tencent/pic?id=003OUlho2HcRHC&key=579621905',
+        songSrc: 'https://api.bzqll.com/music/tencent/url?id=003OUlho2HcRHC&key=579621905&br=320',
         speacial,
       })
     } else {
       this.setData({
         songmid,
-        songname,
-        albumname,
-        singername,
+        songname: decodeChar(songname),
+        albumname: decodeChar(albumname),
+        singername: decodeChar(singername),
+        coverImgUrl: `https://api.bzqll.com/music/tencent/pic?id=${songmid}&key=579621905`,
+        songSrc: `https://api.bzqll.com/music/tencent/url?id=${songmid}&key=579621905&br=320`,
       })
     }
   },
   onShow () {
-    const { songmid, songname, albumname, singername, } = this.data
-
-    const backgroundAudioManager = wx.getBackgroundAudioManager()
-
-    const src = `https://api.bzqll.com/music/tencent/url?id=${songmid}&key=579621905&br=320`
-
-    if (backgroundAudioManager.src !== src) {
-      backgroundAudioManager.title = songname || '未知歌曲'
-      backgroundAudioManager.epname = albumname || '未知专辑'
-      backgroundAudioManager.singer = singername || '未知歌手'
-      backgroundAudioManager.coverImgUrl = `https://api.bzqll.com/music/tencent/pic?id=${songmid}&key=579621905`
-      backgroundAudioManager.src = `https://api.bzqll.com/music/tencent/url?id=${songmid}&key=579621905&br=320`
-    }
-
-    if (backgroundAudioManager.paused) {
-      backgroundAudioManager.play()
-    }
+    const { songmid, songname, albumname, singername, coverImgUrl, songSrc, } = this.data
 
     if (songmid) {
       this.getSongIrc(songmid)
+
+      const src = `https://api.bzqll.com/music/tencent/url?id=${songmid}&key=579621905&br=320`
+
+      const backgroundAudioManager = wx.getBackgroundAudioManager()
+
+      if (backgroundAudioManager.src !== src) {
+        backgroundAudioManager.title = songname || '未知歌曲'
+        backgroundAudioManager.epname = albumname || '未知专辑'
+        backgroundAudioManager.singer = singername || '未知歌手'
+        backgroundAudioManager.coverImgUrl = coverImgUrl || `https://api.bzqll.com/music/tencent/pic?id=${songmid}&key=579621905`
+        backgroundAudioManager.src = songSrc || src
+      }
+
+      backgroundAudioManager.onEnded(() => {
+        backgroundAudioManager.title = songname || '未知歌曲'
+        backgroundAudioManager.epname = albumname || '未知专辑'
+        backgroundAudioManager.singer = singername || '未知歌手'
+        backgroundAudioManager.coverImgUrl = coverImgUrl || `https://api.bzqll.com/music/tencent/pic?id=${songmid}&key=579621905`
+        backgroundAudioManager.src = songSrc || src
+      })
+
+      backgroundAudioManager.onError(() => {
+        wx.showToast({
+          title: '版权问题',
+          icon: 'none',
+        })
+      })
+
+      if (backgroundAudioManager.paused) {
+        backgroundAudioManager.play()
+      }
     }
   },
   onShareAppMessage (options) {
@@ -91,8 +113,10 @@ Page({
   async getSongIrc (songmid) {
     const res = await getSongIrc(songmid)
 
+    const songIrc = res.replace(/\[.*?\]/g, '').replace(/&apos;/g, "'")
+
     this.setData({
-      songIrc: res.replace(/\[.*?\]/g, ''),
+      songIrc,
     })
   }
 })

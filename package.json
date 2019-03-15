@@ -1,6 +1,6 @@
 {
   "name": "RainJoy1993",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A wx-miniprogram project",
   "keywords": [
     "wx-miniprogram",
@@ -58,7 +58,6 @@
     "uglify-js": "^3.4.9"
   },
   "engines": {
-    "node": "8.14.0",
-    "npm": "^6.4.1"
+    "node": "8.14.0"
   }
 }

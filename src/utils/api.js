@@ -1,5 +1,7 @@
 const WXDATA = 'http://dev.zhouyu.com:6789' // 'https://wxdata.rainjoy.com'
 
+const CEKID = 'https://user.cekid.com'
+
 const CYQQ = 'https://c.y.qq.com'
 
 const JITA = 'https://jitami.96sn.com'
@@ -12,6 +14,7 @@ const FANYI = 'https://fanyi.baidu.com'
 
 export {
   WXDATA,
+  CEKID,
   CYQQ,
   JITA,
   GITLAB,
@@ -21,6 +24,7 @@ export {
 
 export default {
   WXDATA,
+  CEKID,
   CYQQ,
   JITA,
   GITLAB,

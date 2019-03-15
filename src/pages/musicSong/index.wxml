@@ -13,6 +13,9 @@
         </view>
       </block>
       <block wx:if="{{!speacial}}">
+        <view class="cover">
+          <image src="{{coverImgUrl}}" mode="widthFix"></image>
+        </view>
         <text class="songIrc">
           {{songIrc}}
         </text>

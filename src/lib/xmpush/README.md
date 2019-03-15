@@ -1,0 +1,1 @@
+1. CP 在后台，根据 app_id、app_secret 等去去册，生成一个 app_key 给开发者
