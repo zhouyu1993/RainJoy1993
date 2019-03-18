@@ -45,6 +45,5 @@
       </view>
       <view class="more" bindtap="moreSongSearch">查看更多</view>
     </view>
-    <component-icon-playing />
   </view>
 </component-wrap>

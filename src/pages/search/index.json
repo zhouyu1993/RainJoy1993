@@ -7,7 +7,5 @@
   "enablePullDownRefresh": false,
   "onReachBottomDistance": 50,
   "disableScroll": false,
-  "usingComponents": {
-    "component-icon-playing": "/components/icon-playing/index"
-  }
+  "usingComponents": {}
 }
