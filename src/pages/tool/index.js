@@ -48,8 +48,6 @@ Page({
 
     const backgroundAudioManager = wx.getBackgroundAudioManager()
 
-    backgroundAudioManager.title = '小宇同学'
-
     manager.onStart = res => {
       console.log('开始识别', res)
 
@@ -70,6 +68,10 @@ Page({
           icon: 'none',
         })
       } else {
+        app.aldstat.sendEvent('小雨同学', {
+          '关键词': value,
+        })
+
         try {
           const res = await langDetect(value)
 
@@ -78,6 +80,8 @@ Page({
           console.log(lan)
 
           let text = '你说啥'
+
+          backgroundAudioManager.title = '小雨同学'
 
           if (lan === 'zh') {
             // console.log(pinyin(value))
@@ -94,7 +98,7 @@ Page({
               } else if (this.getHour() === 3) {
                 text = encodeURIComponent('现在是下午，困了就来一杯奈雪吧！')
               } else if (this.getHour() === 4) {
-                text = encodeURIComponent('晚上好，下班回家开车要小心。道路千万条，安全第一条，行车不规范，小宇两行泪。')
+                text = encodeURIComponent('晚上好，下班回家开车要小心。道路千万条，安全第一条，行车不规范，小雨两行泪。')
               } else if (this.getHour() === 5) {
                 text = encodeURIComponent('快点洗澡吹头发，我先睡为敬～')
               }
@@ -116,7 +120,7 @@ Page({
                   return
                 }
               } catch (e) {
-                console.log(e)
+                console.log('searchSong', e)
               }
             }
 
