@@ -48,7 +48,7 @@ Page({
       })
 
       app.aldstat.sendEvent('播放歌曲', {
-        '关键词': decodeChar(songname),
+        '关键词': `${decodeChar(songname)}-${decodeChar(singername)}`,
       })
     }
   },
