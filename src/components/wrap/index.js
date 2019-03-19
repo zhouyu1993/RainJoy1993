@@ -29,7 +29,7 @@ Component({
 
       const formId = e.detail && e.detail.formId
 
-      // if (formId === 'the formId is a mock one') return console.warn(`模拟器操作不上报formid, 合法request里需要配置 ${WXDATA}`)
+      if (formId === 'the formId is a mock one') return console.warn(`模拟器操作不上报formid, 合法request里需要配置 ${WXDATA}`)
 
       wx.login({
         success: ({ code }) => {
@@ -47,7 +47,7 @@ Component({
           // })
 
           request({
-            url: `${WXDATA}/api/wx/sendTemplateMessage?app_key=abcdef&code=${code}`,
+            url: `${WXDATA}/koa-demo/api/wx/sendTemplateMessage?app_key=abcdef&code=${code}`,
             data: {
               form_id: formId
             },

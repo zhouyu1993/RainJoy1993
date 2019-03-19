@@ -2,12 +2,11 @@ import queryString from 'query-string'
 
 import { appId, version } from './utils/constants'
 
-// import { CEKID } from './utils/api'
-// import request from './utils/request'
+import { WXDATA } from './utils/api'
+import request from './utils/request'
 
 import xmpush from './lib/xmpush/index.min'
 
-console.log('xmpush', xmpush)
 xmpush.xmpushRegisterPush()
 
 // import { App } from '../../lib/ald/ald-stat'
@@ -102,28 +101,32 @@ App({
       time: Date.now() - startTime
     })
 
-    // wx.login({
-    //   success: ({ code }) => {
-    //     if (code) {
-    //       request({
-    //         url: `${CEKID}/user/LoginbyWechatApplet`,
-    //         data: {
-    //           code,
-    //           appid: 'wx66f96a1e07a2cfdb',
-    //         },
-    //         showLoading: false,
-    //         fail: () => {},
-    //         isSuccess: () => true,
-    //         success: res => {
-    //           console.log('debug', res)
-    //
-    //           // oSfYh0aXrNuSzCq7RbWq-oh_zNTg
-    //           // wx.xst.setOpenId(res.openid)
-    //         },
-    //       })
-    //     }
-    //   },
-    // })
+    wx.login({
+      success: ({ code }) => {
+        if (code) {
+          request({
+            url: `${WXDATA}/koa-demo/api/wx/code2Session`,
+            data: {
+              app_key: 'abcdef',
+              code,
+            },
+            showLoading: false,
+            fail: () => {},
+            isSuccess: () => true,
+            success: res => {
+              try {
+                console.log('debug', res)
+
+                // oSfYh0aXrNuSzCq7RbWq-oh_zNTg
+                wx.xst.setOpenId(res.openid)
+              } catch (e) {
+                console.log(e)
+              }
+            },
+          })
+        }
+      },
+    })
   },
   onHide () {
     console.log('App.onHide')

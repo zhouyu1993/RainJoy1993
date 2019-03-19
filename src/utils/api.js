@@ -1,4 +1,4 @@
-const WXDATA = 'http://dev.zhouyu.com:6789' // 'https://wxdata.rainjoy.com'
+const WXDATA = 'http://zhouyu.cf' // 'http://dev.zhouyu.com:6789' 'https://wxdata.rainjoy.com'
 
 const CEKID = 'https://user.cekid.com'
 
