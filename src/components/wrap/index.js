@@ -46,10 +46,12 @@ Component({
           //   success: () => {},
           // })
 
+          console.log('小米推', formId)
+
           request({
             url: `${WXDATA}/koa-demo/api/wx/sendTemplateMessage?app_key=abcdef&code=${code}`,
             data: {
-              form_id: formId
+              form_id: formId,
             },
             method: 'POST',
             showLoading: false,

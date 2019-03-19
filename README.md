@@ -298,6 +298,8 @@ openid:
 os:iPhone 6
 device:devtools
 
+---
+
 有 openid 时，调用 wx.xst.setOpenId(openid)
 
 https://plog.xiaoshentui.com/d.html?v=4.1.0&uu=15513233951547727197&ev=setopenid&life=setopenid&ak=360065b5abadcaca47ca254f8f5d3f8a&pm=iPhone%206&wvv=devtools&wsdk=2.6.2&sv=iOS%2010.0.1&wv=6.6.3&nt=wifi&ww=375&wh=667&pr=2&pp=pages%2Findex%2Findex&lat=0&lng=0&st=1552993127059&et=0&ppx=0&ppy=0&data=0&fid=0&lang=zh&wsr=%7B%7D&ifo=0&jscode=0&ust=1552993131668&openid=oSfYh0aXrNuSzCq7RbWq-oh_zNTg&user_info=%7B%22nickName%22%3A%22RainJoy%22%2C%22gender%22%3A1%2C%22language%22%3A%22zh_CN%22%2C%22city%22%3A%22Nanjing%22%2C%22province%22%3A%22Jiangsu%22%2C%22country%22%3A%22China%22%2C%22avatarUrl%22%3A%22https%3A%2F%2Fwx.qlogo.cn%2Fmmopen%2Fvi_32%2FQ0j4TwGTfTKy2dalqhRRIJib4EEhVlE3Ub6uqavp4vibSibibT9Faxiay8syXdoXib5mp0ic3VpaJlGdKv4IovLYnH2Lg%2F132%22%7D&eventid=undefined&arg=undefined&ele=0
@@ -330,6 +332,50 @@ wsr:{}
 ifo:0
 jscode:0
 ust:1552993131668
+openid:oSfYh0aXrNuSzCq7RbWq-oh_zNTg
+user_info:{"nickName":"RainJoy","gender":1,"language":"zh_CN","city":"Nanjing","province":"Jiangsu","country":"China","avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKy2dalqhRRIJib4EEhVlE3Ub6uqavp4vibSibibT9Faxiay8syXdoXib5mp0ic3VpaJlGdKv4IovLYnH2Lg/132"}
+eventid:undefined
+arg:undefined
+ele:0
+
+---
+
+button 组件
+
+<form report-submit bindsubmit="pushFormSubmit" class="reset-form my-class">
+  <button formType="submit" class="reset-button">小神推</button>
+</form>
+
+https://plog.xiaoshentui.com/d.html?v=4.1.0&uu=15513233951547727197&ev=fpage&life=clickform&ak=360065b5abadcaca47ca254f8f5d3f8a&pm=iPhone%206&wvv=devtools&wsdk=2.6.2&sv=iOS%2010.0.1&wv=6.6.3&nt=wifi&ww=375&wh=667&pr=2&pp=pages%2Ftool%2Findex&lat=0&lng=0&st=1552993952055&et=0&ppx=10&ppy=140&data=0&fid=the%20formId%20is%20a%20mock%20one&lang=zh&wsr=%7B%7D&ifo=0&jscode=0&ust=1552993970994&openid=oSfYh0aXrNuSzCq7RbWq-oh_zNTg&user_info=%7B%22nickName%22%3A%22RainJoy%22%2C%22gender%22%3A1%2C%22language%22%3A%22zh_CN%22%2C%22city%22%3A%22Nanjing%22%2C%22province%22%3A%22Jiangsu%22%2C%22country%22%3A%22China%22%2C%22avatarUrl%22%3A%22https%3A%2F%2Fwx.qlogo.cn%2Fmmopen%2Fvi_32%2FQ0j4TwGTfTKy2dalqhRRIJib4EEhVlE3Ub6uqavp4vibSibibT9Faxiay8syXdoXib5mp0ic3VpaJlGdKv4IovLYnH2Lg%2F132%22%7D&eventid=undefined&arg=undefined&ele=0
+
+v:4.1.0
+uu:15513233951547727197
+ev:fpage
+life:clickform
+ak:360065b5abadcaca47ca254f8f5d3f8a
+pm:iPhone 6
+wvv:devtools
+wsdk:2.6.2
+sv:iOS 10.0.1
+wv:6.6.3
+nt:wifi
+ww:375
+wh:667
+pr:2
+pp:pages/tool/index
+lat:0
+lng:0
+st:1552993952055
+et:0
+ppx:10
+ppy:140
+data:0
+fid:the formId is a mock one
+lang:zh
+wsr:{}
+ifo:0
+jscode:0
+ust:1552993970994
 openid:oSfYh0aXrNuSzCq7RbWq-oh_zNTg
 user_info:{"nickName":"RainJoy","gender":1,"language":"zh_CN","city":"Nanjing","province":"Jiangsu","country":"China","avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKy2dalqhRRIJib4EEhVlE3Ub6uqavp4vibSibibT9Faxiay8syXdoXib5mp0ic3VpaJlGdKv4IovLYnH2Lg/132"}
 eventid:undefined
