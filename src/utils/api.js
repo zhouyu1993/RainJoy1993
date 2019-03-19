@@ -12,6 +12,8 @@ const BZQLL = 'https://api.bzqll.com'
 
 const FANYI = 'https://fanyi.baidu.com'
 
+const ELE = 'https://mainsite-restapi.ele.me'
+
 export {
   WXDATA,
   CEKID,
@@ -20,6 +22,7 @@ export {
   GITLAB,
   BZQLL,
   FANYI,
+  ELE,
 }
 
 export default {
@@ -30,4 +33,5 @@ export default {
   GITLAB,
   BZQLL,
   FANYI,
+  ELE,
 }

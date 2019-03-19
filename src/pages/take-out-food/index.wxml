@@ -1,0 +1,29 @@
+<component-wrap disabled>
+  <view class="container">
+    <view class="take-out-food" wx:if="{{list.length}}">
+      <view class="food-list">
+        <block wx:for="{{list}}" wx:key="{{index}}">
+          <view class="food-list-item">
+            <image src="{{item.image_url}}" class="food-image"></image>
+            <view class="food-desc">
+              <view class="name">{{item.name}}-{{item.address}}-{{item.distance}}米</view>
+              <view class="minimum_order">{{item.float_minimum_order_amount}}元起送，配送费{{item.float_delivery_fee}}元</view>
+              <view class="tag">
+                <block wx:for="{{item.business_info_parse.lemon_support_tags}}" wx:key="{{index}}">
+                  <text>{{item.text}}</text>
+                </block>
+              </view>
+              <view class="price">
+                最低消费：
+                <block wx:for="{{item.price}}" wx:key="{{index}}">
+                  <text>{{item}}元</text>
+                </block>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+      <view class="next-page" bindtap="getMore">查看更多</view>
+    </view>
+  </view>
+</component-wrap>

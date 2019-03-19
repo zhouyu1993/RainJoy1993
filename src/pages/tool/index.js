@@ -320,5 +320,8 @@ Page({
     } else if (hour >= 22 & hour < 24) {
       return 5
     }
-  }
+  },
+  takeOutFood () {
+    navigateTo(`/pages/take-out-food/index`)
+  },
 })
