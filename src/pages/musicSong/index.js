@@ -5,6 +5,8 @@ import decodeChar from '../../utils/decodeChar'
 let Page = require('../../lib/ald/ald-stat').Page
 Page = require('../../lib/xiaoshentui/pushsdk.js').pushSdk(Page).Page
 
+const app = getApp()
+
 Page({
   data: {
     songmid: '',
@@ -31,6 +33,10 @@ Page({
         songSrc: 'https://api.bzqll.com/music/tencent/url?id=003OUlho2HcRHC&key=579621905&br=320',
         speacial,
       })
+
+      app.aldstat.sendEvent('播放歌曲', {
+        '关键词': '徐蜗牛',
+      })
     } else {
       this.setData({
         songmid,
@@ -39,6 +45,10 @@ Page({
         singername: decodeChar(singername),
         coverImgUrl: `https://api.bzqll.com/music/tencent/pic?id=${songmid}&key=579621905`,
         songSrc: `https://api.bzqll.com/music/tencent/url?id=${songmid}&key=579621905&br=320`,
+      })
+
+      app.aldstat.sendEvent('播放歌曲', {
+        '关键词': decodeChar(songname),
       })
     }
   },
