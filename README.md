@@ -304,7 +304,7 @@ device:devtools
 
 https://plog.xiaoshentui.com/d.html?v=4.1.0&uu=15513233951547727197&ev=setopenid&life=setopenid&ak=360065b5abadcaca47ca254f8f5d3f8a&pm=iPhone%206&wvv=devtools&wsdk=2.6.2&sv=iOS%2010.0.1&wv=6.6.3&nt=wifi&ww=375&wh=667&pr=2&pp=pages%2Findex%2Findex&lat=0&lng=0&st=1552993127059&et=0&ppx=0&ppy=0&data=0&fid=0&lang=zh&wsr=%7B%7D&ifo=0&jscode=0&ust=1552993131668&openid=oSfYh0aXrNuSzCq7RbWq-oh_zNTg&user_info=%7B%22nickName%22%3A%22RainJoy%22%2C%22gender%22%3A1%2C%22language%22%3A%22zh_CN%22%2C%22city%22%3A%22Nanjing%22%2C%22province%22%3A%22Jiangsu%22%2C%22country%22%3A%22China%22%2C%22avatarUrl%22%3A%22https%3A%2F%2Fwx.qlogo.cn%2Fmmopen%2Fvi_32%2FQ0j4TwGTfTKy2dalqhRRIJib4EEhVlE3Ub6uqavp4vibSibibT9Faxiay8syXdoXib5mp0ic3VpaJlGdKv4IovLYnH2Lg%2F132%22%7D&eventid=undefined&arg=undefined&ele=0
 
-v:4.1.0
+v:4.1.0 // 版本
 uu:15513233951547727197
 ev:setopenid
 life:setopenid
@@ -381,3 +381,48 @@ user_info:{"nickName":"RainJoy","gender":1,"language":"zh_CN","city":"Nanjing","
 eventid:undefined
 arg:undefined
 ele:0
+
+---
+
+``` js
+Object.defineProperty(window, 'rj', {
+  configurable: false,
+  set: function set () {
+    console.error("cant't rewrite window.rj")
+  },
+  get: function get () {
+    return {
+      log: (...arguments) => {
+        console.log(...arguments)
+      },
+      add: (a, b) => {
+        return a + b
+      }
+    }
+  }
+})
+
+window.rj.log(window.rj.add(1, 2))
+```
+
+``` js
+function HookIt (obj, method, callback) {
+  if (obj[method]) {
+    var oldMethod = obj[method]
+    obj[method] = function (arg) {
+      callback.call(this, arg, method)
+      return oldMethod.call.apply(oldMethod, [this].concat(Array.prototype.slice.call(arguments)))
+    }
+  } else {
+    obj[method] = function (arg) {
+      callback.call(this, arg, method)
+    }
+  }
+}
+
+HookIt(console, 'log', () => {
+	console.warn('console.log被调用')
+})
+
+console.log('啦啦啦')
+```
