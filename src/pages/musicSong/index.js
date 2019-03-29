@@ -30,7 +30,7 @@ Page({
         albumname: '我好宣你',
         singername: '徐蜗牛',
         coverImgUrl: 'https://api.bzqll.com/music/tencent/pic?id=003OUlho2HcRHC&key=579621905',
-        songSrc: 'https://api.bzqll.com/music/tencent/url?id=003OUlho2HcRHC&key=579621905&br=320',
+        songSrc: 'https://api.bzqll.com/music/tencent/url?id=003OUlho2HcRHC&key=579621905',
         speacial,
       })
 
@@ -44,7 +44,7 @@ Page({
         albumname: decodeChar(albumname),
         singername: decodeChar(singername),
         coverImgUrl: `https://api.bzqll.com/music/tencent/pic?id=${songmid}&key=579621905`,
-        songSrc: `https://api.bzqll.com/music/tencent/url?id=${songmid}&key=579621905&br=320`,
+        songSrc: `https://api.bzqll.com/music/tencent/url?id=${songmid}&key=579621905`,
       })
 
       app.aldstat.sendEvent('播放歌曲', {
@@ -58,7 +58,7 @@ Page({
     if (songmid) {
       this.getSongIrc(songmid)
 
-      const src = `https://api.bzqll.com/music/tencent/url?id=${songmid}&key=579621905&br=320`
+      const src = `https://api.bzqll.com/music/tencent/url?id=${songmid}&key=579621905`
 
       const backgroundAudioManager = wx.getBackgroundAudioManager()
 
@@ -71,11 +71,12 @@ Page({
       }
 
       backgroundAudioManager.onEnded(() => {
-        backgroundAudioManager.title = songname || '未知歌曲'
-        backgroundAudioManager.epname = albumname || '未知专辑'
-        backgroundAudioManager.singer = singername || '未知歌手'
-        backgroundAudioManager.coverImgUrl = coverImgUrl || `https://api.bzqll.com/music/tencent/pic?id=${songmid}&key=579621905`
-        backgroundAudioManager.src = songSrc || src
+        console.log('end', songSrc || src)
+        // backgroundAudioManager.title = songname || '未知歌曲'
+        // backgroundAudioManager.epname = albumname || '未知专辑'
+        // backgroundAudioManager.singer = singername || '未知歌手'
+        // backgroundAudioManager.coverImgUrl = coverImgUrl || `https://api.bzqll.com/music/tencent/pic?id=${songmid}&key=579621905`
+        // backgroundAudioManager.src = songSrc || src
       })
 
       backgroundAudioManager.onError(() => {

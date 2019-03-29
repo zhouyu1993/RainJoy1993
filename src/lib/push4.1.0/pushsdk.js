@@ -8,10 +8,10 @@ var _typeof = typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol
     : typeof obj
 }
 exports.pushSdk = (function () {
-  var Version = '4.1.1'
+  var Version = '4.1.0'
   var url = 'plog'
   var env = 'pro'
-  var onlineURL = env === 'pro' ? 'https://openapi.xiaoshentui.com' : 'https://openapitest.xiaoshentui.com'
+  var onlineURL = env === 'pro' ? 'https://openapi.xiaoshentui.com' : 'http://118.89.150.105:3535'
   var onlineTier = false
   var onlineData = {}
   var pageArg = []
@@ -26,6 +26,7 @@ exports.pushSdk = (function () {
       province: ''
     }
   }
+
   wx.request({
     url: 'https://' + url + '.xiaoshentui.com/config/app.json',
     header: {
@@ -33,9 +34,11 @@ exports.pushSdk = (function () {
     },
     method: 'GET',
     success: function success (res) {
+
       if (res.statusCode === 200) {
-        if (res.data['push_v'] != Version) {
-          console.warn('小神推sdk已更新,为不影响正常使用,请去官网(http://www.xiaoshentui.com/)下载最新版本')
+        var version = res.data['push_v']
+        if (version != Version) {
+          console.warn('当前小神推版本' + version, '小神推sdk已更新,为不影响正常使用,请去官网(http://www.xiaoshentui.com/)下载最新版本')
         }
       }
     }
@@ -61,12 +64,6 @@ exports.pushSdk = (function () {
     })
   }
 
-  function layerHide (_this) {
-    if (_this.onlineData.isShow) {
-      _this.onlineTier = false
-      _this.onlineData = {}
-    }
-  }
   var pubicFunc = {
     setOpenId: function setOpenId (openid) {
       if (openid.length !== 28) {
@@ -150,6 +147,7 @@ exports.pushSdk = (function () {
     }
     return uuid
   }
+
   var wx_request = function wx_request (data, method, uri) {
     if (typeof arguments[1] === 'undefined') method = 'GET'
     if (typeof arguments[2] === 'undefined') uri = 'd.html'
@@ -216,18 +214,20 @@ exports.pushSdk = (function () {
       user_info: InitData.userInfo ? InitData.userInfo : 0,
       eventid: InitData.eventId,
       arg: InitData.arg,
-      share: InitData.ele ? InitData.ele : 0,
-      scene: InitData.appOptions.scene ? InitData.appOptions.scene : 0
+      ele: InitData.ele ? InitData.ele : 0
     }
     wx_request(data, 'GET', 'd.html')
   }
 
   function pushFormSubmit (e) {
+    console.log('小神推', e.detail.formId)
+
     InitData.ppx = e.detail.target.offsetLeft
     InitData.ppy = e.detail.target.offsetTop
     InitData.fid = e.detail.formId
     push_log(InitData, 'fpage', 'clickform')
   }
+
   if (!Array.prototype.indexOf) {
     Array.prototype.indexOf = function (searchElement) {
       if (this == null) {
@@ -263,6 +263,7 @@ exports.pushSdk = (function () {
   function checkType (arg) {
     return Object.prototype.toString.call(arg).slice(8, -1)
   }
+
   if (wx.xst) {
     console.error("wx.xst can't be defined twice!")
   } else {
@@ -373,6 +374,7 @@ exports.pushSdk = (function () {
       onlineData: isShow
     })
   }
+
   try {
     var res = wx.getSystemInfoSync()
     InitData.pm = res.model
@@ -385,11 +387,13 @@ exports.pushSdk = (function () {
     InitData.wsdk = typeof res['SDKVersion'] === 'undefined' ? '1.0.0' : res['SDKVersion']
     InitData.sv = res.system
   } catch (e) {}
+
   wx.getNetworkType({
     success: function success (res) {
       InitData.nt = res.networkType
     }
   })
+
   return function (miniProLife, at) {
     try {
       var ohterApp, ohterPage
@@ -418,7 +422,6 @@ exports.pushSdk = (function () {
         InitData.appOptions = {}
       }
       weaOnlinePushLayer()
-      push_log(InitData, 'app', 'show')
     }
 
     function pushAppOnHide () {
@@ -473,6 +476,7 @@ exports.pushSdk = (function () {
         })
       }
     }
+
     var pushApp = function pushApp (arg) {
       HookIt1(arg, 'onLaunch', pushAppOnLaunch)
       HookIt1(arg, 'onShow', pushAppOnShow)
@@ -485,6 +489,7 @@ exports.pushSdk = (function () {
       HookIt1(arg, 'pushFormSubmit', pushFormSubmit)
       ohterPage ? ohterPage(arg) : Page(arg)
     }
+
     return {
       App: pushApp,
       Page: pushPage

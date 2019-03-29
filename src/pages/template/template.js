@@ -1,1 +1,8 @@
-Page({ data: { }, onLoad: function () { } })
+/* eslint-disable */
+
+var app = getApp()
+
+Page({
+  data: {},
+  onLoad: function () {}
+})
