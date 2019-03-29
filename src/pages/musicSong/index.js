@@ -71,12 +71,19 @@ Page({
       }
 
       backgroundAudioManager.onEnded(() => {
-        console.log('end', songSrc || src)
-        // backgroundAudioManager.title = songname || '未知歌曲'
-        // backgroundAudioManager.epname = albumname || '未知专辑'
-        // backgroundAudioManager.singer = singername || '未知歌手'
-        // backgroundAudioManager.coverImgUrl = coverImgUrl || `https://api.bzqll.com/music/tencent/pic?id=${songmid}&key=579621905`
-        // backgroundAudioManager.src = songSrc || src
+        wx.showModal({
+          title: '提示',
+          content: '重新播放？',
+          success: res => {
+            if (res.confirm) {
+              backgroundAudioManager.title = songname || '未知歌曲'
+              backgroundAudioManager.epname = albumname || '未知专辑'
+              backgroundAudioManager.singer = singername || '未知歌手'
+              backgroundAudioManager.coverImgUrl = coverImgUrl || `https://api.bzqll.com/music/tencent/pic?id=${songmid}&key=579621905`
+              backgroundAudioManager.src = songSrc || src
+            }
+          }
+        })
       })
 
       backgroundAudioManager.onError(() => {
