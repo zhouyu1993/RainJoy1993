@@ -294,7 +294,7 @@ Page({
 
     if (!value) return
 
-    if (value === '我爱徐蜗牛') {
+    if (value === '徐蜗牛') {
       navigateTo(`/pages/musicSong/index?speacial=1`)
     } else {
       wx.showToast({

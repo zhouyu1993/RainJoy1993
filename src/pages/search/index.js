@@ -251,7 +251,7 @@ Page({
   async musicSong (event) {
     const { songmid = '', songname = '未知歌曲', albumname = '未知专辑', singername = '未知歌手', } = event.currentTarget.dataset
 
-    const canplay = await this.getRainJoy1993Config()
+    const canplay = true || await this.getRainJoy1993Config()
 
     if (canplay && songmid) {
       navigateTo(`/pages/musicSong/index?songmid=${songmid}&songname=${songname}&albumname=${albumname}&singername=${singername}`)

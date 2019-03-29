@@ -25,12 +25,12 @@ Page({
 
     if (speacial) {
       this.setData({
-        songmid: '003OUlho2HcRHC',
-        songname: '告白气球',
+        songmid: '003cc8Du2fxoIV',
+        songname: 'Sunshine Girl',
         albumname: '我好宣你',
         singername: '徐蜗牛',
-        coverImgUrl: 'https://api.bzqll.com/music/tencent/pic?id=003OUlho2HcRHC&key=579621905',
-        songSrc: 'https://api.bzqll.com/music/tencent/url?id=003OUlho2HcRHC&key=579621905',
+        coverImgUrl: 'http://cmspic-10004025.image.myqcloud.com/0b23e778-b411-4f92-9bfe-0390e7e8609a',
+        songSrc: 'https://api.bzqll.com/music/tencent/url?id=003cc8Du2fxoIV&key=579621905',
         speacial,
       })
 
@@ -44,7 +44,7 @@ Page({
         albumname: decodeChar(albumname),
         singername: decodeChar(singername),
         coverImgUrl: `https://api.bzqll.com/music/tencent/pic?id=${songmid}&key=579621905`,
-        songSrc: `https://api.bzqll.com/music/tencent/url?id=${songmid}&key=579621905`,
+        songSrc: `https://api.bzqll.com/music/tencent/url?id=${songmid}&key=579621905&br=48`,
       })
 
       app.aldstat.sendEvent('播放歌曲', {
@@ -86,7 +86,9 @@ Page({
         })
       })
 
-      backgroundAudioManager.onError(() => {
+      backgroundAudioManager.onError((e) => {
+        console.log(e)
+
         wx.showToast({
           title: '版权问题',
           icon: 'none',
