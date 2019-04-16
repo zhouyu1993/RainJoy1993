@@ -1,5 +1,7 @@
 # https://help.github.com/ignore-files/ for more about ignoring files.
 
+i.md
+
 # production
 /dist/
 

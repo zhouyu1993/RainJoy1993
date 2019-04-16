@@ -220,8 +220,6 @@ exports.pushSdk = (function () {
   }
 
   function pushFormSubmit (e) {
-    console.log('小神推', e.detail.formId)
-
     InitData.ppx = e.detail.target.offsetLeft
     InitData.ppy = e.detail.target.offsetTop
     InitData.fid = e.detail.formId
