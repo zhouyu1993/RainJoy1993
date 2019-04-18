@@ -3,7 +3,7 @@
   "description": "项目配置文件。",
   "appid": "wx8d1d9b1abb35ca02",
   "compileType": "miniprogram",
-  "libVersion": "2.6.4",
+  "libVersion": "2.6.5",
   "setting": {
     "urlCheck": false,
     "es6": false,
