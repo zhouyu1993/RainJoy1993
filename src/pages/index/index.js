@@ -1,4 +1,4 @@
-import { getJitaHome } from '../../utils/actions'
+import { searchJita, getJitaHome } from '../../utils/actions'
 
 import navigateTo from '../../utils/navigateTo'
 
@@ -6,8 +6,11 @@ import navigateTo from '../../utils/navigateTo'
 let Page = require('../../lib/ald/ald-stat').Page
 Page = require('../../lib/xiaoshentui/pushsdk.js').pushSdk(Page).Page
 
+const app = getApp()
+
 Page({
   data: {
+    gepuValue: '',
     jitaHome: {},
   },
   onLoad (options) {
@@ -33,6 +36,40 @@ Page({
         })
       },
     }
+  },
+  gepuInput (event) {
+    const { value } = event.detail
+
+    this.setData({
+      gepuValue: value,
+    })
+  },
+  async gepuSearch () {
+    const value = this.data.gepuValue
+
+    if (!value) return
+
+    try {
+      const res = await searchJita(value)
+
+      const data = res.data || {}
+
+      this.setData({
+        jitaData: data,
+      })
+
+      app.aldstat.sendEvent('搜索歌谱', {
+        '关键词': value,
+      })
+    } catch (e) {
+      console.log(e)
+    }
+  },
+  gepuSearchCancel () {
+    this.setData({
+      gepuValue: '',
+      jitaData: {},
+    })
   },
   async getData () {
     const res = await getJitaHome()

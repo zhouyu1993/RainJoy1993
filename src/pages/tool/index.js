@@ -330,33 +330,4 @@ Page({
   takeOutFood () {
     navigateTo(`/pages/take-out-food/index`)
   },
-  xmpushFormSubmit (e) {
-    if (this.properties.disabled) return
-
-    const formId = e.detail && e.detail.formId
-
-    if (formId === 'the formId is a mock one') return console.warn(`模拟器操作不上报formid, 合法request里需要配置 ${WXDATA}`)
-
-    wx.login({
-      success: ({ code }) => {
-        console.log('小米推', formId, WXDATA)
-
-        request({
-          url: `${WXDATA}/koa-demo/api/wx/sendTemplateMessage`,
-          data: {
-            app_key: 'abcdef',
-            code,
-            form_id: formId,
-          },
-          method: 'POST',
-          showLoading: false,
-          fail: () => {},
-          isSuccess: () => true,
-          success: res => {
-            console.log(res)
-          },
-        })
-      },
-    })
-  },
 })

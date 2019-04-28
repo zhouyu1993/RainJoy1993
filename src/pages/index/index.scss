@@ -14,6 +14,85 @@
   background-color: #fff;
 }
 
+.search {
+  .search-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20rpx;
+    background-color: #fff;
+
+    input {
+      flex: 1;
+      height: 60rpx;
+      padding: 0 10rpx;
+      line-height: 60rpx;
+      border-top: 1rpx solid #ddd;
+      border-bottom: 1rpx solid #ddd;
+      border-left: 1rpx solid #ddd;
+    }
+
+    button {
+      width: 100rpx;
+      height: 60rpx;
+      line-height: 60rpx;
+      color: #fff;
+      background-color: #ff397e;
+      border: 1rpx solid #ff397e;
+
+      &.cancel {
+        background-color: #ddd;
+        border: 1rpx solid #ddd;
+      }
+    }
+  }
+
+  .search-result {
+    &-singer {
+      padding: 0 20rpx;
+      margin-top: 20rpx;
+      background-color: #fff;
+
+      .list {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+
+        view {
+          margin-top: 20rpx;
+          margin-right: 20rpx;
+          line-height: 50rpx;
+          border-bottom: 1rpx solid #ddd;
+        }
+      }
+    }
+
+    &-song {
+      padding: 0 20rpx;
+      margin-top: 20rpx;
+      background-color: #fff;
+
+      .list {
+
+        view {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-top: 20rpx;
+          line-height: 50rpx;
+          border-bottom: 1rpx solid #ddd;
+        }
+      }
+
+      .more {
+        padding: 20px;
+        color: #ff397e;
+        text-align: center;
+      }
+    }
+  }
+}
+
 .slide {
   height: 400rpx;
   margin-top: 20rpx;

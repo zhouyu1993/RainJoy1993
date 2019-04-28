@@ -1,8 +1,7 @@
 // import md5 from 'crypto-js/md5'
 
-// import { appId } from '../../utils/constants'
 import { WXDATA } from '../../utils/api'
-import request from '../../utils/request'
+// import { appId } from '../../utils/constants'
 
 Component({
   externalClasses: ['my-class'],
@@ -46,21 +45,7 @@ Component({
           //   success: () => {},
           // })
 
-          console.log('小米推', formId)
-
-          request({
-            url: `${WXDATA}/koa-demo/api/wx/sendTemplateMessage?app_key=abcdef&code=${code}`,
-            data: {
-              form_id: formId,
-            },
-            method: 'POST',
-            showLoading: false,
-            fail: () => {},
-            isSuccess: () => true,
-            success: res => {
-              console.log(res)
-            },
-          })
+          console.log(formId)
         },
       })
     },

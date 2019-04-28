@@ -2,82 +2,13 @@
 
 A wx-miniprogram project
 
-## API
-
----
-
-song_id: 214160684
-
-song_mid: 003rwlte1mgeSh
-
-https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric.fcg?nobase64=1&musicid=214160684&songtype=0
-
-singer_id: 19633
-
-singer_mid 001Z043U01BqsW
-
-https://y.gtimg.cn/music/photo_new/T001R68x68M000001Z043U01BqsW.jpg?max_age=2592000
-
-album_id: 4091728
-
-album_mid: 000OojoN2517uS
-
-https://y.gtimg.cn/music/photo_new/T002R300x300M000000OojoN2517uS.jpg?max_age=2592000
-
----
-
-https://c.y.qq.com/v8/fcg-bin/fcg_myqq_topList.fcg?format=json
-
----
-
-https://gitlab.com/zhouyu1993/wx-miniprogram-config/raw/master/RainJoy1993/index.json
-
-https://gitlab.com/zhouyu1993/wx-miniprogram-config/raw/master/RainJoy1993/english-words.json
-
----
-
-https://api.bzqll.com/music/tencent/search?key=579621905&s=秦时明月&limit=10&offset=1&type=song
-
-1. 音乐搜索: type=song
-2. 专辑搜索: type=album
-3. 歌单搜索: type=list (QQ音乐限制歌单每页最多查询50条)
-4. MV搜索: type=mv
-5. 用户搜索: type=user
-6. 歌词搜索: type=lrc
-
-https://api.bzqll.com/music/tencent/url?id=002GrJ771EmliH&key=579621905
-
----
-
-https://jitami.96sn.com/api/home/index
-
-https://jitami.96sn.com/api/home/index/search?key=天空之城
-
-https://jitami.96sn.com/api/home/index/singer_detail?id=25
-
-https://jitami.96sn.com/api/home/index/pu?id=1326
-
-http://pu.jitami.96sn.com/singer/20150205155854_9468.png
-
-http://pu.jitami.96sn.com/20150205172013_8179.gif
-
-## 插件
-
-"plugins": {
-  "tencentvideo": {
-    "version": "1.2.5",
-    "provider": "wxa75efa648b60994b"
-  }
-}
-
 ## src 目录结构
 
-* actions 分页面管理接口请求，同 utils/actions.js
 * assets 静态资源
   - img 图片
   - scss 通用样式
 * components 组件
-  - [computedBehavior](https://github.com/wechat-miniprogram/computed)
+  - [computedBehavior.js](https://github.com/wechat-miniprogram/computed)
 * lib 库
 * pages 当前小程序的路由/页面
 * projects 其他小程序的路由/页面，git clone 使用

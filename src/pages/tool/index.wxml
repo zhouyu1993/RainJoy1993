@@ -11,9 +11,6 @@
         <form report-submit bindsubmit="pushFormSubmit" class="reset-form my-class">
           <button formType="submit" class="reset-button">小神推</button>
         </form>
-        <form report-submit bindsubmit="xmpushFormSubmit" class="reset-form my-class">
-          <button formType="submit" class="reset-button">小米推</button>
-        </form>
       </view>
       <input placeholder="请输入" confirm-type="search" bindinput="speacialInput" bindconfirm="speacialSearch" class="speacial" />
       <block wx:if="{{systemInfo.SDKVersion}}">
