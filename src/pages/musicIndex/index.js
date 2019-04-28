@@ -24,7 +24,7 @@ Page({
   },
   onShareAppMessage (options) {
     return {
-      title: '音乐',
+      title: '小哥哥小姐姐都在这听音乐～',
       path: '/pages/musicIndex/index',
       success: res => {
         wx.showToast({

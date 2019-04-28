@@ -1,0 +1,19 @@
+<component-wrap disabled>
+  <view class="container">
+    <view class="story">
+      <view class="module-title">热门小说搜索</view>
+      <view class="search">
+        <view class="search-control">
+          <input placeholder="请输入小说或作者" confirm-type="search" value="{{storyValue}}" bindinput="storyInput" bindconfirm="storySearch" />
+          <button bindtap="storySearchCancel" class="cancel">取消</button>
+          <button bindtap="storySearch">搜索</button>
+        </view>
+        <view class="search-hotkeys">
+          <text wx:for="{{hotkeys}}" wx:key="{{key}}" data-value="{{item}}" class="hotkey {{index == 0 ? 'first-child' : ''}}" bindtap="keywordStorySearch">{{item}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view style="height:100rpx;;background-color:#fff;"></view>
+  </view>
+</component-wrap>

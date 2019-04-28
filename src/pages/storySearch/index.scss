@@ -10,65 +10,67 @@
 
   .module-title {
     height: 100rpx;
-    margin-top: 20rpx;
     font-size: 36rpx;
     line-height: 100rpx;
     text-align: center;
     background-color: #fff;
   }
 
-  .search {
-    padding: 0 20rpx;
-    background-color: #fff;
+  .story-list {
 
-    .search-control {
+    .story-list-item {
+      @include nativeborder();
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      padding: 20rpx;
 
-      input {
-        flex: 1;
-        height: 60rpx;
-        padding: 0 10rpx;
-        line-height: 60rpx;
-        border-top: 1rpx solid #ddd;
-        border-bottom: 1rpx solid #ddd;
-        border-left: 1rpx solid #ddd;
+      .story-left {
+        width: 189rpx;
+        height: 269rpx;
+
+        image {
+          width: 100%;
+          height: 100%;
+        }
       }
 
-      button {
-        width: 100rpx;
-        height: 60rpx;
-        line-height: 60rpx;
-        color: #fff;
-        background-color: #ff397e;
-        border: 1rpx solid #ff397e;
+      .story-right {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-left: 20rpx;
 
-        &.cancel {
-          background-color: #ddd;
-          border: 1rpx solid #ddd;
+        .story-name {
+          font-size: 32rpx;
+          font-weight: bold;
+
+          .story-status {
+            color: #ff397e;
+          }
+        }
+
+        .story-info {
+          font-size: 24rpx;
+          color: #666;
+        }
+
+        .story-intro {
+          @include text(3, 96, 26);
+          width: 500rpx;
+          color: #333;
+        }
+
+        .story-keyword {
+          font-size: 24rpx;
+          color: #666;
         }
       }
     }
 
-    .search-hotkeys {
-      padding: 20rpx;
-      background-color: #fff;
-
-      .hotkey {
-        display: inline-block;
-        padding: 20rpx;
-        margin-right: 20rpx;
-        margin-bottom: 20rpx;
-        font-size: 24rpx;
-        border: 1px solid #bbb;
-        border-radius: 20rpx;
-
-        &.first-child {
-          color: #ff397e;
-          border: 1px solid #ff397e;
-        }
-      }
+    .more {
+      padding: 20px;
+      color: #ff397e;
+      text-align: center;
     }
   }
 }

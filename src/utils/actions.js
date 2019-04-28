@@ -200,7 +200,7 @@ const getEleList = async (lat, long, offset) => {
 const searchStory = async (key, page = 1) => {
   try {
     const res = await promiseRequest({
-      url: `${STORY}/v2/book/search?app_key=2263049103&_versions=973&client_type=998&channel=8&merchant=17KTest&_access_version=2&cps=0&cps_source=0&cps_opid=0&key=${key}&page=1&num=${page}&_fields=cover,author_name,book_name,book_id,total_num,total_page,cur_page,intro,category_name_2,book_status,word_count,total_chapter,keyword`,
+      url: `${STORY}/v2/book/search?app_key=2263049103&_versions=973&client_type=998&channel=8&merchant=17KTest&_access_version=2&cps=0&cps_source=0&cps_opid=0&key=${key}&page=${page}&num=24&_fields=cover,author_name,book_name,book_id,total_num,total_page,cur_page,intro,category_name_2,book_status,word_count,total_chapter,keyword`,
       showLoading: true,
       fail: () => {},
       isSuccess: res => (res.status && res.status.code) === 0,

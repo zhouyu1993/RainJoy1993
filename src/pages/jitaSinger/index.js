@@ -24,10 +24,10 @@ Page({
     this.getData()
   },
   onShareAppMessage (options) {
-    let title = '吉他'
+    let title = '吉他曲谱免费放送'
 
     if (this.data.jitaSinger.singer_name) {
-      title = this.data.jitaSinger.singer_name
+      title = `${this.data.jitaSinger.singer_name}的吉他曲谱免费放送`
     }
 
     return {

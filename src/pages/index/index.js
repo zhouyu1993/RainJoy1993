@@ -21,7 +21,7 @@ Page({
   },
   onShareAppMessage (options) {
     return {
-      title: '吉他',
+      title: '吉他曲谱免费搜索',
       path: '/pages/index/index',
       success: res => {
         wx.showToast({

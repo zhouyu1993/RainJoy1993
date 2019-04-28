@@ -24,8 +24,13 @@ Page({
     this.getData()
   },
   onShareAppMessage (options) {
+    let title = '排行榜'
+    if (this.data.musicTopList && this.data.musicTopList.topinfo && this.data.musicTopList.topinfo.ListName) {
+      title = this.data.musicTopList.topinfo.ListName
+    }
+
     return {
-      title: '排行榜',
+      title,
       path: `/pages/musicTopList/index?id=${this.data.id}`,
       success: res => {
         wx.showToast({

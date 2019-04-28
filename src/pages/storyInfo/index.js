@@ -7,13 +7,8 @@ let Page = require('../../lib/ald/ald-stat').Page
 
 Page({
   data: {
-    hotkeys: [
-      '医生',
-      '教师',
-      '保镖',
-      '官场'
-    ],
-    storyValue: ''
+    id: '',
+    storyInfo: {},
   },
   onLoad (options) {
     console.log(`Page.onLoad`, options)
@@ -23,8 +18,8 @@ Page({
   },
   onShareAppMessage (options) {
     return {
-      title: '爽爽爽～海量小说免费看！',
-      path: `/pages/story/index`,
+      title: '小说详情',
+      path: `/pages/storyInfo/index`,
       success: res => {
         wx.showToast({
           title: '分享成功',

@@ -1,8 +1,33 @@
 <component-wrap disabled>
   <view class="container">
     <view class="story">
-      <view class="module-title">共找到{{storyList.length}}本小说</view>
+      <view class="module-title">共找到{{storyNum}}本小说</view>
 
+      <view class="story-list" wx:if="{{storyList.length}}">
+        <block wx:for="{{storyList}}" wx:key="{{index}}">
+          <view data-id="{{item.book_id}}" bindtap="storyInfo" class="story-list-item">
+            <view class="story-left">
+              <image src="{{item.cover}}" class="story-image"></image>
+            </view>
+            <view class="story-right">
+              <view class="story-name">
+                {{item.book_name}}
+                <text class="story-status" wx:if="{{item.book_status === '03'}}">（全本）</text>
+              </view>
+              <view class="story-info">
+                {{item.author_name}} / {{item.category_name_2}} / {{item.word_count}}字
+              </view>
+              <view class="story-intro">
+                {{item.intro}}
+              </view>
+              <view class="story-keyword">
+                {{item.keyword}}
+              </view>
+            </view>
+          </view>
+        </block>
+        <view class="more" bindtap="searchStoryAsync">查看更多</view>
+      </view>
     </view>
 
     <view style="height:100rpx;;background-color:#fff;"></view>

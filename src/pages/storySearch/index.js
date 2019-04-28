@@ -6,8 +6,10 @@ let Page = require('../../lib/ald/ald-stat').Page
 
 Page({
   data: {
-    storyValue: '',
+    value: '',
+    page: 1,
     storyList: [],
+    storyNum: 0,
   },
   onLoad (options) {
     console.log(`Page.onLoad`, options)
@@ -16,10 +18,11 @@ Page({
 
     if (value) {
       this.setData({
-        storyValue: value,
+        value: value,
+        page: 1,
       })
 
-      this.searchStoryAsync(value, 1)
+      this.searchStoryAsync()
     }
   },
   onShow () {
@@ -28,7 +31,7 @@ Page({
   onShareAppMessage (options) {
     return {
       title: '小说搜索',
-      path: `/pages/storySearch/index`,
+      path: `/pages/storySearch/index?value=${this.data.value}`,
       success: res => {
         wx.showToast({
           title: '分享成功',
@@ -43,11 +46,24 @@ Page({
       },
     }
   },
-  async searchStoryAsync (key, page) {
+  async searchStoryAsync () {
     try {
-      const res = await searchStory(key, page)
+      const res = await searchStory(this.data.value, this.data.page)
 
-      console.log(res)
+      const data = res.data || []
+
+      if (data.length) {
+        this.setData({
+          page: this.data.page + 1,
+          storyList: this.data.storyList.concat(data),
+          storyNum: res.total_num,
+        })
+      } else {
+        wx.showToast({
+          title: '没有了',
+          icon: 'none',
+        })
+      }
     } catch (e) {
       console.log(e)
     }

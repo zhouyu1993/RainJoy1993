@@ -27,7 +27,7 @@ Page({
     let title = '吉他'
 
     if (this.data.jitaSong.title && this.data.jitaSong.singer) {
-      title = `${this.data.jitaSong.title}-${this.data.jitaSong.singer}`
+      title = `${this.data.jitaSong.title}-${this.data.jitaSong.singer}【清晰吉他曲谱】`
     }
 
     return {
