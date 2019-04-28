@@ -75,5 +75,7 @@
         </block>
       </view>
     </block>
+
+    <view style="height:100rpx;;background-color:#fff;"></view>
   </view>
 </component-wrap>

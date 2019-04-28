@@ -2,7 +2,7 @@ import { getEleList } from '../../utils/actions'
 
 // import { Page } from '../../lib/ald/ald-stat'
 let Page = require('../../lib/ald/ald-stat').Page
-Page = require('../../lib/xiaoshentui/pushsdk.js').pushSdk(Page).Page
+// Page = require('../../lib/xiaoshentui/pushsdk.js').pushSdk(Page).Page
 
 Page({
   data: {
@@ -31,7 +31,7 @@ Page({
         console.log('debug', err)
 
         wx.showToast({
-          title: '定位失败',
+          title: '定位失败，请返回授权定位',
           icon: 'none',
         })
       }

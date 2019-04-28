@@ -3,14 +3,12 @@
     <view class="tool">
       <view class="menu">
         <button hover-class="none" open-type="openSetting" class="openSetting">授权</button>
-        <button hover-class="none" bindtap="takeOutFood">外卖</button>
         <button hover-class="none" lang="{{systemInfo.language || 'en'}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="getUserInfo">登录</button>
         <button hover-class="none" bindtap="chooseAddress" class="chooseAddress">选择地址</button>
-        <button hover-class="none" bindtap="voiceAssistant">小雨同学</button>
         <button hover-class="none" bindtap="clearStorage" class="clearStorage">清理缓存</button>
-        <form report-submit bindsubmit="pushFormSubmit" class="reset-form my-class">
-          <button formType="submit" class="reset-button">小神推</button>
-        </form>
+        <button hover-class="none" bindtap="toSearch" class="toSearch">搜索</button>
+        <button hover-class="none" bindtap="toTakeOutFood">外卖</button>
+        <button hover-class="none" bindtap="voiceAssistant">小雨同学</button>
       </view>
       <input placeholder="请输入" confirm-type="search" bindinput="speacialInput" bindconfirm="speacialSearch" class="speacial" />
       <block wx:if="{{systemInfo.SDKVersion}}">
@@ -58,5 +56,7 @@
       >
       </component-mp-modal>
     </view>
+
+    <view style="height:100rpx;;background-color:#fff;"></view>
   </view>
 </component-wrap>

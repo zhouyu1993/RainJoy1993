@@ -1,0 +1,10 @@
+<component-wrap disabled>
+  <view class="container">
+    <view class="story">
+      <view class="module-title">共找到{{storyList.length}}本小说</view>
+
+    </view>
+
+    <view style="height:100rpx;;background-color:#fff;"></view>
+  </view>
+</component-wrap>

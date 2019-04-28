@@ -4,7 +4,7 @@ import navigateTo from '../../utils/navigateTo'
 
 // import { Page } from '../../lib/ald/ald-stat'
 let Page = require('../../lib/ald/ald-stat').Page
-Page = require('../../lib/xiaoshentui/pushsdk.js').pushSdk(Page).Page
+// Page = require('../../lib/xiaoshentui/pushsdk.js').pushSdk(Page).Page
 
 const app = getApp()
 

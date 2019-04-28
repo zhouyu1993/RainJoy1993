@@ -4,6 +4,7 @@ A wx-miniprogram project
 
 ## src 目录结构
 
+* actions 分页面管理接口请求，同 utils/actions.js
 * assets 静态资源
   - img 图片
   - scss 通用样式
@@ -189,171 +190,83 @@ wx7208a4af2628818b
   - WXDATA 点击上报，demo 里是假域名
   - 项目相关域名统一在这里配置
 
-# 统计
-
-wx.getSystemInfoSync 获取系统信息，包含设备品牌、设备型号、设备像素比、屏幕宽度、屏幕高度、可使用窗口宽度、可使用窗口高度、状态栏的高度、操作系统及版本、客户端平台、用户字体大小、微信设置的语言、微信版本号、微信客户端基础库版本等
-
-wx.getLocation 获取当前的地理位置、速度
-
-wx.getNetworkType 获取设备网络类型
-
-wx.getConnectedWifi 获取设备已连接中的 Wi-Fi 信息
-
-wx.getBatteryInfoSync 获取设备电量
-
-wx.getHCEState 判断设备是否支持 HCE 能力
-
-wx.getScreenBrightness 获取设备屏幕亮度
-
-iBeacon 设备、低功耗蓝牙、蓝牙等
+## API
 
 ---
 
-小程序在错误上报、统计、日志等，在逐步丰富能力
+song_id: 214160684
+
+song_mid: 003rwlte1mgeSh
+
+https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric.fcg?nobase64=1&musicid=214160684&songtype=0
+
+singer_id: 19633
+
+singer_mid 001Z043U01BqsW
+
+https://y.gtimg.cn/music/photo_new/T001R68x68M000001Z043U01BqsW.jpg?max_age=2592000
+
+album_id: 4091728
+
+album_mid: 000OojoN2517uS
+
+https://y.gtimg.cn/music/photo_new/T002R300x300M000000OojoN2517uS.jpg?max_age=2592000
 
 ---
 
-sendTemplateMessage
-
-sendUniformMessage
+https://c.y.qq.com/v8/fcg-bin/fcg_myqq_topList.fcg?format=json
 
 ---
 
-没有 openid 时
+https://gitlab.com/zhouyu1993/wx-miniprogram-config/raw/master/RainJoy1993/index.json
 
-https://openapi.xiaoshentui.com/inapp_push?app_key=360065b5abadcaca47ca254f8f5d3f8a&uuid=15513233951547727197&openid=&os=iPhone%206&device=devtools
-
-app_key:360065b5abadcaca47ca254f8f5d3f8a
-uuid:15513233951547727197 // `uuid=""+Date.now()+Math.floor(Math.random()*1e7`
-openid:
-os:iPhone 6
-device:devtools
+https://gitlab.com/zhouyu1993/wx-miniprogram-config/raw/master/RainJoy1993/english-words.json
 
 ---
 
-有 openid 时，调用 wx.xst.setOpenId(openid)
+https://api.bzqll.com/music/tencent/search?key=579621905&s=秦时明月&limit=10&offset=1&type=song
 
-https://plog.xiaoshentui.com/d.html?v=4.1.0&uu=15513233951547727197&ev=setopenid&life=setopenid&ak=360065b5abadcaca47ca254f8f5d3f8a&pm=iPhone%206&wvv=devtools&wsdk=2.6.2&sv=iOS%2010.0.1&wv=6.6.3&nt=wifi&ww=375&wh=667&pr=2&pp=pages%2Findex%2Findex&lat=0&lng=0&st=1552993127059&et=0&ppx=0&ppy=0&data=0&fid=0&lang=zh&wsr=%7B%7D&ifo=0&jscode=0&ust=1552993131668&openid=oSfYh0aXrNuSzCq7RbWq-oh_zNTg&user_info=%7B%22nickName%22%3A%22RainJoy%22%2C%22gender%22%3A1%2C%22language%22%3A%22zh_CN%22%2C%22city%22%3A%22Nanjing%22%2C%22province%22%3A%22Jiangsu%22%2C%22country%22%3A%22China%22%2C%22avatarUrl%22%3A%22https%3A%2F%2Fwx.qlogo.cn%2Fmmopen%2Fvi_32%2FQ0j4TwGTfTKy2dalqhRRIJib4EEhVlE3Ub6uqavp4vibSibibT9Faxiay8syXdoXib5mp0ic3VpaJlGdKv4IovLYnH2Lg%2F132%22%7D&eventid=undefined&arg=undefined&ele=0
+1. 音乐搜索: type=song
+2. 专辑搜索: type=album
+3. 歌单搜索: type=list (QQ音乐限制歌单每页最多查询50条)
+4. MV搜索: type=mv
+5. 用户搜索: type=user
+6. 歌词搜索: type=lrc
 
-v:4.1.0 // 版本
-uu:15513233951547727197
-ev:setopenid
-life:setopenid
-ak:360065b5abadcaca47ca254f8f5d3f8a
-pm:iPhone 6
-wvv:devtools
-wsdk:2.6.2
-sv:iOS 10.0.1
-wv:6.6.3
-nt:wifi
-ww:375
-wh:667
-pr:2
-pp:pages/index/index
-lat:0
-lng:0
-st:1552993127059
-et:0
-ppx:0
-ppy:0
-data:0
-fid:0
-lang:zh
-wsr:{}
-ifo:0
-jscode:0
-ust:1552993131668
-openid:oSfYh0aXrNuSzCq7RbWq-oh_zNTg
-user_info:{"nickName":"RainJoy","gender":1,"language":"zh_CN","city":"Nanjing","province":"Jiangsu","country":"China","avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKy2dalqhRRIJib4EEhVlE3Ub6uqavp4vibSibibT9Faxiay8syXdoXib5mp0ic3VpaJlGdKv4IovLYnH2Lg/132"}
-eventid:undefined
-arg:undefined
-ele:0
+https://api.bzqll.com/music/tencent/url?id=002GrJ771EmliH&key=579621905
 
 ---
 
-button 组件
+https://jitami.96sn.com/api/home/index
 
-<form report-submit bindsubmit="pushFormSubmit" class="reset-form my-class">
-  <button formType="submit" class="reset-button">小神推</button>
-</form>
+https://jitami.96sn.com/api/home/index/search?key=天空之城
 
-https://plog.xiaoshentui.com/d.html?v=4.1.0&uu=15513233951547727197&ev=fpage&life=clickform&ak=360065b5abadcaca47ca254f8f5d3f8a&pm=iPhone%206&wvv=devtools&wsdk=2.6.2&sv=iOS%2010.0.1&wv=6.6.3&nt=wifi&ww=375&wh=667&pr=2&pp=pages%2Ftool%2Findex&lat=0&lng=0&st=1552993952055&et=0&ppx=10&ppy=140&data=0&fid=the%20formId%20is%20a%20mock%20one&lang=zh&wsr=%7B%7D&ifo=0&jscode=0&ust=1552993970994&openid=oSfYh0aXrNuSzCq7RbWq-oh_zNTg&user_info=%7B%22nickName%22%3A%22RainJoy%22%2C%22gender%22%3A1%2C%22language%22%3A%22zh_CN%22%2C%22city%22%3A%22Nanjing%22%2C%22province%22%3A%22Jiangsu%22%2C%22country%22%3A%22China%22%2C%22avatarUrl%22%3A%22https%3A%2F%2Fwx.qlogo.cn%2Fmmopen%2Fvi_32%2FQ0j4TwGTfTKy2dalqhRRIJib4EEhVlE3Ub6uqavp4vibSibibT9Faxiay8syXdoXib5mp0ic3VpaJlGdKv4IovLYnH2Lg%2F132%22%7D&eventid=undefined&arg=undefined&ele=0
+https://jitami.96sn.com/api/home/index/singer_detail?id=25
 
-v:4.1.0
-uu:15513233951547727197
-ev:fpage
-life:clickform
-ak:360065b5abadcaca47ca254f8f5d3f8a
-pm:iPhone 6
-wvv:devtools
-wsdk:2.6.2
-sv:iOS 10.0.1
-wv:6.6.3
-nt:wifi
-ww:375
-wh:667
-pr:2
-pp:pages/tool/index
-lat:0
-lng:0
-st:1552993952055
-et:0
-ppx:10
-ppy:140
-data:0
-fid:the formId is a mock one
-lang:zh
-wsr:{}
-ifo:0
-jscode:0
-ust:1552993970994
-openid:oSfYh0aXrNuSzCq7RbWq-oh_zNTg
-user_info:{"nickName":"RainJoy","gender":1,"language":"zh_CN","city":"Nanjing","province":"Jiangsu","country":"China","avatarUrl":"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKy2dalqhRRIJib4EEhVlE3Ub6uqavp4vibSibibT9Faxiay8syXdoXib5mp0ic3VpaJlGdKv4IovLYnH2Lg/132"}
-eventid:undefined
-arg:undefined
-ele:0
+https://jitami.96sn.com/api/home/index/pu?id=1326
+
+http://pu.jitami.96sn.com/singer/20150205155854_9468.png
+
+http://pu.jitami.96sn.com/20150205172013_8179.gif
 
 ---
 
-``` js
-Object.defineProperty(window, 'rj', {
-  configurable: false,
-  set: function set () {
-    console.error("cant't rewrite window.rj")
-  },
-  get: function get () {
-    return {
-      log: (...arguments) => {
-        console.log(...arguments)
-      },
-      add: (a, b) => {
-        return a + b
-      }
-    }
-  }
-})
+https://api.17k.com/v2/book/boutique/bookstore?app_key=2263049103&_versions=973&client_type=998&channel=8&merchant=17KTest&_access_version=2&cps=0&cps_source=0&cps_opid=0&type=1&client=17K
 
-window.rj.log(window.rj.add(1, 2))
-```
+医生，搜索
 
-``` js
-function HookIt (obj, method, callback) {
-  if (obj[method]) {
-    var oldMethod = obj[method]
-    obj[method] = function (arg) {
-      callback.call(this, arg, method)
-      return oldMethod.call.apply(oldMethod, [this].concat(Array.prototype.slice.call(arguments)))
-    }
-  } else {
-    obj[method] = function (arg) {
-      callback.call(this, arg, method)
-    }
-  }
-}
+https://api.17k.com/v2/book/search?app_key=2263049103&_versions=973&client_type=998&channel=8&merchant=17KTest&_access_version=2&cps=0&cps_source=0&cps_opid=0&key=医生&page=1&num=24&_fields=cover,author_name,book_name,book_id,total_num,total_page,cur_page,intro,category_name_2,book_status,word_count,total_chapter,keyword
 
-HookIt(console, 'log', () => {
-	console.warn('console.log被调用')
-})
+https://api.17k.com/v2/book/search?app_key=2263049103&_versions=973&client_type=998&channel=8&merchant=17KTest&_access_version=2&cps=0&cps_source=0&cps_opid=0&key=医生&page=2&num=24&_fields=cover,author_name,book_name,book_id,total_num,total_page,cur_page,intro,category_name_2,book_status,word_count,total_chapter,keyword
 
-console.log('啦啦啦')
-```
+342881，简介
+
+https://api.17k.com/v2/book/342881/merge?app_key=2263049103&_versions=973&client_type=998&channel=8&merchant=17KTest&_access_version=2&cps=0&cps_source=0&cps_opid=0&iltc=1&time=1556439563145
+
+342881，目录
+
+https://api.17k.com/v2/book/342881/volumes?app_key=2263049103&_versions=973&client_type=998&channel=8&merchant=17KTest&_access_version=2&cps=0&cps_source=0&cps_opid=0&_fields=id,volumes,chapters,name,vip,book_name
+
+7744044，章节
+
+https://api.17k.com/v2/book/weixin/342881/chapter/7744044/content?name=0&app_key=2263049103&data={}&sign=9a430b92c5b3bfdfeceb986fbdf5040b

@@ -1,16 +1,13 @@
 import md5 from 'crypto-js/md5'
 import { Base64 } from 'js-base64'
 import queryString, { parse, stringify, } from 'query-string'
-// import pinyin from 'pinyin'
 
-import { WXDATA } from '../../utils/api'
-import request from '../../utils/request'
 import { langDetect, searchSong } from '../../utils/actions'
 import navigateTo from '../../utils/navigateTo'
 
 // import { Page } from '../../lib/ald/ald-stat'
 let Page = require('../../lib/ald/ald-stat').Page
-Page = require('../../lib/xiaoshentui/pushsdk.js').pushSdk(Page).Page
+// Page = require('../../lib/xiaoshentui/pushsdk.js').pushSdk(Page).Page
 
 const app = getApp()
 
@@ -327,7 +324,10 @@ Page({
       return 5
     }
   },
-  takeOutFood () {
+  toSearch () {
+    navigateTo(`/pages/search/index`)
+  },
+  toTakeOutFood () {
     navigateTo(`/pages/take-out-food/index`)
   },
 })

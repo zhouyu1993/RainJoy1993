@@ -44,7 +44,10 @@ const request = option => {
     return
   }
 
-  showLoading && wx.showLoading({ title: '加载中', })
+  if (showLoading) {
+    wx.showLoading({ title: '加载中', })
+    wx.showNavigationBarLoading()
+  }
 
   wx.request({
     url,
@@ -54,7 +57,10 @@ const request = option => {
     dataType,
     responseType,
     success: ({ data, }) => {
-      showLoading && wx.hideLoading()
+      if (showLoading) {
+        wx.hideLoading()
+        wx.hideNavigationBarLoading()
+      }
 
       if (isSuccess(data) || data.code === 1001 || data.errno === 0) {
         success(data)
@@ -65,7 +71,10 @@ const request = option => {
       }
     },
     fail: res => {
-      showLoading && wx.hideLoading()
+      if (showLoading) {
+        wx.hideLoading()
+        wx.hideNavigationBarLoading()
+      }
 
       fail(res)
     },

@@ -27,7 +27,10 @@ const request = (option) => {
 
   if (typeof fail !== 'function' || typeof complete !== 'function' || typeof isSuccess !== 'function' || typeof isNoLogin !== 'function' || typeof noLogin !== 'function' || typeof error !== 'function') return alert('参数错误')
 
-  showLoading && wx.showLoading({ title: '加载中', })
+  if (showLoading) {
+    wx.showLoading({ title: '加载中', })
+    wx.showNavigationBarLoading()
+  }
 
   return new Promise((resolve, reject) => {
     wx.request({
@@ -38,7 +41,10 @@ const request = (option) => {
       dataType,
       responseType,
       success: ({ data, }) => {
-        showLoading && wx.hideLoading()
+        if (showLoading) {
+          wx.hideLoading()
+          wx.hideNavigationBarLoading()
+        }
 
         if (isSuccess(data) || data.code === 1001 || data.errno === 0) {
           resolve(data)
@@ -47,7 +53,10 @@ const request = (option) => {
         }
       },
       fail: res => {
-        showLoading && wx.hideLoading()
+        if (showLoading) {
+          wx.hideLoading()
+          wx.hideNavigationBarLoading()
+        }
 
         fail(res)
 

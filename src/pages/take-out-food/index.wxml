@@ -25,5 +25,7 @@
       </view>
       <view class="next-page" bindtap="getMore">查看更多</view>
     </view>
+
+    <view style="height:100rpx;;background-color:#fff;"></view>
   </view>
 </component-wrap>

@@ -1,0 +1,74 @@
+@import '../../assets/scss/mixin';
+
+.container {
+  height: 100%;
+  background-color: #fff;
+}
+
+.story {
+  background-color: #fff;
+
+  .module-title {
+    height: 100rpx;
+    margin-top: 20rpx;
+    font-size: 36rpx;
+    line-height: 100rpx;
+    text-align: center;
+    background-color: #fff;
+  }
+
+  .search {
+    padding: 0 20rpx;
+    background-color: #fff;
+
+    .search-control {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      input {
+        flex: 1;
+        height: 60rpx;
+        padding: 0 10rpx;
+        line-height: 60rpx;
+        border-top: 1rpx solid #ddd;
+        border-bottom: 1rpx solid #ddd;
+        border-left: 1rpx solid #ddd;
+      }
+
+      button {
+        width: 100rpx;
+        height: 60rpx;
+        line-height: 60rpx;
+        color: #fff;
+        background-color: #ff397e;
+        border: 1rpx solid #ff397e;
+
+        &.cancel {
+          background-color: #ddd;
+          border: 1rpx solid #ddd;
+        }
+      }
+    }
+
+    .search-hotkeys {
+      padding: 20rpx;
+      background-color: #fff;
+
+      .hotkey {
+        display: inline-block;
+        padding: 20rpx;
+        margin-right: 20rpx;
+        margin-bottom: 20rpx;
+        font-size: 24rpx;
+        border: 1px solid #bbb;
+        border-radius: 20rpx;
+
+        &.first-child {
+          color: #ff397e;
+          border: 1px solid #ff397e;
+        }
+      }
+    }
+  }
+}

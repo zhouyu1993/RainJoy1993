@@ -4,7 +4,7 @@ import { appId, version } from './utils/constants'
 
 // import { App } from './lib/ald/ald-stat'
 let App = require('./lib/ald/ald-stat').App
-App = require('./lib/xiaoshentui/pushsdk.js').pushSdk(App, 'App').App
+// App = require('./lib/xiaoshentui/pushsdk.js').pushSdk(App, 'App').App
 
 // 启动时间
 const startTime = Date.now()

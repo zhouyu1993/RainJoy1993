@@ -3,7 +3,7 @@ import decodeChar from '../../utils/decodeChar'
 
 // import { Page } from '../../lib/ald/ald-stat'
 let Page = require('../../lib/ald/ald-stat').Page
-Page = require('../../lib/xiaoshentui/pushsdk.js').pushSdk(Page).Page
+// Page = require('../../lib/xiaoshentui/pushsdk.js').pushSdk(Page).Page
 
 const app = getApp()
 
@@ -133,10 +133,12 @@ Page({
   async getSongIrc (songmid) {
     const res = await getSongIrc(songmid)
 
-    const songIrc = res.replace(/\[.*?\]/g, '').replace(/&apos;/g, "'")
+    if (typeof res === 'string') {
+      const songIrc = res.replace(/\[.*?\]/g, '').replace(/&apos;/g, "'")
 
-    this.setData({
-      songIrc,
-    })
+      this.setData({
+        songIrc,
+      })
+    }
   }
 })

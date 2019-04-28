@@ -24,6 +24,9 @@
         更多无聊功能持续开发中...
       </view>
     </view>
+
     <component-icon-playing />
+
+    <view style="height:100rpx;;background-color:#fff;"></view>
   </view>
 </component-wrap>

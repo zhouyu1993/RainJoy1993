@@ -14,6 +14,8 @@ const FANYI = 'https://fanyi.baidu.com'
 
 const ELE = 'https://mainsite-restapi.ele.me'
 
+const STORY = 'https://api.17k.com'
+
 export {
   WXDATA,
   CEKID,
@@ -23,6 +25,7 @@ export {
   BZQLL,
   FANYI,
   ELE,
+  STORY,
 }
 
 export default {
@@ -34,4 +37,5 @@ export default {
   BZQLL,
   FANYI,
   ELE,
+  STORY,
 }

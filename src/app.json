@@ -3,11 +3,13 @@
     "pages/index/index",
     "pages/jitaSinger/index",
     "pages/jitaSong/index",
-    "pages/search/index",
     "pages/musicIndex/index",
     "pages/musicTopList/index",
     "pages/musicSong/index",
+    "pages/story/index",
+    "pages/storySearch/index",
     "pages/tool/index",
+    "pages/search/index",
     "pages/take-out-food/index",
     "pages/a/index",
     "pages/b/index",
@@ -40,8 +42,8 @@
         "text": "音乐"
       },
       {
-        "pagePath": "pages/search/index",
-        "text": "搜索"
+        "pagePath": "pages/story/index",
+        "text": "小说"
       },
       {
         "pagePath": "pages/tool/index",

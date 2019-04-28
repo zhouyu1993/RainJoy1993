@@ -25,6 +25,7 @@
       </view>
     </view>
     <view style="height:20rpx;margin-top:20rpx;background-color:#eee;"></view>
+
     <view class="module-title">热门音乐搜索</view>
     <view class="search">
       <input placeholder="请输入歌名或歌手" confirm-type="search" value="{{songValue}}" bindinput="songInput" bindconfirm="songSearch" />
@@ -45,5 +46,7 @@
       </view>
       <view class="more" bindtap="moreSongSearch">查看更多</view>
     </view>
+
+    <view style="height:100rpx;;background-color:#fff;"></view>
   </view>
 </component-wrap>

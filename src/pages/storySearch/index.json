@@ -1,0 +1,11 @@
+{
+  "navigationBarBackgroundColor": "#ff397e",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "小说搜索",
+  "backgroundColor": "#eee",
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": false,
+  "onReachBottomDistance": 50,
+  "disableScroll": false,
+  "usingComponents": {}
+}

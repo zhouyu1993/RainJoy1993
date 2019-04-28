@@ -5,39 +5,125 @@
   background-color: #fff;
 }
 
-.musicHome {
+.topList {
   padding: 20rpx;
   background-color: #fff;
 
-  .topList {
+  .topList-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20rpx;
 
-    .topList-item {
+    .topList-item-image {
+      width: 200rpx;
+      height: 200rpx;
+    }
+
+    .topList-item-rt {
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: space-between;
-      margin-bottom: 20rpx;
+      width: 500rpx;
+      height: 180rpx;
+      font-size: 32rpx;
 
-      .topList-item-image {
-        width: 200rpx;
-        height: 200rpx;
-      }
+      .topList-item-songList {
+        color: #666;
 
-      .topList-item-rt {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 500rpx;
-        height: 180rpx;
-        font-size: 32rpx;
-
-        .topList-item-songList {
-          color: #666;
-
-          view {
-            @include text(1, 40, 26);
-          }
+        view {
+          @include text(1, 40, 26);
         }
       }
+    }
+  }
+}
+
+.module-title {
+  height: 100rpx;
+  margin-top: 20rpx;
+  font-size: 36rpx;
+  line-height: 100rpx;
+  text-align: center;
+  background-color: #fff;
+}
+
+.search {
+  padding: 0 20rpx;
+  background-color: #fff;
+
+  .search-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    input {
+      flex: 1;
+      height: 60rpx;
+      padding: 0 10rpx;
+      line-height: 60rpx;
+      border-top: 1rpx solid #ddd;
+      border-bottom: 1rpx solid #ddd;
+      border-left: 1rpx solid #ddd;
+    }
+
+    button {
+      width: 100rpx;
+      height: 60rpx;
+      line-height: 60rpx;
+      color: #fff;
+      background-color: #ff397e;
+      border: 1rpx solid #ff397e;
+
+      &.cancel {
+        background-color: #ddd;
+        border: 1rpx solid #ddd;
+      }
+    }
+  }
+
+  .search-hotkeys {
+    padding: 20rpx;
+    background-color: #fff;
+
+    .hotkey {
+      display: inline-block;
+      padding: 20rpx;
+      margin-right: 20rpx;
+      margin-bottom: 20rpx;
+      font-size: 24rpx;
+      border: 1px solid #bbb;
+      border-radius: 20rpx;
+
+      &.first-child {
+        color: #ff397e;
+        border: 1px solid #ff397e;
+      }
+    }
+  }
+
+  .search-result {
+    padding: 20rpx;
+    background-color: #fff;
+
+    &-song {
+      .list {
+
+        view {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-top: 20rpx;
+          line-height: 50rpx;
+          border-bottom: 1rpx solid #ddd;
+        }
+      }
+    }
+
+    .more {
+      padding: 20px;
+      color: #ff397e;
+      text-align: center;
     }
   }
 }
