@@ -9,6 +9,7 @@
     "pages/story/index",
     "pages/storySearch/index",
     "pages/storyInfo/index",
+    "pages/storyVolumes/index",
     "pages/tool/index",
     "pages/search/index",
     "pages/take-out-food/index",

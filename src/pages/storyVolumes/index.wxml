@@ -1,0 +1,17 @@
+<component-wrap disabled>
+  <view class="container">
+    <view class="storyVolumes">
+
+    </view>
+
+    <view class="storyAction">
+      <button hover-class="none" bindtap="toStory" class="toStory">返回书城</button>
+      <button hover-class="none" bindtap="removeBookshelf" class="removeBookshelf" wx:if="{{story_like}}">移除书架</button>
+      <button hover-class="none" bindtap="addBookshelf" class="addBookshelf" wx:else>加入书架</button>
+      <button hover-class="none" class="toStoryRead" wx:if="{{story_like}}">阅读</button>
+      <button hover-class="none" open-type="share" class="toShare">分享</button>
+    </view>
+
+    <view style="height:100rpx;;background-color:#fff;"></view>
+  </view>
+</component-wrap>

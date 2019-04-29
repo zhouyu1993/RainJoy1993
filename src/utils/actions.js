@@ -212,6 +212,36 @@ const searchStory = async (key, page = 1) => {
   }
 }
 
+const getStoryInfo = async (id) => {
+  try {
+    const res = await promiseRequest({
+      url: `${STORY}/v2/book/${id}/merge?app_key=2263049103&_versions=973&client_type=998&channel=8&merchant=17KTest&_access_version=2&cps=0&cps_source=0&cps_opid=0&iltc=1&time=${Date.now()}`,
+      showLoading: true,
+      fail: () => {},
+      isSuccess: res => (res.status && res.status.code) === 0,
+    })
+
+    return res
+  } catch (e) {
+    throw e
+  }
+}
+
+const getStoryVolumes = async (id) => {
+  try {
+    const res = await promiseRequest({
+      url: `${STORY}/v2/book/${id}/volumes?app_key=2263049103&_versions=973&client_type=998&channel=8&merchant=17KTest&_access_version=2&cps=0&cps_source=0&cps_opid=0&_fields=id,volumes,chapters,name,vip,book_name`,
+      showLoading: true,
+      fail: () => {},
+      isSuccess: res => (res.status && res.status.code) === 0,
+    })
+
+    return res
+  } catch (e) {
+    throw e
+  }
+}
+
 export {
   getHotKey,
   getJitaHome,
@@ -226,6 +256,8 @@ export {
   langDetect,
   getEleList,
   searchStory,
+  getStoryInfo,
+  getStoryVolumes,
 }
 
 export default {
@@ -242,4 +274,6 @@ export default {
   langDetect,
   getEleList,
   searchStory,
+  getStoryInfo,
+  getStoryVolumes,
 }

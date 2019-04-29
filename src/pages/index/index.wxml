@@ -1,5 +1,15 @@
 <component-wrap disabled>
   <view class="container">
+    <block wx:if="{{jitaHome.slide && jitaHome.slide.length}}">
+      <swiper autoplay class="slide">
+        <block wx:for="{{jitaHome.slide}}" wx:key="{{index}}">
+          <swiper-item>
+            <image src="{{item}}" class="slide-image" />
+          </swiper-item>
+        </block>
+      </swiper>
+    </block>
+
     <view class="module-title">吉他歌谱搜索</view>
     <view class="search">
       <view class="search-control">
@@ -12,7 +22,7 @@
           <view>歌手：</view>
           <view class="list">
             <block wx:for="{{jitaData.singer}}" wx:key="{{index}}">
-              <view data-id="{{item.id}}" bindtap="jitaSinger">{{item.name}}</view>
+              <view data-id="{{item.id}}" bindtap="toJitaSinger">{{item.name}}</view>
             </block>
           </view>
         </view>
@@ -20,7 +30,7 @@
           <view>歌谱：</view>
           <view class="list">
             <block wx:for="{{jitaData.pz}}" wx:key="{{index}}">
-              <view data-id="{{item.id}}" bindtap="jitaSong">
+              <view data-id="{{item.id}}" bindtap="toJitaSong">
                 <text>{{item.name}}-{{item.keyword}}</text><text>{{item.click}}</text>
               </view>
             </block>
@@ -30,22 +40,12 @@
     </view>
     <view style="height:20rpx;margin-top:20rpx;background-color:#eee;"></view>
 
-    <block wx:if="{{jitaHome.slide && jitaHome.slide.length}}">
-      <swiper autoplay class="slide">
-        <block wx:for="{{jitaHome.slide}}" wx:key="{{index}}">
-          <swiper-item>
-            <image src="{{item}}" class="slide-image" />
-          </swiper-item>
-        </block>
-      </swiper>
-    </block>
-
     <block wx:if="{{jitaHome.singer && jitaHome.singer.length}}">
       <view class="module-title">热门歌手</view>
       <view class="singer">
         <block wx:for="{{jitaHome.singer}}" wx:key="{{index}}">
           <view class="singer-item">
-            <image src="{{item.face}}" class="singer-image" data-id="{{item.id}}" bindtap="jitaSinger" />
+            <image src="{{item.face}}" class="singer-image" data-id="{{item.id}}" bindtap="toJitaSinger" />
             <text class="singer-name">{{item.name}}</text>
           </view>
         </block>
@@ -56,7 +56,7 @@
       <view class="module-title">热门歌谱</view>
       <view class="song">
         <block wx:for="{{jitaHome.hot_pz}}" wx:key="{{index}}">
-          <view class="song-item" data-id="{{item.id}}" bindtap="jitaSong">
+          <view class="song-item" data-id="{{item.id}}" bindtap="toJitaSong">
             <text class="singer-name">{{item.name}}</text>
             <text class="singer-click">{{item.click}}</text>
           </view>
@@ -68,7 +68,7 @@
       <view class="module-title">最新歌谱</view>
       <view class="song">
         <block wx:for="{{jitaHome.zj_pz}}" wx:key="{{index}}">
-          <view class="song-item" data-id="{{item.id}}" bindtap="jitaSong">
+          <view class="song-item" data-id="{{item.id}}" bindtap="toJitaSong">
             <text class="singer-name">{{item.name}}</text>
             <text class="singer-click">{{item.click}}</text>
           </view>

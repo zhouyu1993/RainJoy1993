@@ -1,4 +1,5 @@
 import { searchStory } from '../../utils/actions'
+import navigateTo from '../../utils/navigateTo'
 
 // import { Page } from '../../lib/ald/ald-stat'
 let Page = require('../../lib/ald/ald-stat').Page
@@ -18,7 +19,7 @@ Page({
 
     if (value) {
       this.setData({
-        value: value,
+        value,
         page: 1,
       })
 
@@ -67,5 +68,10 @@ Page({
     } catch (e) {
       console.log(e)
     }
+  },
+  storyInfo (event) {
+    const { id } = event.currentTarget.dataset
+
+    navigateTo(`/pages/storyInfo/index?id=${id}`)
   },
 })

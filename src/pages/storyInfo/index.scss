@@ -5,70 +5,131 @@
   background-color: #fff;
 }
 
-.story {
+.storyInfo {
+  padding-top: 20rpx;
   background-color: #fff;
 
-  .module-title {
-    height: 100rpx;
-    margin-top: 20rpx;
-    font-size: 36rpx;
-    line-height: 100rpx;
-    text-align: center;
-    background-color: #fff;
+  .story-image {
+    width: 252rpx;
+    height: 358rpx;
+    margin: 0 auto;
+
+    image {
+      width: 100%;
+      height: 100%;
+    }
   }
 
-  .search {
-    padding: 0 20rpx;
-    background-color: #fff;
+  .story-name {
+    margin-top: 10rpx;
+    font-size: 32rpx;
+    font-weight: bold;
+    text-align: center;
+  }
 
-    .search-control {
+  .story-autor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10rpx;
+    font-size: 28rpx;
+    color: #333;
+    text-align: center;
+
+    image {
+      width: 40rpx;
+      height: 40rpx;
+      margin-right: 10rpx;
+      border-radius: 50%;
+    }
+  }
+
+  .story-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20rpx;
+    margin-top: 10rpx;
+    font-size: 24rpx;
+    color: #fff;
+
+    view {
+      padding: 4rpx 8rpx;
+      background-color: #27ab2f;
+      border-radius: 10rpx;
+    }
+
+    .story-chapter {
+      background-color: #27ab2f;
+    }
+
+    .story-word_count {
+      background-color: #e2d44b;
+    }
+
+    .story-total_click {
+      background-color: #cc7f13;
+    }
+
+    .story-category_name_1 {
+      background-color: #8b13cc;
+    }
+
+    .story-category_name_2 {
+      background-color: #7769ff;
+    }
+  }
+
+  .story-last_update_chapter_name {
+    @include border(topBottom);
+    display: flex;
+    align-items: center;
+    padding: 20rpx;
+    margin-top: 20rpx;
+
+    &-new {
+      margin-right: 20rpx;
+      font-weight: bold;
+    }
+
+    &-content {
       display: flex;
       align-items: center;
+      flex: 1;
       justify-content: space-between;
-
-      input {
-        flex: 1;
-        height: 60rpx;
-        padding: 0 10rpx;
-        line-height: 60rpx;
-        border-top: 1rpx solid #ddd;
-        border-bottom: 1rpx solid #ddd;
-        border-left: 1rpx solid #ddd;
-      }
-
-      button {
-        width: 100rpx;
-        height: 60rpx;
-        line-height: 60rpx;
-        color: #fff;
-        background-color: #ff397e;
-        border: 1rpx solid #ff397e;
-
-        &.cancel {
-          background-color: #ddd;
-          border: 1rpx solid #ddd;
-        }
-      }
     }
+  }
 
-    .search-hotkeys {
-      padding: 20rpx;
-      background-color: #fff;
+  .story-intro {
+    padding: 20rpx;
+    font-size: 24rpx;
+    line-height: 30rpx;
+    color: #666;
+  }
 
-      .hotkey {
-        display: inline-block;
-        padding: 20rpx;
-        margin-right: 20rpx;
-        margin-bottom: 20rpx;
-        font-size: 24rpx;
-        border: 1px solid #bbb;
-        border-radius: 20rpx;
 
-        &.first-child {
-          color: #ff397e;
-          border: 1px solid #ff397e;
-        }
-      }
-    }
+}
+
+.storyAction {
+  position: fixed;
+  bottom: 50rpx;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 60rpx;
+
+  button {
+    padding: 10rpx 20rpx;
+    color: #ff397e;
+    border: 1px solid #ff397e;
+    border-radius: 10rpx;
+  }
+
+  .toShare {
+    padding: 10rpx 40rpx;
+    color: #fff;
+    background-color: #ff397e;
   }
 }

@@ -17,7 +17,7 @@ Page({
     console.log(`Page.onLoad`, options)
   },
   onShow () {
-    this.getData()
+    this.getJitaHomeAsync()
   },
   onShareAppMessage (options) {
     return {
@@ -36,6 +36,27 @@ Page({
         })
       },
     }
+  },
+  async getJitaHomeAsync () {
+    const res = await getJitaHome()
+
+    const data = res.data || {}
+
+    data.singer.unshift({
+      face: 'http://pu.jitami.96sn.com/singer/20150205165852_7345.jpg',
+      id: 10,
+      name: '林俊杰',
+    })
+
+    data.singer.unshift({
+      face: 'http://pu.jitami.96sn.com/singer/20150302100911_6698.jpg',
+      id: 118,
+      name: '曾轶可',
+    })
+
+    this.setData({
+      jitaHome: data,
+    })
   },
   gepuInput (event) {
     const { value } = event.detail
@@ -71,33 +92,12 @@ Page({
       jitaData: {},
     })
   },
-  async getData () {
-    const res = await getJitaHome()
-
-    const data = res.data || {}
-
-    data.singer.unshift({
-      face: 'http://pu.jitami.96sn.com/singer/20150205165852_7345.jpg',
-      id: 10,
-      name: '林俊杰',
-    })
-
-    data.singer.unshift({
-      face: 'http://pu.jitami.96sn.com/singer/20150302100911_6698.jpg',
-      id: 118,
-      name: '曾轶可',
-    })
-
-    this.setData({
-      jitaHome: data,
-    })
-  },
-  jitaSinger (event) {
+  toJitaSinger (event) {
     const { id } = event.currentTarget.dataset
 
     navigateTo(`/pages/jitaSinger/index?id=${id}`)
   },
-  jitaSong (event) {
+  toJitaSong (event) {
     const { id } = event.currentTarget.dataset
 
     navigateTo(`/pages/jitaSong/index?id=${id}`)

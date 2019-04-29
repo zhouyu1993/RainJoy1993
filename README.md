@@ -253,11 +253,9 @@ http://pu.jitami.96sn.com/20150205172013_8179.gif
 
 https://api.17k.com/v2/book/boutique/bookstore?app_key=2263049103&_versions=973&client_type=998&channel=8&merchant=17KTest&_access_version=2&cps=0&cps_source=0&cps_opid=0&type=1&client=17K
 
-医生，搜索
+key=医生，page=1，搜索
 
 https://api.17k.com/v2/book/search?app_key=2263049103&_versions=973&client_type=998&channel=8&merchant=17KTest&_access_version=2&cps=0&cps_source=0&cps_opid=0&key=医生&page=1&num=24&_fields=cover,author_name,book_name,book_id,total_num,total_page,cur_page,intro,category_name_2,book_status,word_count,total_chapter,keyword
-
-https://api.17k.com/v2/book/search?app_key=2263049103&_versions=973&client_type=998&channel=8&merchant=17KTest&_access_version=2&cps=0&cps_source=0&cps_opid=0&key=医生&page=2&num=24&_fields=cover,author_name,book_name,book_id,total_num,total_page,cur_page,intro,category_name_2,book_status,word_count,total_chapter,keyword
 
 342881，简介
 

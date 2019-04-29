@@ -45,6 +45,7 @@ const navigateTo = option => {
       }, 300)
     },
     fail: res => {
+      console.log(res)
       if (reLaunchUrl) {
         wx.reLaunch({
           url: reLaunchUrl,

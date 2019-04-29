@@ -1,17 +1,39 @@
 <component-wrap disabled>
   <view class="container">
-    <view class="story">
-      <view class="module-title">热门小说搜索</view>
-      <view class="search">
-        <view class="search-control">
-          <input placeholder="请输入小说或作者" confirm-type="search" value="{{storyValue}}" bindinput="storyInput" bindconfirm="storySearch" />
-          <button bindtap="storySearchCancel" class="cancel">取消</button>
-          <button bindtap="storySearch">搜索</button>
+    <view class="storyInfo">
+      <view class="story-image">
+        <image src="{{story_info.cover}}"></image>
+      </view>
+      <view class="story-name">{{story_info.book_name}}</view>
+      <view class="story-autor">
+        <text>作者：</text>
+        <image src="{{author_info.avatar}}"></image>
+        <text>{{story_info.author_name}}</text>
+      </view>
+      <view class="story-info">
+        <view class="story-chapter"><block wx:if="{{story_info.book_status === '03'}}">已完结</block><block wx:else>更新至</block>{{story_info.chapter_total}}章
         </view>
-        <view class="search-hotkeys">
-          <text wx:for="{{hotkeys}}" wx:key="{{key}}" data-value="{{item}}" class="hotkey {{index == 0 ? 'first-child' : ''}}" bindtap="keywordStorySearch">{{item}}</text>
+        <view class="story-word_count">{{story_info.word_count}}百万字</view>
+        <view class="story-total_click">{{story_info.total_click}}千万点击</view>
+        <view class="story-category_name_1">{{story_info.category_name_1}}</view>
+        <view class="story-category_name_2">{{story_info.category_name_2}}</view>
+      </view>
+      <view class="story-last_update_chapter_name">
+        <view class="story-last_update_chapter_name-new">最新</view>
+        <view data-id="{{story_info.last_update_chapter_id}}" class="story-last_update_chapter_name-content">
+          <text>{{story_info.last_update_chapter_name}}</text>
+          <text>{{story_info.updated_at}}  ></text>
         </view>
       </view>
+      <view class="story-intro">{{story_info.intro}}</view>
+    </view>
+
+    <view class="storyAction">
+      <button hover-class="none" bindtap="toStory" class="toStory">返回书城</button>
+      <button hover-class="none" bindtap="removeBookshelf" class="removeBookshelf" wx:if="{{story_like}}">移除书架</button>
+      <button hover-class="none" bindtap="addBookshelf" class="addBookshelf" wx:else>加入书架</button>
+      <button hover-class="none" bindtap="toStoryVolumes" class="toStoryVolumes" wx:if="{{story_like}}">阅读</button>
+      <button hover-class="none" open-type="share" class="toShare">分享</button>
     </view>
 
     <view style="height:100rpx;;background-color:#fff;"></view>
