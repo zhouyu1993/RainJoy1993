@@ -21,7 +21,7 @@ Page({
     })
   },
   onShow () {
-    this.getData()
+    this.getJitaSingerAsync()
   },
   onShareAppMessage (options) {
     let title = '吉他曲谱免费放送'
@@ -47,7 +47,7 @@ Page({
       },
     }
   },
-  async getData () {
+  async getJitaSingerAsync () {
     const id = this.data.id
     if (!id) return
 
@@ -65,7 +65,7 @@ Page({
       })
     }
   },
-  jitaSong (event) {
+  toJitaSong (event) {
     const { id } = event.currentTarget.dataset
 
     navigateTo(`/pages/jitaSong/index?id=${id}`)

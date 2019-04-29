@@ -21,7 +21,7 @@ Page({
     })
   },
   onShow () {
-    this.getData()
+    this.getJitaSongAsync()
   },
   onShareAppMessage (options) {
     let title = '吉他'
@@ -47,7 +47,7 @@ Page({
       },
     }
   },
-  async getData () {
+  async getJitaSongAsync () {
     const id = this.data.id
     if (!id) return
 
@@ -65,7 +65,7 @@ Page({
       })
     }
   },
-  jitaSinger (event) {
+  toJitaSinger (event) {
     const { id } = event.currentTarget.dataset
 
     navigateTo(`/pages/jitaSinger/index?id=${id}`)
