@@ -19,9 +19,7 @@ Page({
       console.log(e)
     }
 
-    console.log(bookshelf)
-
-    if (bookshelf) {
+    if (bookshelf.length) {
       this.setData({
         bookshelf,
       })

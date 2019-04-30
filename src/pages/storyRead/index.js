@@ -5,6 +5,8 @@ import navigateTo from '../../utils/navigateTo'
 let Page = require('../../lib/ald/ald-stat').Page
 // Page = require('../../lib/xiaoshentui/pushsdk.js').pushSdk(Page).Page
 
+const app = getApp()
+
 Page({
   data: {
     id: '',
@@ -81,6 +83,11 @@ Page({
       } catch (e) {
         console.log(e)
       }
+
+      app.aldstat.sendEvent('阅读小说', {
+        '书名': data.book_name,
+        '章节名': data.name,
+      })
     } catch (e) {
       console.log(e)
     }

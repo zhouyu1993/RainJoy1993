@@ -73,7 +73,7 @@ Page({
         bookshelf = wx.getStorageSync('bookshelf') || []
 
         const book = bookshelf.find(item => +item.id === +this.data.id)
-        if (book) {
+        if (book && book.last_read_chapter_id) {
           this.setData({
             last_read_chapter_id: book.last_read_chapter_id,
           })

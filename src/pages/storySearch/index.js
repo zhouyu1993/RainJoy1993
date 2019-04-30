@@ -5,6 +5,8 @@ import navigateTo from '../../utils/navigateTo'
 let Page = require('../../lib/ald/ald-stat').Page
 // Page = require('../../lib/xiaoshentui/pushsdk.js').pushSdk(Page).Page
 
+const app = getApp()
+
 Page({
   data: {
     value: '',
@@ -65,6 +67,10 @@ Page({
           icon: 'none',
         })
       }
+
+      app.aldstat.sendEvent('搜索小说', {
+        '关键词': this.data.value,
+      })
     } catch (e) {
       console.log(e)
     }

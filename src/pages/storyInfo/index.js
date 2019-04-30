@@ -7,6 +7,8 @@ import navigateTo from '../../utils/navigateTo'
 let Page = require('../../lib/ald/ald-stat').Page
 // Page = require('../../lib/xiaoshentui/pushsdk.js').pushSdk(Page).Page
 
+const app = getApp()
+
 Page({
   data: {
     id: '',
@@ -100,6 +102,11 @@ Page({
       }
     } catch (e) {
       console.log(e)
+
+      wx.showToast({
+        title: (e.status && e.status.msg) || '图书不存在',
+        icon: 'none',
+      })
     }
   },
   toStory () {
@@ -133,6 +140,10 @@ Page({
     } catch (e) {
       console.log(e)
     }
+
+    app.aldstat.sendEvent('加入书架', {
+      'book_id': this.data.id,
+    })
   },
   removeBookshelf () {
     let bookshelf = []
@@ -149,6 +160,10 @@ Page({
     } catch (e) {
       console.log(e)
     }
+
+    app.aldstat.sendEvent('移除书架', {
+      'book_id': this.data.id,
+    })
   },
   toStoryVolumes () {
     navigateTo(`/pages/storyVolumes/index?id=${this.data.id}`)

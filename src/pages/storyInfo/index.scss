@@ -157,7 +157,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 0 60rpx;
+  padding: 0 30rpx;
 
   button {
     padding: 10rpx 20rpx;
@@ -167,7 +167,7 @@
     border-radius: 10rpx;
   }
 
-  .toShare {
+  .toStoryVolumes, .toShare {
     padding: 10rpx 40rpx;
     color: #fff;
     background-color: #ff397e;
