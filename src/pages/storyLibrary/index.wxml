@@ -6,7 +6,7 @@
         <block wx:for="{{bookshelf}}" wx:key="{{index}}">
           <view class="books-item" data-id="{{item.id}}" bindtap="toStoryInfo">
             <view class="books-item-left">
-              <image src="{{item.cover}}" class="book-iamge"></image>
+              <image lazy-load src="{{item.cover}}" class="book-iamge"></image>
             </view>
             <view class="books-item-right">
               <view class="book-name">{{item.book_name}}</view>

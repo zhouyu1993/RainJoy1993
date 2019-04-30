@@ -1,7 +1,7 @@
 <component-wrap disabled>
   <view class="container">
     <view class="singer-image" wx:if="{{jitaSinger.singer_face}}">
-      <image src="{{jitaSinger.singer_face}}" />
+      <image lazy-load src="{{jitaSinger.singer_face}}" />
     </view>
     <view class="song" wx:if="{{jitaSinger.list && jitaSinger.list.length}}">
       <block wx:for="{{jitaSinger.list}}" wx:key="{{index}}">

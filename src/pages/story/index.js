@@ -13,7 +13,8 @@ Page({
       '医生',
       '教师',
       '保镖',
-      '官场'
+      '官场',
+      '柳下挥'
     ],
     storyValue: ''
   },
@@ -50,7 +51,6 @@ Page({
       const { data = [], } = res
 
       const _data = data.filter(item => item.type !== 2)
-
       const __data = _data.filter(item => item.type === 1) || []
 
       this.setData({
@@ -60,6 +60,11 @@ Page({
     } catch (e) {
       console.log(e)
     }
+  },
+  toStoryInfo (event) {
+    const { id } = event.currentTarget.dataset
+
+    navigateTo(`/pages/storyInfo/index?id=${id}`)
   },
   storyInput (event) {
     const { value } = event.detail
@@ -90,5 +95,8 @@ Page({
     this.setData({
       storyValue: '',
     })
+  },
+  toStoryLibrary () {
+    navigateTo(`/pages/storyLibrary/index`)
   },
 })

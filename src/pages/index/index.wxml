@@ -4,7 +4,7 @@
       <swiper autoplay class="slide">
         <block wx:for="{{jitaHome.slide}}" wx:key="{{index}}">
           <swiper-item>
-            <image src="{{item}}" class="slide-image" />
+            <image lazy-load src="{{item}}" class="slide-image" />
           </swiper-item>
         </block>
       </swiper>
@@ -45,7 +45,7 @@
       <view class="singer">
         <block wx:for="{{jitaHome.singer}}" wx:key="{{index}}">
           <view class="singer-item">
-            <image src="{{item.face}}" class="singer-image" data-id="{{item.id}}" bindtap="toJitaSinger" />
+            <image lazy-load src="{{item.face}}" class="singer-image" data-id="{{item.id}}" bindtap="toJitaSinger" />
             <text class="singer-name">{{item.name}}</text>
           </view>
         </block>

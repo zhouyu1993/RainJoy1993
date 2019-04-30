@@ -53,6 +53,7 @@ wx8d1d9b1abb35ca02
 
 # request 合法域名
 
+https://api.17k.com
 https://api.bzqll.com
 https://c.y.qq.com
 https://fanyi-api.baidu.com
@@ -63,7 +64,6 @@ https://log.aldwx.com
 https://mainsite-restapi.ele.me
 https://openapi.xiaoshentui.com
 https://plog.xiaoshentui.com
-https://u.y.qq.com
 
 # socket合法域名
 

@@ -9,6 +9,7 @@ Page({
   data: {
     id: '',
     story_info: {},
+    last_read_chapter_id: '',
   },
   onLoad (options) {
     console.log(`Page.onLoad`, options)
@@ -65,6 +66,20 @@ Page({
         wx.setNavigationBarTitle({
           title: data.book_name
         })
+      }
+
+      let bookshelf = []
+      try {
+        bookshelf = wx.getStorageSync('bookshelf') || []
+
+        const book = bookshelf.find(item => +item.id === +this.data.id)
+        if (book) {
+          this.setData({
+            last_read_chapter_id: book.last_read_chapter_id,
+          })
+        }
+      } catch (e) {
+        console.log(e)
       }
     } catch (e) {
       console.log(e)

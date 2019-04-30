@@ -116,7 +116,7 @@ Page({
         const story_info = this.data.story_info
 
         bookshelf.push({
-          id: +story_info.id,
+          id: story_info.id,
           book_name: story_info.book_name,
           author_name: story_info.author_name,
           cover: story_info.cover,
@@ -139,7 +139,7 @@ Page({
     try {
       bookshelf = wx.getStorageSync('bookshelf') || []
 
-      bookshelf = bookshelf.filter(item => item.id !== this.data.id)
+      bookshelf = bookshelf.filter(item => +item.id !== +this.data.id)
 
       this.setData({
         story_like: false,
@@ -162,5 +162,15 @@ Page({
     const { id } = event.currentTarget.dataset
 
     navigateTo(`/pages/storyInfo/index?id=${id}`)
+  },
+  imageError (event) {
+    console.log(event)
+
+    this.setData({
+      story_info: {
+        ...this.data.story_info,
+        cover: 'https://wx2.sinaimg.cn/large/78ed3187ly1g2kri13rerj20bm0bmn5q.jpg'
+      },
+    })
   },
 })

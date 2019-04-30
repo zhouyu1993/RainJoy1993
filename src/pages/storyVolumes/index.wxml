@@ -10,8 +10,9 @@
     </view>
 
     <view class="storyAction">
-      <button hover-class="none" bindtap="toStory" class="toStory">返回书城</button>
+      <button hover-class="none" bindtap="toStory" class="toStory">书城</button>
       <button hover-class="none" bindtap="toStoryLibrary" class="toStoryLibrary">前往书架</button>
+      <button hover-class="none" data-cid="{{last_read_chapter_id}}" bindtap="toStoryRead" class="toStoryRead" wx:if="{{last_read_chapter_id}}">继续阅读</button>
       <button hover-class="none" open-type="share" class="toShare">分享</button>
     </view>
 

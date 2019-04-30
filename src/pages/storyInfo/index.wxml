@@ -1,13 +1,13 @@
 <component-wrap disabled>
   <view class="container">
     <view class="storyInfo">
-      <view class="story-image">
-        <image src="{{story_info.cover}}"></image>
+      <view bindtap="toStoryVolumes" class="story-image">
+        <image lazy-load src="{{story_info.cover}}" binderror="imageError"></image>
       </view>
       <view class="story-name">{{story_info.book_name}}</view>
       <view class="story-autor">
         <text>作者：</text>
-        <image src="{{author_info.avatar}}"></image>
+        <image lazy-load src="{{author_info.avatar}}"></image>
         <text>{{story_info.author_name}}</text>
       </view>
       <view class="story-info">
@@ -32,7 +32,7 @@
         <view class="books-list">
           <block wx:for="{{author_book}}" wx:key="{{index}}">
             <view class="books-item" data-id="{{item.book_id}}" bindtap="toStoryInfo">
-              <image src="{{item.cover}}" class="book-iamge"></image>
+              <image lazy-load src="{{item.cover}}" class="book-iamge"></image>
               <view class="book-name">{{item.book_name}}</view>
               <view class="book-autor">{{item.author_name}}/著</view>
             </view>
@@ -44,7 +44,7 @@
         <view class="books-list">
           <block wx:for="{{recommend}}" wx:key="{{index}}">
             <view class="books-item" data-id="{{item.book_id}}" bindtap="toStoryInfo">
-              <image src="{{item.cover}}" class="book-iamge"></image>
+              <image lazy-load src="{{item.cover}}" class="book-iamge"></image>
               <view class="book-name">{{item.book_name}}</view>
               <view class="book-autor">{{item.author_name}}/著</view>
             </view>
@@ -54,7 +54,7 @@
     </view>
 
     <view class="storyAction">
-      <button hover-class="none" bindtap="toStory" class="toStory">返回书城</button>
+      <button hover-class="none" bindtap="toStory" class="toStory">书城</button>
       <button hover-class="none" bindtap="removeBookshelf" class="removeBookshelf" wx:if="{{story_like}}">移除书架</button>
       <button hover-class="none" bindtap="addBookshelf" class="addBookshelf" wx:else>加入书架</button>
       <button hover-class="none" bindtap="toStoryVolumes" class="toStoryVolumes" wx:if="{{story_like}}">阅读</button>

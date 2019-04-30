@@ -29,7 +29,7 @@
       </block>
       <block wx:if="{{userInfo.nickName}}">
         <view class="userInfo">
-          <view class="avatar"><image src="{{userInfo.avatarUrl}}" /></view>
+          <view class="avatar"><image lazy-load src="{{userInfo.avatarUrl}}" /></view>
           <view class="nickName">名字:<text>{{userInfo.nickName}}</text></view>
           <view class="gender">性别:<text wx:if="{{userInfo.gender == 1}}">男</text><text wx:elif="{{userInfo.gender == 2}}">女</text><text wx:else>人妖</text></view>
           <view class="location">位置:<text>{{userInfo.country}} {{userInfo.province}} {{userInfo.city}}</text></view>

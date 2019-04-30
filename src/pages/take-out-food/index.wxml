@@ -4,7 +4,7 @@
       <view class="food-list">
         <block wx:for="{{list}}" wx:key="{{index}}">
           <view class="food-list-item">
-            <image src="{{item.image_url}}" class="food-image"></image>
+            <image lazy-load src="{{item.image_url}}" class="food-image"></image>
             <view class="food-desc">
               <view class="name">{{item.name}}-{{item.address}}-{{item.distance}}米</view>
               <view class="minimum_order">{{item.float_minimum_order_amount}}元起送，配送费{{item.float_delivery_fee}}元</view>

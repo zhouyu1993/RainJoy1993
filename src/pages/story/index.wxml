@@ -4,8 +4,8 @@
       <block wx:if="{{slide.length}}">
         <swiper autoplay class="slide">
           <block wx:for="{{slide}}" wx:key="{{index}}">
-            <swiper-item>
-              <image src="{{item.cover}}" class="slide-image" />
+            <swiper-item data-id="{{item.book_id}}" bindtap="toStoryInfo">
+              <image lazy-load src="{{item.cover}}" class="slide-image" />
             </swiper-item>
           </block>
         </swiper>
@@ -22,6 +22,26 @@
           <text wx:for="{{hotkeys}}" wx:key="{{index}}" data-value="{{item}}" class="hotkey {{index == 0 ? 'first-child' : ''}}" bindtap="keywordStorySearch">{{item}}</text>
         </view>
       </view>
+
+      <block wx:for="{{books}}" wx:key="{{index}}">
+        <block wx:if="{{item.lists.length}}">
+          <view class="module-title">{{item.name}}</view>
+          <view class="books-list">
+            <block wx:for="{{item.lists}}" wx:key="{{index}}">
+              <view class="books-item" data-id="{{item.book_id}}" bindtap="toStoryInfo">
+                <image lazy-load src="{{item.cover}}" class="book-iamge"></image>
+                <view class="book-name">{{item.book_name}}</view>
+                <view class="book-autor">{{item.author_name}}/著</view>
+              </view>
+            </block>
+          </view>
+        </block>
+      </block>
+    </view>
+
+    <view class="storyAction">
+      <button hover-class="none" bindtap="toStoryLibrary" class="toStoryLibrary">前往书架</button>
+      <button hover-class="none" open-type="share" class="toShare">分享免费</button>
     </view>
 
     <view style="height:100rpx;;background-color:#fff;"></view>

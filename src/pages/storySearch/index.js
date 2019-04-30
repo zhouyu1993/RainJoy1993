@@ -74,4 +74,14 @@ Page({
 
     navigateTo(`/pages/storyInfo/index?id=${id}`)
   },
+  imageError (event) {
+    const { index } = event.currentTarget.dataset
+
+    const storyList = this.data.storyList
+    storyList[index].cover = 'https://wx2.sinaimg.cn/large/78ed3187ly1g2kri13rerj20bm0bmn5q.jpg'
+
+    this.setData({
+      storyList,
+    })
+  },
 })

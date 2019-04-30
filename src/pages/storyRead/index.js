@@ -66,6 +66,21 @@ Page({
           title: data.book_name
         })
       }
+
+      let bookshelf = []
+      try {
+        bookshelf = wx.getStorageSync('bookshelf') || []
+
+        bookshelf.forEach(item => {
+          if (+item.id === +this.data.id) {
+            item.last_read_chapter_id = data.id
+          }
+        })
+
+        wx.setStorageSync('bookshelf', bookshelf)
+      } catch (e) {
+        console.log(e)
+      }
     } catch (e) {
       console.log(e)
     }
