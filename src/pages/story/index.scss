@@ -8,6 +8,17 @@
 .story {
   background-color: #fff;
 
+  .slide {
+    height: 400rpx;
+    margin-top: 20rpx;
+    background-color: #fff;
+
+    .slide-image {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
   .module-title {
     height: 100rpx;
     margin-top: 20rpx;

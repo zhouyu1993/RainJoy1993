@@ -10,6 +10,8 @@
     "pages/storySearch/index",
     "pages/storyInfo/index",
     "pages/storyVolumes/index",
+    "pages/storyRead/index",
+    "pages/storyLibrary/index",
     "pages/tool/index",
     "pages/search/index",
     "pages/take-out-food/index",

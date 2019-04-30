@@ -1,0 +1,18 @@
+<component-wrap disabled>
+  <view class="container">
+    <scroll-view scroll-y class="storyRead">
+      <block wx:if="{{story_info.name}}">
+        <view class="chapter-header">{{story_info.name}}</view>
+        <view class="chapter-info">{{story_info.updated_at}} 更新{{story_info.word_count}}字</view>
+        <text class="chapter-content">{{story_info.content}}</text>
+
+        <view class="storyAction">
+          <button wx:if="{{story_info.pre_id}}" hover-class="none" data-cid="{{story_info.pre_id}}" bindtap="toStoryRead" class="toPre">上一章</button>
+          <button hover-class="none" bindtap="toStoryVolumes" class="toStoryVolumes">目录</button>
+          <button wx:if="{{story_info.next_id}}" hover-class="none" data-cid="{{story_info.next_id}}" bindtap="toStoryRead" class="toNext">下一章</button>
+          <button hover-class="none" open-type="share" class="toShare">分享</button>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</component-wrap>

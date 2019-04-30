@@ -33,7 +33,7 @@
       <button bindtap="songSearch">搜索</button>
     </view>
     <view class="hotkeys" wx:if="{{!songData.length}}">
-      <text wx:for="{{hotkeys}}" wx:key="{{key}}" data-value="{{item.k}}" class="hotkey {{index == 0 ? 'first-child' : ''}}" bindtap="keywordSongSearch">{{item.k}}</text>
+      <text wx:for="{{hotkeys}}" wx:key="{{index}}" data-value="{{item.k}}" class="hotkey {{index == 0 ? 'first-child' : ''}}" bindtap="keywordSongSearch">{{item.k}}</text>
     </view>
     <view class="song" wx:if="{{songData.length}}">
       <view>歌曲：</view>

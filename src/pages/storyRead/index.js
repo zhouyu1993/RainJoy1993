@@ -1,4 +1,4 @@
-import { getStoryVolumes } from '../../utils/actions'
+import { getStoryChapter } from '../../utils/actions'
 import navigateTo from '../../utils/navigateTo'
 
 // import { Page } from '../../lib/ald/ald-stat'
@@ -8,33 +8,35 @@ let Page = require('../../lib/ald/ald-stat').Page
 Page({
   data: {
     id: '',
+    cid: '',
     story_info: {},
   },
   onLoad (options) {
     console.log(`Page.onLoad`, options)
 
-    const { id } = options
+    const { id, cid } = options
 
-    if (id) {
+    if (id && cid) {
       this.setData({
         id,
+        cid,
       })
 
-      this.getStoryVolumesAsync()
+      this.getStoryChapterAsync()
     }
   },
   onShow () {
 
   },
   onShareAppMessage (options) {
-    let title = '小说目录'
+    let title = '小说阅读'
     if (this.data.story_info && this.data.story_info.book_name) {
       title = `《${this.data.story_info.book_name}》精彩极了！`
     }
 
     return {
       title,
-      path: `/pages/storyVolumes/index?id=${this.data.id}`,
+      path: `/pages/storyRead/index?id=${this.data.id}&cid=${this.data.cid}`,
       success: res => {
         wx.showToast({
           title: '分享成功',
@@ -49,13 +51,11 @@ Page({
       },
     }
   },
-  async getStoryVolumesAsync () {
+  async getStoryChapterAsync () {
     try {
-      const res = await getStoryVolumes(this.data.id)
+      const res = await getStoryChapter(this.data.id, this.data.cid)
 
       const { data, } = res
-
-      console.log(data)
 
       this.setData({
         story_info: data,
@@ -70,17 +70,14 @@ Page({
       console.log(e)
     }
   },
-  toStory () {
-    wx.switchTab({
-      url: `/pages/story/index`,
-    })
-  },
-  toStoryLibrary () {
-    navigateTo(`/pages/storyLibrary/index`)
+  toStoryVolumes () {
+    navigateTo(`/pages/storyVolumes/index?id=${this.data.id}`)
   },
   toStoryRead (event) {
     const { cid, } = event.currentTarget.dataset
 
-    navigateTo(`/pages/storyRead/index?id=${this.data.id}&cid=${cid}`)
+    wx.redirectTo({
+      url: `/pages/storyRead/index?id=${this.data.id}&cid=${cid}`
+    })
   },
 })

@@ -16,12 +16,16 @@ Page({
 
     const { id, } = options
 
-    this.setData({
-      id,
-    })
+    if (id) {
+      this.setData({
+        id,
+      })
+
+      this.getJitaSongAsync()
+    }
   },
   onShow () {
-    this.getJitaSongAsync()
+
   },
   onShareAppMessage (options) {
     let title = '吉他'

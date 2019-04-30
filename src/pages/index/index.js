@@ -15,9 +15,11 @@ Page({
   },
   onLoad (options) {
     console.log(`Page.onLoad`, options)
+
+    this.getJitaHomeAsync()
   },
   onShow () {
-    this.getJitaHomeAsync()
+
   },
   onShareAppMessage (options) {
     return {

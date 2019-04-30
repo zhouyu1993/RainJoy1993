@@ -5,7 +5,7 @@
 
       <view class="story-list" wx:if="{{storyList.length}}">
         <block wx:for="{{storyList}}" wx:key="{{index}}">
-          <view data-id="{{item.book_id}}" bindtap="storyInfo" class="story-list-item">
+          <view data-id="{{item.book_id}}" bindtap="toStoryInfo" class="story-list-item">
             <view class="story-left">
               <image src="{{item.cover}}" class="story-image"></image>
             </view>

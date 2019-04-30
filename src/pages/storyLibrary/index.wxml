@@ -1,0 +1,21 @@
+<component-wrap disabled>
+  <view class="container">
+    <view class="storyLibrary">
+      <view class="books-num">共收藏{{bookshelf.length}}本好书</view>
+      <view class="books-list">
+        <block wx:for="{{bookshelf}}" wx:key="{{index}}">
+          <view class="books-item" data-id="{{item.id}}" bindtap="toStoryInfo">
+            <view class="books-item-left">
+              <image src="{{item.cover}}" class="book-iamge"></image>
+            </view>
+            <view class="books-item-right">
+              <view class="book-name">{{item.book_name}}</view>
+              <view class="book-autor">{{item.author_name}}/著</view>
+              <view class="book-last_update_chapter" data-id="{{item.id}}" data-cid="{{item.last_update_chapter_id}}" bindtap="toStoryRead">最新：{{item.last_update_chapter_name}}</view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</component-wrap>

@@ -1,7 +1,7 @@
 {
   "navigationBarBackgroundColor": "#ff397e",
   "navigationBarTextStyle": "white",
-  "navigationBarTitleText": "小说搜索",
+  "navigationBarTitleText": "小说书架",
   "backgroundColor": "#eee",
   "backgroundTextStyle": "dark",
   "enablePullDownRefresh": false,

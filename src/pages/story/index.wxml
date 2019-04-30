@@ -1,6 +1,16 @@
 <component-wrap disabled>
   <view class="container">
     <view class="story">
+      <block wx:if="{{slide.length}}">
+        <swiper autoplay class="slide">
+          <block wx:for="{{slide}}" wx:key="{{index}}">
+            <swiper-item>
+              <image src="{{item.cover}}" class="slide-image" />
+            </swiper-item>
+          </block>
+        </swiper>
+      </block>
+
       <view class="module-title">热门小说搜索</view>
       <view class="search">
         <view class="search-control">
@@ -9,7 +19,7 @@
           <button bindtap="storySearch">搜索</button>
         </view>
         <view class="search-hotkeys">
-          <text wx:for="{{hotkeys}}" wx:key="{{key}}" data-value="{{item}}" class="hotkey {{index == 0 ? 'first-child' : ''}}" bindtap="keywordStorySearch">{{item}}</text>
+          <text wx:for="{{hotkeys}}" wx:key="{{index}}" data-value="{{item}}" class="hotkey {{index == 0 ? 'first-child' : ''}}" bindtap="keywordStorySearch">{{item}}</text>
         </view>
       </view>
     </view>

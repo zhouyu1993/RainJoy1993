@@ -69,7 +69,7 @@ Page({
       console.log(e)
     }
   },
-  storyInfo (event) {
+  toStoryInfo (event) {
     const { id } = event.currentTarget.dataset
 
     navigateTo(`/pages/storyInfo/index?id=${id}`)

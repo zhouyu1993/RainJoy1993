@@ -1,4 +1,4 @@
-
+import { getStoryHome } from '../../utils/actions'
 import navigateTo from '../../utils/navigateTo'
 
 // import { Page } from '../../lib/ald/ald-stat'
@@ -7,6 +7,8 @@ let Page = require('../../lib/ald/ald-stat').Page
 
 Page({
   data: {
+    slide: [],
+    books: [],
     hotkeys: [
       '医生',
       '教师',
@@ -17,6 +19,8 @@ Page({
   },
   onLoad (options) {
     console.log(`Page.onLoad`, options)
+
+    this.getStoryHomeAsync()
   },
   onShow () {
 
@@ -37,6 +41,24 @@ Page({
           icon: 'none',
         })
       },
+    }
+  },
+  async getStoryHomeAsync () {
+    try {
+      const res = await getStoryHome()
+
+      const { data = [], } = res
+
+      const _data = data.filter(item => item.type !== 2)
+
+      const __data = _data.filter(item => item.type === 1) || []
+
+      this.setData({
+        slide: (__data[0] && __data[0].lists) || [],
+        books: _data.filter(item => item.type !== 1),
+      })
+    } catch (e) {
+      console.log(e)
     }
   },
   storyInput (event) {

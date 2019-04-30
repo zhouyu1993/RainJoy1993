@@ -1,3 +1,5 @@
+import md5 from 'crypto-js/md5'
+
 import { CYQQ, JITA, GITLAB, BZQLL, FANYI, ELE, STORY } from './api'
 import promiseRequest from './promiseRequest'
 
@@ -197,6 +199,21 @@ const getEleList = async (lat, long, offset) => {
   return res
 }
 
+const getStoryHome = async () => {
+  try {
+    const res = await promiseRequest({
+      url: `${STORY}/v2/book/boutique/bookstore?app_key=2263049103&_versions=973&client_type=998&channel=8&merchant=17KTest&_access_version=2&cps=0&cps_source=0&cps_opid=0&type=1&client=17K`,
+      showLoading: true,
+      fail: () => {},
+      isSuccess: res => (res.status && res.status.code) === 0,
+    })
+
+    return res
+  } catch (e) {
+    throw e
+  }
+}
+
 const searchStory = async (key, page = 1) => {
   try {
     const res = await promiseRequest({
@@ -242,6 +259,30 @@ const getStoryVolumes = async (id) => {
   }
 }
 
+const getStoryChapter = async (id, cid) => {
+  try {
+    // http://h5.17k.com/chapter/1724165/23651706.html
+    const api = {
+      url: `/v2/book/weixin/${id}/chapter/${cid}/content`,
+      appkey: '2263049103',
+      signature: 0,
+      secret: '246b6c1cbe1cb75a56262725cc34e4fe',
+    }
+    const sign = md5(api.url + '&' + api.appkey + '&' + '{}' + '&' + api.signature + '&' + api.secret)
+
+    const res = await promiseRequest({
+      url: `${STORY}/v2/book/weixin/${id}/chapter/${cid}/content?name=0&app_key=2263049103&data={}&sign=${sign}`,
+      showLoading: true,
+      fail: () => {},
+      isSuccess: res => (res.status && res.status.code) === 0,
+    })
+
+    return res
+  } catch (e) {
+    throw e
+  }
+}
+
 export {
   getHotKey,
   getJitaHome,
@@ -255,9 +296,11 @@ export {
   getSongIrc,
   langDetect,
   getEleList,
+  getStoryHome,
   searchStory,
   getStoryInfo,
   getStoryVolumes,
+  getStoryChapter,
 }
 
 export default {
@@ -273,7 +316,9 @@ export default {
   getSongIrc,
   langDetect,
   getEleList,
+  getStoryHome,
   searchStory,
   getStoryInfo,
   getStoryVolumes,
+  getStoryChapter,
 }

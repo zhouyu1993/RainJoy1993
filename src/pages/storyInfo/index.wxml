@@ -18,14 +18,39 @@
         <view class="story-category_name_1">{{story_info.category_name_1}}</view>
         <view class="story-category_name_2">{{story_info.category_name_2}}</view>
       </view>
-      <view class="story-last_update_chapter_name">
-        <view class="story-last_update_chapter_name-new">最新</view>
-        <view data-id="{{story_info.last_update_chapter_id}}" class="story-last_update_chapter_name-content">
+      <view class="story-last_update_chapter" data-cid="{{story_info.last_update_chapter_id}}" bindtap="toStoryRead">
+        <view class="story-last_update_chapter_name-new">最新：</view>
+        <view class="story-last_update_chapter_name-content">
           <text>{{story_info.last_update_chapter_name}}</text>
-          <text>{{story_info.updated_at}}  ></text>
+          <text>{{story_info.updated_at}}</text>
         </view>
       </view>
       <view class="story-intro">{{story_info.intro}}</view>
+
+      <block wx:if="{{author_book.length}}">
+        <view class="module-title">作者其他书籍</view>
+        <view class="books-list">
+          <block wx:for="{{author_book}}" wx:key="{{index}}">
+            <view class="books-item" data-id="{{item.book_id}}" bindtap="toStoryInfo">
+              <image src="{{item.cover}}" class="book-iamge"></image>
+              <view class="book-name">{{item.book_name}}</view>
+              <view class="book-autor">{{item.author_name}}/著</view>
+            </view>
+          </block>
+        </view>
+      </block>
+      <block wx:if="{{recommend.length}}">
+        <view class="module-title">相关书籍</view>
+        <view class="books-list">
+          <block wx:for="{{recommend}}" wx:key="{{index}}">
+            <view class="books-item" data-id="{{item.book_id}}" bindtap="toStoryInfo">
+              <image src="{{item.cover}}" class="book-iamge"></image>
+              <view class="book-name">{{item.book_name}}</view>
+              <view class="book-autor">{{item.author_name}}/著</view>
+            </view>
+          </block>
+        </view>
+      </block>
     </view>
 
     <view class="storyAction">

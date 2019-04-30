@@ -28,7 +28,7 @@ Page({
     console.log(Base64)
     console.log(Base64.encode('你好'))
     console.log(Base64.decode('5L2g5aW9'))
-    console.log(md5('12345'))
+    console.log('md5', md5('123'), `${md5('123')}`)
     console.log(queryString)
     console.log(parse('a=1&b=2'))
     console.log(stringify({ a: 1, b: 2 }))

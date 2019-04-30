@@ -26,7 +26,7 @@ Page({
   onShareAppMessage (options) {
     let title = '排行榜'
     if (this.data.musicTopList && this.data.musicTopList.topinfo && this.data.musicTopList.topinfo.ListName) {
-      title = this.data.musicTopList.topinfo.ListName
+      title = `${this.data.musicTopList.topinfo.ListName}【免费好听音乐】`
     }
 
     return {
@@ -55,6 +55,12 @@ Page({
     this.setData({
       musicTopList: res,
     })
+
+    if (res.topinfo && res.topinfo.ListName) {
+      wx.setNavigationBarTitle({
+        title: res.topinfo.ListName
+      })
+    }
   },
   async musicSong (event) {
     const { songmid = '', songname = '未知歌曲', albumname = '未知专辑', singername = '未知歌手', } = event.currentTarget.dataset

@@ -2,12 +2,14 @@
 
 .container {
   height: 100%;
-  background-color: #fff;
+  background-color: #ffeec2;
 }
 
-.storyVolumes {
-  padding-top: 20rpx;
-  background-color: #fff;
+.storyRead {
+  height: 100%;
+  padding: 20rpx;
+  color: #3b334f;
+  background-color: #ffeec2;
 
   .chapter-header {
     margin: 40rpx 0 20rpx;
@@ -16,28 +18,26 @@
     text-align: center;
   }
 
-  .chapter-name {
-    @include nativeborder();
-    padding: 20rpx;
-    color: #333;
+  .chapter-info {
+    font-size: 24rpx;
+    text-align: center;
+  }
+
+  .chapter-content {
+    line-height: 60rpx;
   }
 }
 
 .storyAction {
-  position: fixed;
-  bottom: 50rpx;
-  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  padding: 0 60rpx;
+  margin-top: 60rpx;
 
   button {
     padding: 10rpx 20rpx;
-    color: #ff397e;
-    background-color: #fff;
-    border: 1px solid #ff397e;
+    color: #fff;
+    background-color: #8f3931;
     border-radius: 10rpx;
   }
 

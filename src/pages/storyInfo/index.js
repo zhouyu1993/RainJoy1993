@@ -40,7 +40,7 @@ Page({
 
     return {
       title,
-      path: `/pages/storyInfo/index`,
+      path: `/pages/storyInfo/index?id=${this.data.id}`,
       success: res => {
         wx.showToast({
           title: '分享成功',
@@ -73,6 +73,13 @@ Page({
         console.log(e)
       }
 
+      if (!story_like) {
+        wx.showToast({
+          title: '加入书架后开启阅读～',
+          icon: 'none',
+        })
+      }
+
       this.setData({
         story_info: {
           ...data,
@@ -85,6 +92,12 @@ Page({
         recommend,
         story_like,
       })
+
+      if (data.book_name) {
+        wx.setNavigationBarTitle({
+          title: data.book_name
+        })
+      }
     } catch (e) {
       console.log(e)
     }
@@ -104,11 +117,11 @@ Page({
 
         bookshelf.push({
           id: +story_info.id,
-          book_name: story_info.name,
+          book_name: story_info.book_name,
+          author_name: story_info.author_name,
           cover: story_info.cover,
           last_update_chapter_name: story_info.last_update_chapter_name,
           last_update_chapter_id: story_info.last_update_chapter_id,
-          updated_at: story_info.updated_at,
         })
 
         this.setData({
@@ -139,5 +152,15 @@ Page({
   },
   toStoryVolumes () {
     navigateTo(`/pages/storyVolumes/index?id=${this.data.id}`)
+  },
+  toStoryRead (event) {
+    const { cid, } = event.currentTarget.dataset
+
+    navigateTo(`/pages/storyRead/index?id=${this.data.id}&cid=${cid}`)
+  },
+  toStoryInfo (event) {
+    const { id } = event.currentTarget.dataset
+
+    navigateTo(`/pages/storyInfo/index?id=${id}`)
   },
 })

@@ -37,6 +37,10 @@ Page({
       app.aldstat.sendEvent('播放歌曲', {
         '关键词': '徐蜗牛',
       })
+
+      wx.setNavigationBarTitle({
+        title: 'Sunshine Girl'
+      })
     } else {
       this.setData({
         songmid,
@@ -49,6 +53,10 @@ Page({
 
       app.aldstat.sendEvent('播放歌曲', {
         '关键词': `${decodeChar(songname)}-${decodeChar(singername)}`,
+      })
+
+      wx.setNavigationBarTitle({
+        title: `${decodeChar(songname)}-${decodeChar(singername)}`
       })
     }
   },

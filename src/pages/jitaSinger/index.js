@@ -16,12 +16,16 @@ Page({
 
     const { id, } = options
 
-    this.setData({
-      id,
-    })
+    if (id) {
+      this.setData({
+        id,
+      })
+
+      this.getJitaSingerAsync()
+    }
   },
   onShow () {
-    this.getJitaSingerAsync()
+
   },
   onShareAppMessage (options) {
     let title = '吉他曲谱免费放送'

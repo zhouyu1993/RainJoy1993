@@ -1,14 +1,17 @@
 <component-wrap disabled>
   <view class="container">
     <view class="storyVolumes">
-
+      <block wx:for="{{story_info.volumes}}" wx:key="{{index}}">
+        <view class="chapter-header">{{item.name}}</view>
+        <block wx:for="{{item.chapters}}" wx:key="{{index}}">
+          <view data-cid="{{item.id}}" bindtap="toStoryRead" class="chapter-name">{{item.name}}</view>
+        </block>
+      </block>
     </view>
 
     <view class="storyAction">
       <button hover-class="none" bindtap="toStory" class="toStory">返回书城</button>
-      <button hover-class="none" bindtap="removeBookshelf" class="removeBookshelf" wx:if="{{story_like}}">移除书架</button>
-      <button hover-class="none" bindtap="addBookshelf" class="addBookshelf" wx:else>加入书架</button>
-      <button hover-class="none" class="toStoryRead" wx:if="{{story_like}}">阅读</button>
+      <button hover-class="none" bindtap="toStoryLibrary" class="toStoryLibrary">前往书架</button>
       <button hover-class="none" open-type="share" class="toShare">分享</button>
     </view>
 
