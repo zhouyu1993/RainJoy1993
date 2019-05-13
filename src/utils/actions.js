@@ -1,6 +1,6 @@
-import md5 from 'crypto-js/md5'
+// import md5 from 'crypto-js/md5'
 
-import { CYQQ, JITA, GITLAB, BZQLL, FANYI, ELE, STORY } from './api'
+import { CYQQ, JITA, GITLAB, BZQLL, FANYI, ELE, STORY, H517k } from './api'
 import promiseRequest from './promiseRequest'
 
 const getHotKey = async () => {
@@ -261,23 +261,33 @@ const getStoryVolumes = async (id) => {
 
 const getStoryChapter = async (id, cid) => {
   try {
-    // http://h5.17k.com/chapter/1724165/23651706.html
-    const api = {
-      url: `/v2/book/weixin/${id}/chapter/${cid}/content`,
-      appkey: '2263049103',
-      signature: 0,
-      secret: '246b6c1cbe1cb75a56262725cc34e4fe',
-    }
-    const sign = md5(api.url + '&' + api.appkey + '&' + '{}' + '&' + api.signature + '&' + api.secret)
+    // const api = {
+    //   url: `/v2/book/weixin/${id}/chapter/${cid}/content`,
+    //   appkey: '2263049103',
+    //   signature: 0,
+    //   secret: '246b6c1cbe1cb75a56262725cc34e4fe',
+    // }
+    //
+    // const sign = md5(api.url + '&' + api.appkey + '&' + '{}' + '&' + api.signature + '&' + api.secret)
 
     const res = await promiseRequest({
-      url: `${STORY}/v2/book/weixin/${id}/chapter/${cid}/content?name=0&app_key=2263049103&data={}&sign=${sign}`,
+      url: `${H517k}/chapter/${id}/${cid}.html`, // `${STORY}/v2/book/weixin/${id}/chapter/${cid}/content?name=0&app_key=2263049103&data={}&sign=${sign}`,
       showLoading: true,
       fail: () => {},
-      isSuccess: res => (res.status && res.status.code) === 0,
+      isSuccess: res => true,
     })
 
-    return res
+    if (typeof res === 'string') {
+      const content = res.match(/[^><]+(?=<\/p>)/img)
+
+      return {
+        data: {
+          content: content.join(' \n '),
+        }
+      }
+    } else {
+      return res
+    }
   } catch (e) {
     throw e
   }

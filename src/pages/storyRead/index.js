@@ -30,34 +30,34 @@ Page({
   onShow () {
 
   },
-  onShareAppMessage (options) {
-    let title = '小说阅读'
-    if (this.data.story_info && this.data.story_info.book_name) {
-      title = `《${this.data.story_info.book_name}》精彩极了！`
-    }
-
-    return {
-      title,
-      path: `/pages/storyRead/index?id=${this.data.id}&cid=${this.data.cid}`,
-      success: res => {
-        wx.showToast({
-          title: '分享成功',
-          icon: 'success',
-        })
-      },
-      fail: res => {
-        wx.showToast({
-          title: '取消分享',
-          icon: 'none',
-        })
-      },
-    }
-  },
+  // onShareAppMessage (options) {
+  //   let title = '小说阅读'
+  //   if (this.data.story_info && this.data.story_info.book_name) {
+  //     title = `《${this.data.story_info.book_name}》精彩极了！`
+  //   }
+  //
+  //   return {
+  //     title,
+  //     path: `/pages/storyRead/index?id=${this.data.id}&cid=${this.data.cid}`,
+  //     success: res => {
+  //       wx.showToast({
+  //         title: '分享成功',
+  //         icon: 'success',
+  //       })
+  //     },
+  //     fail: res => {
+  //       wx.showToast({
+  //         title: '取消分享',
+  //         icon: 'none',
+  //       })
+  //     },
+  //   }
+  // },
   async getStoryChapterAsync () {
     try {
       const res = await getStoryChapter(this.data.id, this.data.cid)
 
-      const { data, } = res
+      const { data = {}, } = res
 
       this.setData({
         story_info: data,

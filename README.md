@@ -59,6 +59,7 @@ https://c.y.qq.com
 https://fanyi-api.baidu.com
 https://fanyi.baidu.com
 https://gitlab.com
+https://h5.17k.com
 https://jitami.96sn.com
 https://log.aldwx.com
 https://mainsite-restapi.ele.me

@@ -1,9 +1,10 @@
 <component-wrap disabled>
   <view class="container">
     <scroll-view scroll-y class="storyRead">
-      <block wx:if="{{story_info.name}}">
-        <view class="chapter-header">{{story_info.name}}</view>
-        <view class="chapter-info">{{story_info.updated_at}} 更新{{story_info.word_count}}字</view>
+      <block wx:if="{{story_info.content}}">
+        <view class="chapter-header" wx:if="{{story_info.name}}">{{story_info.name}}</view>
+        <view class="chapter-info" wx:if="{{story_info.updated_a}}">{{story_info.updated_at}} 更新{{story_info.word_count}}字</view>
+
         <text class="chapter-content">{{story_info.content}}</text>
 
         <view class="storyAction">

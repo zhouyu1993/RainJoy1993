@@ -27,12 +27,12 @@ const request = (option) => {
 
   if (typeof fail !== 'function' || typeof complete !== 'function' || typeof isSuccess !== 'function' || typeof isNoLogin !== 'function' || typeof noLogin !== 'function' || typeof error !== 'function') return alert('参数错误')
 
-  if (showLoading) {
-    wx.showLoading({ title: '加载中', })
-    wx.showNavigationBarLoading()
-  }
-
   return new Promise((resolve, reject) => {
+    if (showLoading) {
+      wx.showLoading({ title: '加载中', })
+      wx.showNavigationBarLoading()
+    }
+
     wx.request({
       url,
       data,

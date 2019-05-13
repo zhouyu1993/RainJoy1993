@@ -30,7 +30,7 @@ Page({
         albumname: '我好宣你',
         singername: '徐蜗牛',
         coverImgUrl: 'http://cmspic-10004025.image.myqcloud.com/0b23e778-b411-4f92-9bfe-0390e7e8609a',
-        songSrc: 'https://api.bzqll.com/music/tencent/url?id=003cc8Du2fxoIV&key=579621905',
+        songSrc: 'https://aliuwmp3.changba.com/userdata/video/1062603340.mp4', // 'https://api.bzqll.com/music/tencent/url?id=003cc8Du2fxoIV&key=579621905',
         speacial,
       })
 
@@ -48,7 +48,7 @@ Page({
         albumname: decodeChar(albumname),
         singername: decodeChar(singername),
         coverImgUrl: `https://api.bzqll.com/music/tencent/pic?id=${songmid}&key=579621905`,
-        songSrc: `https://api.bzqll.com/music/tencent/url?id=${songmid}&key=579621905&br=48`,
+        songSrc: 'https://aliuwmp3.changba.com/userdata/video/1062603340.mp4', // `https://api.bzqll.com/music/tencent/url?id=${songmid}&key=579621905&br=48`,
       })
 
       app.aldstat.sendEvent('播放歌曲', {
@@ -66,7 +66,7 @@ Page({
     if (songmid) {
       this.getSongIrc(songmid)
 
-      const src = `https://api.bzqll.com/music/tencent/url?id=${songmid}&key=579621905`
+      const src = 'https://aliuwmp3.changba.com/userdata/video/1062603340.mp4' // `https://api.bzqll.com/music/tencent/url?id=${songmid}&key=579621905`
 
       const backgroundAudioManager = wx.getBackgroundAudioManager()
 
@@ -76,6 +76,11 @@ Page({
         backgroundAudioManager.singer = singername || '未知歌手'
         backgroundAudioManager.coverImgUrl = coverImgUrl || `https://api.bzqll.com/music/tencent/pic?id=${songmid}&key=579621905`
         backgroundAudioManager.src = songSrc || src
+
+        wx.showToast({
+          title: '版权问题，不支持播放了',
+          icon: 'none',
+        })
       }
 
       backgroundAudioManager.onEnded(() => {
@@ -108,36 +113,36 @@ Page({
       }
     }
   },
-  onShareAppMessage (options) {
-    const { songmid, songname, albumname, singername, speacial, } = this.data
-
-    let title = '听歌'
-    let path = '/pages/index/index'
-    if (speacial) {
-      title = '告白气球'
-      path = '/pages/musicSong/index?speacial=1'
-    } else if (songmid && songname && albumname && singername) {
-      title = songname
-      path = `/pages/musicSong/index?songmid=${songmid}&songname=${songname}&albumname=${albumname}&singername=${singername}`
-    }
-
-    return {
-      title,
-      path,
-      success: res => {
-        wx.showToast({
-          title: '分享成功',
-          icon: 'success',
-        })
-      },
-      fail: res => {
-        wx.showToast({
-          title: '取消分享',
-          icon: 'none',
-        })
-      },
-    }
-  },
+  // onShareAppMessage (options) {
+  //   const { songmid, songname, albumname, singername, speacial, } = this.data
+  //
+  //   let title = '听歌'
+  //   let path = '/pages/index/index'
+  //   if (speacial) {
+  //     title = '告白气球'
+  //     path = '/pages/musicSong/index?speacial=1'
+  //   } else if (songmid && songname && albumname && singername) {
+  //     title = songname
+  //     path = `/pages/musicSong/index?songmid=${songmid}&songname=${songname}&albumname=${albumname}&singername=${singername}`
+  //   }
+  //
+  //   return {
+  //     title,
+  //     path,
+  //     success: res => {
+  //       wx.showToast({
+  //         title: '分享成功',
+  //         icon: 'success',
+  //       })
+  //     },
+  //     fail: res => {
+  //       wx.showToast({
+  //         title: '取消分享',
+  //         icon: 'none',
+  //       })
+  //     },
+  //   }
+  // },
   async getSongIrc (songmid) {
     const res = await getSongIrc(songmid)
 
