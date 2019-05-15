@@ -1,4 +1,4 @@
-import { getSongIrc } from '../../utils/actions'
+import { getRainJoy1993Config, getSongIrc } from '../../utils/actions'
 import decodeChar from '../../utils/decodeChar'
 
 // import { Page } from '../../lib/ald/ald-stat'
@@ -30,7 +30,7 @@ Page({
         albumname: '我好宣你',
         singername: '徐蜗牛',
         coverImgUrl: 'http://cmspic-10004025.image.myqcloud.com/0b23e778-b411-4f92-9bfe-0390e7e8609a',
-        songSrc: 'https://aliuwmp3.changba.com/userdata/video/1062603340.mp4', // 'https://api.bzqll.com/music/tencent/url?id=003cc8Du2fxoIV&key=579621905',
+        songSrc: 'https://api.bzqll.com/music/tencent/url?id=003cc8Du2fxoIV&key=579621905',
         speacial,
       })
 
@@ -48,7 +48,7 @@ Page({
         albumname: decodeChar(albumname),
         singername: decodeChar(singername),
         coverImgUrl: `https://api.bzqll.com/music/tencent/pic?id=${songmid}&key=579621905`,
-        songSrc: 'https://aliuwmp3.changba.com/userdata/video/1062603340.mp4', // `https://api.bzqll.com/music/tencent/url?id=${songmid}&key=579621905&br=48`,
+        songSrc: `https://api.bzqll.com/music/tencent/url?id=${songmid}&key=579621905&br=48`,
       })
 
       app.aldstat.sendEvent('播放歌曲', {
@@ -60,13 +60,24 @@ Page({
       })
     }
   },
-  onShow () {
+  async onShow () {
+    let canplay = false
+    try {
+      const res = await getRainJoy1993Config()
+
+      canplay = res && res.data && res.data.canplay
+    } catch (e) {
+      console.log(e)
+    }
+
+    if (!canplay) return
+
     const { songmid, songname, albumname, singername, coverImgUrl, songSrc, } = this.data
 
     if (songmid) {
       this.getSongIrc(songmid)
 
-      const src = 'https://aliuwmp3.changba.com/userdata/video/1062603340.mp4' // `https://api.bzqll.com/music/tencent/url?id=${songmid}&key=579621905`
+      const src = `https://api.bzqll.com/music/tencent/url?id=${songmid}&key=579621905`
 
       const backgroundAudioManager = wx.getBackgroundAudioManager()
 
@@ -76,11 +87,6 @@ Page({
         backgroundAudioManager.singer = singername || '未知歌手'
         backgroundAudioManager.coverImgUrl = coverImgUrl || `https://api.bzqll.com/music/tencent/pic?id=${songmid}&key=579621905`
         backgroundAudioManager.src = songSrc || src
-
-        wx.showToast({
-          title: '版权问题，不支持播放了',
-          icon: 'none',
-        })
       }
 
       backgroundAudioManager.onEnded(() => {
@@ -106,6 +112,8 @@ Page({
           title: '版权问题',
           icon: 'none',
         })
+
+        backgroundAudioManager.src = 'https://aliuwmp3.changba.com/userdata/video/1062603340.mp4'
       })
 
       if (backgroundAudioManager.paused) {
