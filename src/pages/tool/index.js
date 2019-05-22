@@ -330,4 +330,7 @@ Page({
   toTakeOutFood () {
     navigateTo(`/pages/take-out-food/index`)
   },
+  toStory () {
+    navigateTo(`/pages/story/index`)
+  },
 })

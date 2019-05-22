@@ -195,6 +195,11 @@ Page({
   async musicSong (event) {
     const { songmid = '', songname = '未知歌曲', albumname = '未知专辑', singername = '未知歌手', } = event.currentTarget.dataset
 
-    navigateTo(`/pages/musicSong/index?songmid=${songmid}&songname=${songname}&albumname=${albumname}&singername=${singername}`)
+    // navigateTo(`/pages/musicSong/index?songmid=${songmid}&songname=${songname}&albumname=${albumname}&singername=${singername}`)
+
+    wx.showToast({
+      title: songname,
+      icon: 'none',
+    })
   },
 })

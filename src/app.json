@@ -46,10 +46,6 @@
         "text": "音乐"
       },
       {
-        "pagePath": "pages/story/index",
-        "text": "小说"
-      },
-      {
         "pagePath": "pages/tool/index",
         "text": "工具"
       }
