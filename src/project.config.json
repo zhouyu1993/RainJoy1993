@@ -7,17 +7,28 @@
   "setting": {
     "urlCheck": false,
     "es6": false,
+    "enhance": false,
     "postcss": true,
     "minified": true,
     "newFeature": true,
     "nodeModules": false,
     "autoAudits": false,
-    "uglifyFileName": true
+    "uglifyFileName": true,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
   },
   "scripts": {
     "beforeCompile": "",
     "beforePreview": "",
     "beforeUpload": ""
   },
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
   "condition": {}
 }

@@ -1,6 +1,6 @@
 // import md5 from 'crypto-js/md5'
 
-import { CYQQ, JITA, GITLAB, BZQLL, FANYI, ELE, STORY, H517k } from './api'
+import { CYQQ, JITA, GITLAB, BZQLL, FANYI, ELE } from './api'
 import promiseRequest from './promiseRequest'
 
 const getHotKey = async () => {
@@ -199,100 +199,6 @@ const getEleList = async (lat, long, offset) => {
   return res
 }
 
-const getStoryHome = async () => {
-  try {
-    const res = await promiseRequest({
-      url: `${STORY}/v2/book/boutique/bookstore?app_key=2263049103&_versions=973&client_type=998&channel=8&merchant=17KTest&_access_version=2&cps=0&cps_source=0&cps_opid=0&type=1&client=17K`,
-      showLoading: true,
-      fail: () => {},
-      isSuccess: res => (res.status && res.status.code) === 0,
-    })
-
-    return res
-  } catch (e) {
-    throw e
-  }
-}
-
-const searchStory = async (key, page = 1) => {
-  try {
-    const res = await promiseRequest({
-      url: `${STORY}/v2/book/search?app_key=2263049103&_versions=973&client_type=998&channel=8&merchant=17KTest&_access_version=2&cps=0&cps_source=0&cps_opid=0&key=${key}&page=${page}&num=24&_fields=cover,author_name,book_name,book_id,total_num,total_page,cur_page,intro,category_name_2,book_status,word_count,total_chapter,keyword`,
-      showLoading: true,
-      fail: () => {},
-      isSuccess: res => (res.status && res.status.code) === 0,
-    })
-
-    return res
-  } catch (e) {
-    throw e
-  }
-}
-
-const getStoryInfo = async (id) => {
-  try {
-    const res = await promiseRequest({
-      url: `${STORY}/v2/book/${id}/merge?app_key=2263049103&_versions=973&client_type=998&channel=8&merchant=17KTest&_access_version=2&cps=0&cps_source=0&cps_opid=0&iltc=1&time=${Date.now()}`,
-      showLoading: true,
-      fail: () => {},
-      isSuccess: res => (res.status && res.status.code) === 0,
-    })
-
-    return res
-  } catch (e) {
-    throw e
-  }
-}
-
-const getStoryVolumes = async (id) => {
-  try {
-    const res = await promiseRequest({
-      url: `${STORY}/v2/book/${id}/volumes?app_key=2263049103&_versions=973&client_type=998&channel=8&merchant=17KTest&_access_version=2&cps=0&cps_source=0&cps_opid=0&_fields=id,volumes,chapters,name,vip,book_name`,
-      showLoading: true,
-      fail: () => {},
-      isSuccess: res => (res.status && res.status.code) === 0,
-    })
-
-    return res
-  } catch (e) {
-    throw e
-  }
-}
-
-const getStoryChapter = async (id, cid) => {
-  try {
-    // const api = {
-    //   url: `/v2/book/weixin/${id}/chapter/${cid}/content`,
-    //   appkey: '2263049103',
-    //   signature: 0,
-    //   secret: '246b6c1cbe1cb75a56262725cc34e4fe',
-    // }
-    //
-    // const sign = md5(api.url + '&' + api.appkey + '&' + '{}' + '&' + api.signature + '&' + api.secret)
-
-    const res = await promiseRequest({
-      url: `${H517k}/chapter/${id}/${cid}.html`, // `${STORY}/v2/book/weixin/${id}/chapter/${cid}/content?name=0&app_key=2263049103&data={}&sign=${sign}`,
-      showLoading: true,
-      fail: () => {},
-      isSuccess: res => true,
-    })
-
-    if (typeof res === 'string') {
-      const content = res.match(/[^><]+(?=<\/p>)/img)
-
-      return {
-        data: {
-          content: content.join(' \n '),
-        }
-      }
-    } else {
-      return res
-    }
-  } catch (e) {
-    throw e
-  }
-}
-
 export {
   getHotKey,
   getJitaHome,
@@ -306,11 +212,6 @@ export {
   getSongIrc,
   langDetect,
   getEleList,
-  getStoryHome,
-  searchStory,
-  getStoryInfo,
-  getStoryVolumes,
-  getStoryChapter,
 }
 
 export default {
@@ -326,9 +227,4 @@ export default {
   getSongIrc,
   langDetect,
   getEleList,
-  getStoryHome,
-  searchStory,
-  getStoryInfo,
-  getStoryVolumes,
-  getStoryChapter,
 }
