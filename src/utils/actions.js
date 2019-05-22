@@ -1,6 +1,6 @@
 // import md5 from 'crypto-js/md5'
 
-import { CYQQ, JITA, GITLAB, BZQLL, FANYI, ELE } from './api'
+import { CYQQ, JITA, GITLAB, BZQLL, FANYI } from './api'
 import promiseRequest from './promiseRequest'
 
 const getHotKey = async () => {
@@ -168,37 +168,6 @@ const langDetect = async (value) => {
   return res
 }
 
-const getEleList = async (lat, long, offset) => {
-  const res = await promiseRequest({
-    url: `${ELE}/pizza/v1/restaurants`,
-    data: {
-      latitude: lat || 31.98193,
-      longitude: long || 118.738491,
-      offset: offset || 0,
-      limit: 30,
-      category_name: '美食',
-      order_by: 0,
-      extras: ['activities'],
-      activity_types: [3],
-      restaurant_category_ids: [209, 212, 213, 214, 215, 216, 217, 219, 265, 266, 267, 268, 269, 221, 222, 223, 224, 225, 226, 227, 228, 231, 232, 263, 218, 234, 236, 237, 238, 211, 229, 230, 264],
-      restaurant_category_id: [209, 212, 213, 214, 215, 216, 217, 219, 265, 266, 267, 268, 269, 221, 222, 223, 224, 225, 226, 227, 228, 231, 232, 263, 218, 234, 236, 237, 238, 211, 229, 230, 264],
-      category_schema: {
-        'complex_category_ids': [209, 212, 213, 214, 215, 216, 217, 219, 265, 266, 267, 268, 269, 221, 222, 223, 224, 225, 226, 227, 228, 231, 232, 263, 218, 234, 236, 237, 238, 211, 229, 230, 264]
-      },
-      terminal: 'weapp',
-      user_id: 56573132,
-    },
-    header: {
-      cookie: 'USERID=5657313; SID=wENw0E5dBCKH10CcVHwbVGz1IpW3n8hm8GGg;'
-    },
-    showLoading: true,
-    fail: () => {},
-    isSuccess: res => true,
-  })
-
-  return res
-}
-
 export {
   getHotKey,
   getJitaHome,
@@ -211,7 +180,6 @@ export {
   searchSong,
   getSongIrc,
   langDetect,
-  getEleList,
 }
 
 export default {
@@ -226,5 +194,4 @@ export default {
   searchSong,
   getSongIrc,
   langDetect,
-  getEleList,
 }

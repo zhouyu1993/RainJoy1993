@@ -7,7 +7,6 @@
         <button hover-class="none" bindtap="chooseAddress" class="chooseAddress">选择地址</button>
         <button hover-class="none" bindtap="clearStorage" class="clearStorage">清理缓存</button>
         <button hover-class="none" bindtap="toSearch" class="toSearch">搜索</button>
-        <button hover-class="none" bindtap="toTakeOutFood">外卖</button>
         <button hover-class="none" bindtap="voiceAssistant">小雨同学</button>
       </view>
       <input placeholder="请输入" confirm-type="search" bindinput="speacialInput" bindconfirm="speacialSearch" class="speacial" />

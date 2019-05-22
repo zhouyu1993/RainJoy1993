@@ -327,7 +327,4 @@ Page({
   toSearch () {
     navigateTo(`/pages/search/index`)
   },
-  toTakeOutFood () {
-    navigateTo(`/pages/take-out-food/index`)
-  },
 })
