@@ -1,0 +1,1 @@
+module.exports = { "default": require('./../../../core-js/library/fn/string/from-code-point.js'), __esModule: true };

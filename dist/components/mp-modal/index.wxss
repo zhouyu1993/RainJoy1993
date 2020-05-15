@@ -1,0 +1,58 @@
+.mp-modal-mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 50%;
+  z-index: 2000;
+  width: 750rpx;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  transform: translate3d(-50%, 0, 0); }
+
+.mp-modal-core {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 2001;
+  width: 500rpx;
+  line-height: 1.5;
+  color: #fff;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 8rpx;
+  transform: translate3d(-50%, -50%, 0); }
+
+.mp-modal-title {
+  padding: 0 20rpx;
+  margin-top: 20rpx;
+  font-size: 32rpx;
+  color: #121212; }
+
+.mp-modal-content {
+  padding: 0 20rpx;
+  margin-top: 20rpx;
+  font-size: 30rpx;
+  color: #666; }
+
+.mp-modal-buttons {
+  background-image: linear-gradient(to bottom, #ddd 50%, transparent 50%);
+  background-position: left top;
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx; }
+  .mp-modal-buttons-cancel, .mp-modal-buttons-confirm {
+    flex: 1;
+    padding: 20rpx;
+    font-size: 34rpx;
+    text-align: center; }
+  .mp-modal-buttons-cancel {
+    background-image: linear-gradient(to left, #ddd 50%, transparent 50%);
+    background-position: right top;
+    background-size: 1px 100%;
+    background-repeat: no-repeat;
+    color: #333; }
+  .mp-modal-buttons-confirm {
+    color: #ff397e; }

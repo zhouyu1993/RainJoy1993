@@ -1,0 +1,81 @@
+.container {
+  height: 100%;
+  background-color: #fff; }
+
+.module-title {
+  height: 100rpx;
+  margin-top: 20rpx;
+  font-size: 36rpx;
+  line-height: 100rpx;
+  text-align: center;
+  background-color: #fff; }
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20rpx;
+  background-color: #fff; }
+  .search input {
+    flex: 1;
+    height: 60rpx;
+    padding: 0 10rpx;
+    line-height: 60rpx;
+    border-top: 1rpx solid #ddd;
+    border-bottom: 1rpx solid #ddd;
+    border-left: 1rpx solid #ddd; }
+  .search button {
+    width: 100rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    color: #fff;
+    background-color: #ff397e;
+    border: 1rpx solid #ff397e; }
+    .search button.cancel {
+      background-color: #ddd;
+      border: 1rpx solid #ddd; }
+
+.singer {
+  padding: 0 20rpx;
+  margin-top: 20rpx;
+  background-color: #fff; }
+  .singer .list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; }
+    .singer .list view {
+      margin-top: 20rpx;
+      margin-right: 20rpx;
+      line-height: 50rpx;
+      border-bottom: 1rpx solid #ddd; }
+
+.song {
+  padding: 0 20rpx;
+  margin-top: 20rpx;
+  background-color: #fff; }
+  .song .list view {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20rpx;
+    line-height: 50rpx;
+    border-bottom: 1rpx solid #ddd; }
+  .song .more {
+    padding: 20px;
+    color: #ff397e;
+    text-align: center; }
+
+.hotkeys {
+  padding: 20rpx;
+  background-color: #fff; }
+  .hotkeys .hotkey {
+    display: inline-block;
+    padding: 20rpx;
+    margin-right: 20rpx;
+    margin-bottom: 20rpx;
+    font-size: 24rpx;
+    border: 1px solid #bbb;
+    border-radius: 20rpx; }
+    .hotkeys .hotkey.first-child {
+      color: #ff397e;
+      border: 1px solid #ff397e; }

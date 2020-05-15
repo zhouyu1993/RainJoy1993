@@ -1,0 +1,44 @@
+<component-wrap disabled>
+  <view class="container">
+    <view class="topList" wx:if="{{musicHome.topList && musicHome.topList.length}}">
+      <block wx:for="{{musicHome.topList}}" wx:key="{{index}}">
+        <view class="topList-item" hidden="{{item.id === 201}}" data-id="{{item.id}}" bindtap="musicTopList">
+          <image lazy-load src="{{item.picUrl}}" class="topList-item-image" />
+          <view class="topList-item-rt">
+            <view class="topList-item-name">{{item.topTitle}}</view>
+            <view class="topList-item-songList">
+              <view wx:for="{{item.songList}}" wx:key="{{index}}">{{index + 1}}. {{item.songname}}-{{item.singername}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+
+    <view class="module-title">热门音乐搜索</view>
+    <view class="search">
+      <view class="search-control">
+        <input placeholder="请输入歌名或歌手" confirm-type="search" value="{{songValue}}" bindinput="songInput" bindconfirm="songSearch" />
+        <button bindtap="songSearchCancel" class="cancel">取消</button>
+        <button bindtap="songSearch">搜索</button>
+      </view>
+      <view class="search-hotkeys" wx:if="{{!songData.length}}">
+        <text wx:for="{{hotkeys}}" wx:key="{{key}}" data-value="{{item.k}}" class="hotkey {{index == 0 ? 'first-child' : ''}}" bindtap="keywordSongSearch">{{item.k}}</text>
+      </view>
+      <view class="search-result" wx:if="{{songData.length}}">
+        <view class="search-result-song">
+          <view>歌曲：</view>
+          <view class="list">
+            <block wx:for="{{songData}}" wx:key="{{index}}">
+              <view data-songmid="{{item.id}}" data-songname="{{item.name}}" data-albumname="{{item.album}}" data-singername="{{item.singer}}" bindtap="musicSong">
+                <text>{{item.name}}-{{item.singer}}</text><text>{{item.time}}</text>
+              </view>
+            </block>
+          </view>
+        </view>
+        <view class="more" bindtap="moreSongSearch">查看更多</view>
+      </view>
+    </view>
+
+    <view style="height:100rpx;;background-color:#fff;"></view>
+  </view>
+</component-wrap>
